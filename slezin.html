@@ -1,0 +1,2265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Slezin — Relieve your dry eyes · RomPharm 2026</title>
+<meta name="description" content="A case study in pharmaceutical packaging and ophthalmic communication. Slezin keratoprotective eye drops by RomPharm." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..900,0..100;1,9..144,200..900,0..100&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+/* ───────────────── tokens ───────────────── */
+:root{
+  --ink:        #0E2A47;
+  --ink-soft:   #1d3a5a;
+  --white:      #ffffff;
+  --paper:      #fbfaf5;     /* off-white, warm */
+  --paper-deep: #f5efe0;     /* light cream */
+  --cream:      #f1e8d1;     /* proper cream — for accent sections */
+  --cream-deep: #e7dcbf;
+  --teal:       #00a6b8;
+  --teal-deep:  #007a89;
+  --teal-glow:  #6ed4dc;
+  --teal-soft:  #d6eef0;
+  --green:      #8dc63f;
+  --green-deep: #6ba128;
+  --green-soft: #e6f1cd;
+  --clay:       #d8694c;     /* reserved for "warning" beat (tear film breakup) */
+  --rule:       rgba(14,42,71,.14);
+  --rule-on-d:  rgba(251,250,245,.16);
+  --brand-grad: linear-gradient(96deg, var(--teal) 0%, var(--teal-deep) 38%, var(--green-deep) 72%, var(--green) 100%);
+  --brand-grad-soft: linear-gradient(135deg, var(--teal-soft) 0%, var(--green-soft) 100%);
+
+  --serif: "Fraunces", "Times New Roman", serif;
+  --sans:  "Inter Tight", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --pad: clamp(20px, 4vw, 80px);
+  --rhythm: clamp(80px, 12vh, 180px);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+html{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+body{
+  overflow-x: hidden;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(0,166,184,.10), transparent 65%),
+    radial-gradient(900px 500px at -10% 30%, rgba(141,198,63,.08), transparent 65%),
+    radial-gradient(700px 700px at 50% 110%, rgba(241,232,209,.55), transparent 70%),
+    var(--white);
+}
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+
+/* grain overlay */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index: 100;
+  mix-blend-mode: multiply;
+  opacity:.22;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 .055  0 0 0 0 .165  0 0 0 0 .278  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ───────────────── nav ───────────────── */
+.topbar{
+  position: fixed; top:0; left:0; right:0;
+  z-index: 50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 18px var(--pad);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  mix-blend-mode: difference;
+  color: var(--paper);
+}
+.topbar .brand{ display:flex; gap:14px; align-items:center; }
+.topbar .brand::before{
+  content:""; width:9px; height:9px; border-radius:50%;
+  background: var(--teal); box-shadow: 0 0 0 3px rgba(0,166,184,.25);
+}
+.topbar nav{ display:flex; gap:26px; }
+.topbar nav a{ opacity:.75; transition:opacity .3s; }
+.topbar nav a:hover{ opacity:1; }
+@media (max-width: 720px){ .topbar nav{ display:none; } }
+
+/* ───────────────── layout primitives ───────────────── */
+.section{ padding: var(--rhythm) var(--pad); position:relative; }
+.section.cream{
+  background:
+    radial-gradient(900px 500px at 90% 0%, rgba(0,166,184,.06), transparent 60%),
+    radial-gradient(800px 500px at 0% 100%, rgba(141,198,63,.07), transparent 60%),
+    var(--cream);
+}
+.section.cream::before{
+  content:"";
+  position:absolute; top:0; left:0; right:0; height: 1px;
+  background: rgba(14,42,71,.15);
+}
+.section.dark{
+  background:
+    radial-gradient(800px 500px at 20% 0%, rgba(0,166,184,.18), transparent 60%),
+    radial-gradient(1000px 700px at 100% 100%, rgba(141,198,63,.10), transparent 60%),
+    var(--ink);
+  color: var(--paper);
+}
+.section.dark .rule{ border-color: var(--rule-on-d); }
+
+/* brand wave divider (between sections) */
+.brand-wave{
+  height: 60px;
+  background:
+    linear-gradient(180deg, transparent 0, transparent 50%, var(--paper) 50%);
+  position: relative; overflow: hidden;
+}
+.brand-wave svg{ width: 100%; height: 100%; display:block; }
+.brand-wave.on-cream{
+  background: linear-gradient(180deg, transparent 0, transparent 50%, var(--cream) 50%);
+}
+.brand-wave.on-dark{
+  background: linear-gradient(180deg, transparent 0, transparent 50%, var(--ink) 50%);
+}
+.eyebrow{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  display:flex; align-items:center; gap:14px;
+}
+.dark .eyebrow{ color: var(--teal-glow); }
+.eyebrow::before{
+  content:""; width:24px; height:1px; background: currentColor;
+}
+
+h1,h2,h3,h4{ font-family: var(--serif); font-weight: 400; margin: 0; letter-spacing:-.02em; }
+.display{
+  font-size: clamp(56px, 11.5vw, 196px);
+  line-height: .92;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 350;
+}
+.display em{
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 300;
+  color: var(--teal-deep);
+}
+.h-big{
+  font-size: clamp(40px, 6vw, 96px);
+  line-height: .95;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 380;
+}
+.h-mid{
+  font-size: clamp(28px, 3.6vw, 52px);
+  line-height: 1.05;
+  font-variation-settings: "opsz" 96, "SOFT" 20, "wght" 400;
+}
+.h-mid em{ font-style: italic; color: var(--teal-deep); font-variation-settings: "opsz" 96, "SOFT" 50, "wght" 350;}
+.lede{
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "SOFT" 20, "wght" 380;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.45;
+  max-width: 32ch;
+}
+
+p{ margin: 0 0 1em; }
+.body-col{ max-width: 56ch; font-size: 16.5px; line-height: 1.6; }
+.body-col p + p{ margin-top: 1em; }
+
+.mono{
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.smcaps{
+  font-family: var(--sans);
+  font-size: 12.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.rule{ border:0; border-top: 1px solid var(--rule); margin: 0; }
+.tag{
+  display:inline-flex; align-items:center; gap:8px;
+  padding: 6px 12px;
+  border:1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.dark .tag{ border-color: var(--rule-on-d); }
+.tag .dot{ width:6px; height:6px; border-radius:50%; background:var(--teal); }
+
+/* reveal on scroll */
+.reveal{ opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in{ opacity:1; transform:none; }
+.reveal.stagger > *{ opacity:0; transform: translateY(20px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in.stagger > *{ opacity:1; transform:none; }
+.reveal.in.stagger > *:nth-child(1){ transition-delay:.05s; }
+.reveal.in.stagger > *:nth-child(2){ transition-delay:.15s; }
+.reveal.in.stagger > *:nth-child(3){ transition-delay:.25s; }
+.reveal.in.stagger > *:nth-child(4){ transition-delay:.35s; }
+.reveal.in.stagger > *:nth-child(5){ transition-delay:.45s; }
+.reveal.in.stagger > *:nth-child(6){ transition-delay:.55s; }
+
+/* ───────────────── HERO ───────────────── */
+.hero{ min-height: 100vh; padding-top: clamp(120px, 18vh, 220px); padding-bottom: 60px; position:relative; overflow:hidden; }
+.hero .meta-row .item .v em{ color: var(--teal-deep); font-style: italic; }
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: end;
+}
+@media (min-width: 1000px){
+  .hero-grid{ grid-template-columns: minmax(0,1fr) minmax(360px, 460px); gap: clamp(40px,5vw,80px); }
+}
+.hero h1{ max-width: 16ch; }
+.hero .meta-row{
+  display:flex; flex-wrap:wrap; gap:24px; align-items:center;
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+.hero .meta-row .item{ display:flex; flex-direction:column; gap:4px; }
+.hero .meta-row .item .k{ font-family: var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color: rgba(14,42,71,.55);}
+.hero .meta-row .item .v{ font-family: var(--serif); font-size: 18px; font-variation-settings: "opsz" 32, "wght" 400; }
+.hero .meta-row .sep{ width:1px; align-self:stretch; background: var(--rule); }
+.hero .meta-row .sep:last-child{ display:none; }
+
+/* product carton SVG container */
+.carton-stage{
+  position:relative;
+  aspect-ratio: 520/720;
+  display:flex; align-items:center; justify-content:center;
+  isolation:isolate;
+}
+.carton-stage::before{
+  content:"";
+  position:absolute; inset: 8% -8% -8% -8%;
+  background:
+    radial-gradient(50% 40% at 50% 60%, rgba(0,166,184,.10), transparent 75%),
+    radial-gradient(60% 30% at 60% 95%, rgba(14,42,71,.18), transparent 75%);
+  filter: blur(28px);
+  z-index: -1;
+}
+.carton{
+  width: 100%;
+  filter: drop-shadow(0 32px 44px rgba(14,42,71,.16));
+}
+
+/* corner marker that mimics David's site clean utility */
+.corner-mark{
+  position:absolute; top: 120px; right: var(--pad);
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color: rgba(14,42,71,.55);
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ───────────────── abstract ───────────────── */
+.abstract{
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 70px var(--pad);
+  background: var(--paper);
+}
+.abstract-inner{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+@media (min-width: 980px){
+  .abstract-inner{ grid-template-columns: 180px 1fr 320px; gap: 60px; }
+}
+.abstract-label{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  border-top: 2px solid var(--teal-deep);
+  padding-top: 14px;
+  align-self: start;
+}
+.abstract-body{
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "wght" 400;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+  max-width: 60ch;
+}
+.abstract-keys{
+  display: grid; gap: 14px;
+  font-size: 13px; line-height: 1.5;
+}
+.abstract-keys > div{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.abstract-keys .k{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(14,42,71,.55);
+}
+.abstract-keys .v{
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--ink);
+}
+
+/* ───────────────── product anatomy section ───────────────── */
+.product-grid{
+  display:grid; grid-template-columns: 1fr; gap: 60px;
+  align-items: start;
+}
+@media (min-width: 980px){
+  .product-grid{ grid-template-columns: .9fr 1.1fr; gap: 90px; }
+}
+.callouts{ list-style:none; padding:0; margin: 20px 0 0; }
+.callouts li{
+  display:grid; grid-template-columns: 38px 1fr;
+  gap: 16px; padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  align-items: baseline;
+}
+.callouts li:last-child{ border-bottom: 1px solid var(--rule); }
+.callouts .n{ font-family: var(--mono); font-size: 11px; letter-spacing:.14em; color: var(--teal-deep); }
+.callouts .t{ font-family: var(--serif); font-size: 19px; font-variation-settings: "opsz" 32, "wght" 400; }
+.callouts .d{ grid-column: 2; font-size: 14px; line-height: 1.55; color: rgba(14,42,71,.7); margin-top: 4px; }
+
+.specs{
+  display:grid; grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 36px;
+}
+.specs > div{
+  background: var(--paper);
+  padding: 18px 20px;
+}
+.specs .k{ font-family: var(--mono); font-size: 10.5px; letter-spacing:.14em; text-transform:uppercase; color: rgba(14,42,71,.55); margin-bottom: 8px; }
+.specs .v{ font-family: var(--serif); font-size: 17px; font-variation-settings: "opsz" 32, "wght" 400; }
+
+/* ───────────────── eye anatomy (dark hero section) ───────────────── */
+.anatomy{ padding-top: var(--rhythm); padding-bottom: var(--rhythm); }
+.anatomy-head{
+  display:grid; grid-template-columns: 1fr; gap: 30px;
+  align-items: end;
+  margin-bottom: 50px;
+}
+@media (min-width: 900px){
+  .anatomy-head{ grid-template-columns: 1.4fr 1fr; }
+}
+.anatomy-stage{
+  position:relative;
+  margin-top: 30px;
+}
+.anatomy-stage svg{ width: 100%; height:auto; }
+
+/* tear film inset card */
+.cards-3{
+  display:grid; grid-template-columns: repeat(1, 1fr); gap: 24px;
+  margin-top: 80px;
+}
+@media (min-width: 760px){ .cards-3{ grid-template-columns: repeat(3, 1fr); } }
+.card{
+  border: 1px solid var(--rule-on-d);
+  padding: 28px;
+  position:relative;
+  overflow:hidden;
+}
+.card .num{
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+  color: var(--teal-glow); margin-bottom: 16px;
+}
+.card .ttl{
+  font-family: var(--serif); font-size: 26px;
+  font-variation-settings: "opsz" 96, "SOFT" 30, "wght" 400;
+  line-height: 1.1; margin-bottom: 14px;
+}
+.card .ttl em{ font-style: italic; color: var(--teal-glow); font-variation-settings: "opsz" 96, "SOFT" 60, "wght" 350; }
+.card .copy{ font-size: 14.5px; line-height: 1.55; opacity: .8; }
+
+/* ───────────────── molecules ───────────────── */
+.mech-grid{
+  display:grid; grid-template-columns: 1fr; gap: 60px;
+  margin-top: 60px;
+}
+@media (min-width: 940px){
+  .mech-grid{ grid-template-columns: 1fr 1fr; gap: 80px; }
+}
+.mech .lbl{
+  display:flex; align-items:baseline; gap: 16px;
+  margin-bottom: 14px;
+}
+.mech .lbl .ix{ font-family: var(--mono); font-size: 11px; letter-spacing:.14em; color: var(--teal-deep); }
+.mech .lbl .nm{ font-family: var(--serif); font-size: 32px; font-variation-settings: "opsz" 96, "wght" 400; }
+.mech .lbl .nm em{ font-style: italic; color: var(--teal-deep); }
+.mech .formula{ font-family: var(--mono); font-size: 12px; color: rgba(14,42,71,.6); margin-bottom: 24px; }
+.mech .diagram{ aspect-ratio: 3/2; border: 1px solid var(--rule); background: rgba(255,255,255,.45); padding: 22px; border-radius: 2px;}
+.mech .blurb{ margin-top: 22px; font-size: 15px; line-height: 1.6; max-width: 48ch; }
+
+/* ───────────────── clinical data ───────────────── */
+.clinical-grid{
+  display:grid; grid-template-columns: 1fr; gap: 18px;
+  margin-top: 60px;
+}
+@media (min-width: 760px){ .clinical-grid{ grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+@media (min-width: 1100px){ .clinical-grid{ grid-template-columns: repeat(4, 1fr); } }
+.metric{
+  border-top: 1px solid var(--rule-on-d);
+  padding-top: 24px;
+  display:flex; flex-direction: column; gap: 14px;
+}
+.metric .head{
+  display:flex; justify-content: space-between; align-items: baseline; gap: 12px;
+}
+.metric .name{ font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--teal-glow); }
+.metric .dir{
+  font-family: var(--serif); font-style: italic; font-size: 13px;
+  color: var(--paper);
+  opacity: .7;
+}
+.metric .num{
+  font-family: var(--serif);
+  font-size: clamp(64px, 9vw, 120px);
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 360;
+}
+.metric .num .sign{ color: var(--teal-glow); font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 300; }
+.metric .pct{ font-family: var(--mono); font-size: 11.5px; opacity: .6; letter-spacing: .1em; }
+.metric .bar{
+  height: 3px; background: var(--rule-on-d); position: relative; overflow: hidden;
+  margin-top: 8px;
+}
+.metric .bar::after{
+  content:""; position: absolute; top:0; bottom:0; left:0; background: var(--teal);
+  width: var(--w, 50%);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(.2,.7,.2,1) .2s;
+}
+.metric.in .bar::after{ transform: scaleX(1); }
+.metric .caption{ font-size: 13.5px; line-height: 1.5; opacity: .75; max-width: 30ch; }
+
+.cite{
+  margin-top: 60px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .08em;
+  opacity: .55;
+  max-width: 64ch;
+}
+
+/* ───────────────── dosage pictograms ───────────────── */
+.dose-grid{
+  display:grid; grid-template-columns: 1fr; gap: 30px;
+  margin-top: 60px;
+}
+@media (min-width: 760px){ .dose-grid{ grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+.dose{
+  border-top: 1px solid var(--rule);
+  padding-top: 24px;
+}
+.dose .pic{ aspect-ratio: 4/3; display:flex; align-items:center; justify-content:center; margin-bottom: 18px; }
+.dose .step{ font-family: var(--mono); font-size: 11px; letter-spacing:.14em; color: var(--teal-deep); margin-bottom: 8px; }
+.dose .ttl{ font-family: var(--serif); font-size: 24px; font-variation-settings: "opsz" 96, "wght" 400; margin-bottom: 6px;}
+.dose .ttl em{ font-style: italic; color: var(--green-deep); }
+.dose .body{ font-size: 14.5px; line-height: 1.55; color: rgba(14,42,71,.7); }
+
+/* ───────────────── composition + footer ───────────────── */
+.composition-grid{
+  display:grid; grid-template-columns: 1fr; gap: 60px;
+  margin-top: 60px;
+  align-items: start;
+}
+@media (min-width: 980px){ .composition-grid{ grid-template-columns: 1.1fr .9fr; gap: 100px; } }
+.ing-table{
+  border-top: 1px solid var(--rule);
+}
+.ing-row{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+  gap: 16px;
+}
+.ing-row .name{ font-family: var(--serif); font-size: 19px; font-variation-settings: "opsz" 32, "wght" 400; }
+.ing-row .name em{ font-style: italic; color: var(--teal-deep); font-variation-settings: "opsz" 32, "wght" 350; }
+.ing-row .sub{ font-family: var(--mono); font-size: 11px; letter-spacing:.12em; text-transform:uppercase; color: rgba(14,42,71,.55); margin-top: 4px; }
+.ing-row .qty{ font-family: var(--mono); font-size: 13px; color: var(--ink); white-space: nowrap; }
+.ing-row.active .qty{ color: var(--teal-deep); font-weight: 500; }
+.ing-row.excipient .name{ font-size: 16px; color: rgba(14,42,71,.78); }
+
+.colophon{
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--rhythm) var(--pad) 60px;
+}
+.colophon-grid{
+  display:grid; gap: 50px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px){
+  .colophon-grid{ grid-template-columns: 1.4fr 1fr 1fr; }
+}
+.colophon h3{
+  font-family: var(--serif); font-size: clamp(40px, 5.5vw, 80px);
+  font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 350;
+  line-height: 1; max-width: 16ch;
+}
+.colophon h3 em{ font-style: italic; color: var(--teal-glow); font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 300; }
+.credit-list{ list-style:none; padding:0; margin:0; }
+.credit-list li{
+  display:flex; justify-content: space-between; gap: 24px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-on-d);
+  font-size: 14px;
+}
+.credit-list li .k{ font-family: var(--mono); font-size: 11px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; }
+.credit-list li .v{ font-family: var(--serif); font-variation-settings: "opsz" 32, "wght" 400; font-size: 16px; }
+.footer-bar{
+  margin-top: 70px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule-on-d);
+  display:flex; justify-content: space-between; align-items:center;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+  opacity: .65;
+}
+
+/* figure caption (placed under SVG figures) */
+.fig-cap{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(14,42,71,.55);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap;
+}
+.fig-cap b{
+  color: var(--teal-deep);
+  font-weight: 600;
+  letter-spacing: .14em;
+}
+.dark .fig-cap{
+  color: rgba(245,241,234,.6);
+  border-color: var(--rule-on-d);
+}
+.dark .fig-cap b{ color: var(--teal-glow); }
+
+/* utility */
+.flex-baseline{ display:flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.row-end{ display:flex; align-items:flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 28px;}
+
+/* selection */
+::selection{ background: var(--teal); color: var(--paper); }
+
+/* ───────────────── INTRO OVERLAY (motion graphics) ───────────────── */
+html.slz-intro-on, html.slz-intro-on body{ overflow:hidden; height:100%; }
+.slz-intro{
+  position: fixed; inset: 0;
+  z-index: 9999;
+  background:
+    radial-gradient(1200px 700px at 50% 30%, #133a60 0%, #0E2A47 55%, #07182b 100%);
+  color: var(--paper);
+  display: grid; place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  animation: slzIntroEnd 1.1s ease 6.0s forwards;
+}
+.slz-intro::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay; opacity:.35; pointer-events:none;
+}
+.slz-intro::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(60% 40% at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%);
+}
+.slz-intro .skip{
+  position:absolute; top: 22px; right: 26px;
+  font-family: var(--mono); font-size: 11px; letter-spacing:.14em; text-transform:uppercase;
+  color: rgba(251,250,245,.7);
+  padding: 9px 16px; border:1px solid rgba(251,250,245,.25); border-radius: 999px;
+  background: transparent; cursor:pointer; transition: all .3s ease;
+  z-index: 3;
+}
+.slz-intro .skip:hover{ color: var(--paper); border-color: var(--teal-glow); background: rgba(0,166,184,.12); }
+.slz-intro .corner{
+  position:absolute; top: 24px; left: 26px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing:.18em; text-transform:uppercase;
+  color: rgba(251,250,245,.55);
+  display:flex; align-items:center; gap:10px;
+  z-index: 3;
+}
+.slz-intro .corner::before{
+  content:""; width:8px; height:8px; border-radius:50%;
+  background: var(--teal); box-shadow: 0 0 0 3px rgba(0,166,184,.25);
+  animation: slzPulseDot 1.4s ease-in-out infinite;
+}
+.slz-intro .stage{
+  position: relative;
+  width: min(92vw, 720px);
+  aspect-ratio: 1/1;
+  display:grid; place-items:center;
+  z-index: 2;
+}
+.slz-intro svg{ width:100%; height:100%; overflow:visible; }
+
+/* word cards under the stage */
+.slz-intro .caption{
+  position:absolute; left:0; right:0; bottom: 7vh;
+  text-align:center;
+  z-index: 4;
+}
+.slz-intro .cap-eyebrow{
+  font-family: var(--mono); font-size: 11px; letter-spacing:.32em; text-transform:uppercase;
+  color: var(--teal-glow);
+  opacity: 0;
+  animation: slzCapEy 1s ease 4.0s forwards;
+}
+.slz-intro .wordmark{
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 40, "wght" 360;
+  font-size: clamp(48px, 9vw, 120px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-top: 10px;
+  background: linear-gradient(96deg, #6ed4dc 0%, #00a6b8 35%, #8dc63f 75%, #d6f0a3 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  opacity: 0; transform: translateY(18px) scale(.96); filter: blur(8px);
+  animation: slzWordIn 1.1s cubic-bezier(.2,.7,.2,1) 4.2s forwards;
+}
+.slz-intro .wordmark em{
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 70, "wght" 300;
+}
+.slz-intro .tagline{
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 32, "wght" 380;
+  font-size: clamp(15px, 1.6vw, 20px);
+  color: rgba(251,250,245,.85);
+  margin-top: 14px;
+  opacity:0;
+  animation: slzCapEy 1s ease 4.7s forwards;
+}
+.slz-intro .underline{
+  display:block; margin: 18px auto 0;
+  width: 0; height: 2px;
+  background: linear-gradient(96deg, var(--teal) 0%, var(--green) 100%);
+  border-radius: 2px;
+  animation: slzUnderline 1.2s cubic-bezier(.2,.7,.2,1) 4.6s forwards;
+}
+
+/* ── stage choreography ── */
+/* Act 1 (0–1.6s): tired eye, cracked tear film lines around iris */
+.slz-eye-outline{ stroke: rgba(251,250,245,.55); stroke-width: 2.2; fill:none; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray: 980; stroke-dashoffset: 980;
+  animation: slzDraw 1.0s ease .2s forwards;
+}
+.slz-iris-ring{ stroke: rgba(110,212,220,.6); stroke-width: 1.6; fill:none;
+  stroke-dasharray: 360; stroke-dashoffset: 360;
+  animation: slzDraw 1.0s ease .55s forwards;
+}
+.slz-iris-fill{
+  opacity: 0;
+  transform-origin: 260px 260px;
+  animation: slzIrisIn .8s ease .85s forwards, slzIrisCalm 1.2s ease 3.0s forwards;
+}
+.slz-pupil{
+  opacity: 0;
+  animation: slzIrisIn .6s ease 1.0s forwards;
+}
+.slz-crack{
+  stroke: #d8694c;
+  stroke-width: 1.4;
+  fill:none; stroke-linecap:round;
+  stroke-dasharray: 140; stroke-dashoffset: 140;
+  opacity: 0;
+  animation: slzCrackIn 1.0s ease forwards, slzCrackOut .7s ease 3.0s forwards;
+}
+.slz-crack.c1{ animation-delay: 1.05s, 3.0s; }
+.slz-crack.c2{ animation-delay: 1.15s, 3.05s; }
+.slz-crack.c3{ animation-delay: 1.25s, 3.10s; }
+.slz-crack.c4{ animation-delay: 1.35s, 3.15s; }
+.slz-crack.c5{ animation-delay: 1.45s, 3.20s; }
+.slz-crack.c6{ animation-delay: 1.55s, 3.25s; }
+.slz-lash{
+  stroke: rgba(251,250,245,.85); stroke-width: 2.2; stroke-linecap:round;
+  opacity: 0;
+  animation: slzIrisIn .4s ease .9s forwards;
+  transform-origin: center;
+}
+.slz-eye-blink{
+  transform-origin: 260px 260px;
+  animation: slzBlink .55s ease 1.7s 1 forwards;
+}
+
+/* Act 2 (1.8–3.4s): waterfall of droplets cascades down */
+.slz-drop{
+  fill: url(#slzDropGrad);
+  filter: drop-shadow(0 0 6px rgba(110,212,220,.65));
+  transform-origin: center;
+  opacity: 0;
+}
+.slz-drop.d1{ animation: slzDropFall 1.6s cubic-bezier(.4,.0,.6,1) 1.9s forwards; }
+.slz-drop.d2{ animation: slzDropFall 1.6s cubic-bezier(.4,.0,.6,1) 2.05s forwards; }
+.slz-drop.d3{ animation: slzDropFall 1.6s cubic-bezier(.4,.0,.6,1) 2.20s forwards; }
+.slz-drop.d4{ animation: slzDropFall 1.6s cubic-bezier(.4,.0,.6,1) 2.35s forwards; }
+.slz-drop.d5{ animation: slzDropFall 1.6s cubic-bezier(.4,.0,.6,1) 2.50s forwards; }
+.slz-drop.d6{ animation: slzDropFall 1.6s cubic-bezier(.4,.0,.6,1) 2.65s forwards; }
+.slz-drop.d7{ animation: slzDropFall 1.6s cubic-bezier(.4,.0,.6,1) 2.80s forwards; }
+
+/* waterfall streak */
+.slz-stream{
+  fill: url(#slzStreamGrad);
+  opacity: 0;
+  transform-origin: 260px 0;
+  animation: slzStreamIn .9s cubic-bezier(.2,.7,.2,1) 2.0s forwards, slzStreamOut .8s ease 3.4s forwards;
+}
+
+/* Act 3 (3.2–4.4s): ripple of relief */
+.slz-ripple{
+  fill: none; stroke: var(--teal-glow); stroke-width: 1.6;
+  opacity: 0;
+  transform-origin: 260px 260px;
+}
+.slz-ripple.r1{ animation: slzRipple 1.4s ease-out 3.1s forwards; }
+.slz-ripple.r2{ animation: slzRipple 1.4s ease-out 3.3s forwards; }
+.slz-ripple.r3{ animation: slzRipple 1.4s ease-out 3.55s forwards; }
+
+/* highlight glint on iris after relief */
+.slz-glint{
+  opacity: 0;
+  animation: slzGlint 1.2s ease 3.6s forwards;
+}
+
+@keyframes slzDraw{ to{ stroke-dashoffset: 0; } }
+@keyframes slzIrisIn{ from{ opacity:0; transform: scale(.82);} to{ opacity:1; transform: scale(1);} }
+@keyframes slzIrisCalm{
+  0%{ filter: saturate(.7) brightness(.9); }
+  100%{ filter: saturate(1.15) brightness(1.05); }
+}
+@keyframes slzCrackIn{
+  0%{ opacity:0; stroke-dashoffset:140; }
+  60%{ opacity:.95; }
+  100%{ opacity:.85; stroke-dashoffset:0; }
+}
+@keyframes slzCrackOut{
+  to{ opacity: 0; stroke-dashoffset: 140; }
+}
+@keyframes slzBlink{
+  0%   { transform: scaleY(1); }
+  35%  { transform: scaleY(.06); }
+  70%  { transform: scaleY(1); }
+  100% { transform: scaleY(1); }
+}
+@keyframes slzDropFall{
+  0%   { opacity:0; transform: translate(0, -260px) scale(.55); }
+  10%  { opacity:1; }
+  55%  { opacity:1; transform: translate(0, 60px) scale(1); }
+  78%  { opacity:1; transform: translate(0, 200px) scale(1) ; }
+  92%  { opacity:.9; transform: translate(0, 260px) scale(.6, .4); }
+  100% { opacity:0; transform: translate(0, 280px) scale(.2, .2); }
+}
+@keyframes slzStreamIn{
+  0%   { opacity:0; transform: translate(0,-300px) scaleY(.4); }
+  60%  { opacity:.9; transform: translate(0,0) scaleY(1); }
+  100% { opacity:.75; transform: translate(0,0) scaleY(1); }
+}
+@keyframes slzStreamOut{
+  to { opacity: 0; transform: translate(0, 50px) scaleY(.9); }
+}
+@keyframes slzRipple{
+  0%   { opacity: .9; transform: scale(.15); stroke-width: 3; }
+  100% { opacity: 0;  transform: scale(2.2); stroke-width: .4; }
+}
+@keyframes slzGlint{
+  0%{ opacity:0; }
+  50%{ opacity:1; }
+  100%{ opacity:.8; }
+}
+@keyframes slzCapEy{ to{ opacity:1; } }
+@keyframes slzWordIn{
+  to{ opacity:1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes slzUnderline{
+  to{ width: min(280px, 38vw); }
+}
+@keyframes slzPulseDot{
+  0%,100%{ box-shadow: 0 0 0 3px rgba(0,166,184,.25); }
+  50%    { box-shadow: 0 0 0 8px rgba(0,166,184,.05); }
+}
+@keyframes slzIntroEnd{
+  0%   { opacity:1; transform: scale(1); filter: blur(0); }
+  100% { opacity:0; transform: scale(1.04); filter: blur(6px); visibility: hidden; }
+}
+
+/* dismissed state — instant out */
+.slz-intro.dismissed{
+  animation: slzIntroEnd .55s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .slz-intro{ animation: slzIntroEnd .4s ease 1.4s forwards; }
+  .slz-intro *{ animation-duration: .01s !important; animation-delay: 0s !important; }
+  .slz-intro .wordmark, .slz-intro .cap-eyebrow, .slz-intro .tagline{ opacity: 1 !important; transform: none !important; filter: none !important; }
+  .slz-intro .underline{ width: 220px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ──────────────────── INTRO MOTION GRAPHICS ──────────────────── -->
+<div class="slz-intro" id="slzIntro" role="dialog" aria-label="Slezin intro animation">
+  <div class="corner">Slezin · RomPharm 2026</div>
+  <button class="skip" type="button" id="slzIntroSkip" aria-label="Skip intro">Skip intro ›</button>
+
+  <div class="stage" aria-hidden="true">
+    <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="slzIris" cx="50%" cy="50%" r="50%">
+          <stop offset="0"  stop-color="#0E2A47"/>
+          <stop offset=".35" stop-color="#005761"/>
+          <stop offset=".75" stop-color="#00a6b8"/>
+          <stop offset="1"  stop-color="#6ed4dc"/>
+        </radialGradient>
+        <linearGradient id="slzDropGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#d6eef0" stop-opacity=".95"/>
+          <stop offset=".55" stop-color="#6ed4dc"/>
+          <stop offset="1"   stop-color="#00a6b8"/>
+        </linearGradient>
+        <linearGradient id="slzStreamGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#6ed4dc" stop-opacity="0"/>
+          <stop offset=".35" stop-color="#6ed4dc" stop-opacity=".55"/>
+          <stop offset=".8"  stop-color="#00a6b8" stop-opacity=".75"/>
+          <stop offset="1"   stop-color="#8dc63f" stop-opacity=".0"/>
+        </linearGradient>
+        <radialGradient id="slzGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="#6ed4dc" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#6ed4dc" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="slzEyeClip">
+          <path d="M 70 260 Q 260 80 450 260 Q 260 440 70 260 Z"/>
+        </clipPath>
+      </defs>
+
+      <!-- soft halo behind everything -->
+      <circle cx="260" cy="260" r="220" fill="url(#slzGlow)"/>
+
+      <!-- waterfall stream (act 2) -->
+      <path class="slz-stream"
+            d="M 238 -10 Q 252 120 246 230 Q 262 250 274 230 Q 268 120 282 -10 Z"/>
+
+      <!-- droplets (act 2) -->
+      <g>
+        <path class="slz-drop d1" d="M 260 -40 C 244 -10 232 16 232 36 a 28 28 0 1 0 56 0 c 0 -20 -12 -46 -28 -76 z" transform="translate(-60,0)"/>
+        <path class="slz-drop d2" d="M 260 -40 C 244 -10 232 16 232 36 a 28 28 0 1 0 56 0 c 0 -20 -12 -46 -28 -76 z" transform="translate(40,0) scale(.78)" style="transform-origin:260px 0"/>
+        <path class="slz-drop d3" d="M 260 -40 C 244 -10 232 16 232 36 a 28 28 0 1 0 56 0 c 0 -20 -12 -46 -28 -76 z" transform="translate(-20,0) scale(1.1)" style="transform-origin:260px 0"/>
+        <path class="slz-drop d4" d="M 260 -40 C 244 -10 232 16 232 36 a 28 28 0 1 0 56 0 c 0 -20 -12 -46 -28 -76 z" transform="translate(80,0) scale(.62)" style="transform-origin:260px 0"/>
+        <path class="slz-drop d5" d="M 260 -40 C 244 -10 232 16 232 36 a 28 28 0 1 0 56 0 c 0 -20 -12 -46 -28 -76 z" transform="translate(-100,0) scale(.72)" style="transform-origin:260px 0"/>
+        <path class="slz-drop d6" d="M 260 -40 C 244 -10 232 16 232 36 a 28 28 0 1 0 56 0 c 0 -20 -12 -46 -28 -76 z" transform="translate(10,0) scale(.9)" style="transform-origin:260px 0"/>
+        <path class="slz-drop d7" d="M 260 -40 C 244 -10 232 16 232 36 a 28 28 0 1 0 56 0 c 0 -20 -12 -46 -28 -76 z" transform="translate(-40,0) scale(.55)" style="transform-origin:260px 0"/>
+      </g>
+
+      <!-- the eye -->
+      <g class="slz-eye-blink">
+        <!-- eye outline (almond) -->
+        <path class="slz-eye-outline"
+              d="M 70 260 Q 260 80 450 260 Q 260 440 70 260 Z"/>
+
+        <!-- iris + pupil clipped to eye -->
+        <g clip-path="url(#slzEyeClip)">
+          <circle class="slz-iris-fill" cx="260" cy="260" r="92" fill="url(#slzIris)"/>
+          <circle class="slz-iris-ring"  cx="260" cy="260" r="92"/>
+          <circle class="slz-pupil"      cx="260" cy="260" r="32" fill="#06121e"/>
+          <!-- glint highlight on iris after relief -->
+          <ellipse class="slz-glint" cx="232" cy="230" rx="14" ry="9" fill="#fbfaf5" opacity=".85"/>
+          <circle  class="slz-glint" cx="284" cy="280" r="4"  fill="#fbfaf5" opacity=".75"/>
+
+          <!-- relief ripples -->
+          <circle class="slz-ripple r1" cx="260" cy="260" r="60"/>
+          <circle class="slz-ripple r2" cx="260" cy="260" r="60"/>
+          <circle class="slz-ripple r3" cx="260" cy="260" r="60"/>
+        </g>
+
+        <!-- cracked tear-film lines (dryness, act 1) -->
+        <g>
+          <path class="slz-crack c1" d="M 130 240 Q 170 232 200 250"/>
+          <path class="slz-crack c2" d="M 360 244 Q 392 234 430 252"/>
+          <path class="slz-crack c3" d="M 150 286 Q 188 296 214 282"/>
+          <path class="slz-crack c4" d="M 340 290 Q 376 300 410 286"/>
+          <path class="slz-crack c5" d="M 200 210 Q 218 196 240 206"/>
+          <path class="slz-crack c6" d="M 282 312 Q 308 322 332 310"/>
+        </g>
+
+        <!-- a few lashes -->
+        <g>
+          <line class="slz-lash" x1="160" y1="178" x2="155" y2="158"/>
+          <line class="slz-lash" x1="200" y1="158" x2="198" y2="138"/>
+          <line class="slz-lash" x1="260" y1="148" x2="260" y2="124"/>
+          <line class="slz-lash" x1="320" y1="158" x2="322" y2="138"/>
+          <line class="slz-lash" x1="360" y1="178" x2="365" y2="158"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="caption">
+    <div class="cap-eyebrow">Hypromellose 3 mg · Dextran 1 mg · 15 ml</div>
+    <div class="wordmark">Slez<em>in</em></div>
+    <span class="underline" aria-hidden="true"></span>
+    <div class="tagline">Relieve your dry eyes.</div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var html = document.documentElement;
+    var intro = document.getElementById('slzIntro');
+    var skip  = document.getElementById('slzIntroSkip');
+    if (!intro) return;
+
+    // session-based: only show once per tab visit
+    try {
+      if (sessionStorage.getItem('slzIntroSeen') === '1') {
+        intro.parentNode.removeChild(intro);
+        return;
+      }
+    } catch(e){}
+
+    html.classList.add('slz-intro-on');
+
+    function done(){
+      html.classList.remove('slz-intro-on');
+      try { sessionStorage.setItem('slzIntroSeen','1'); } catch(e){}
+      if (intro && intro.parentNode){ intro.parentNode.removeChild(intro); }
+    }
+    function dismiss(){
+      intro.classList.add('dismissed');
+      setTimeout(done, 600);
+    }
+
+    skip.addEventListener('click', dismiss);
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') dismiss();
+    }, { once: true });
+
+    // total runtime ~7.1s (6.0s + 1.1s fade)
+    setTimeout(done, 7200);
+  })();
+</script>
+
+<!-- ──────────────────── TOP BAR ──────────────────── -->
+<div class="topbar">
+  <div class="brand">Slezin <span style="opacity:.55">/ RomPharm Co.</span></div>
+  <nav>
+    <a href="#anatomy">Anatomy</a>
+    <a href="#mechanism">Mechanism</a>
+    <a href="#data">Evidence</a>
+    <a href="#dosage">Administration</a>
+  </nav>
+  <div>Edition 2026</div>
+</div>
+
+<!-- ──────────────────── HERO ──────────────────── -->
+<section class="hero">
+  <div class="corner-mark">
+    Product monograph<br/>
+    Slezin · Eye drops, solution<br/>
+    Edition 2026
+  </div>
+
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow reveal">Slezin · Hypromellose 3 mg + Dextran 1 mg · 15 ml</div>
+      <h1 class="display reveal" style="margin-top: 28px;">
+        Relieve <br/>
+        your <em>dry</em><br/>
+        eyes.
+      </h1>
+
+      <div class="meta-row reveal stagger">
+        <div class="item">
+          <div class="k">Client</div>
+          <div class="v">RomPharm Co.</div>
+        </div>
+        <div class="sep"></div>
+        <div class="item">
+          <div class="k">Indication</div>
+          <div class="v">Dry-eye syndrome</div>
+        </div>
+        <div class="sep"></div>
+        <div class="item">
+          <div class="k">Format</div>
+          <div class="v">15 ml carton + vial</div>
+        </div>
+        <div class="sep"></div>
+        <div class="item">
+          <div class="k">Year</div>
+          <div class="v">2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carton-stage reveal">
+      <!-- ─── Slezin carton 3D mockup + dropper bottle ─── -->
+      <svg class="carton" viewBox="0 0 520 720" xmlns="http://www.w3.org/2000/svg" aria-label="Slezin 15ml carton with dropper bottle, 3/4 perspective">
+        <defs>
+          <linearGradient id="frontFace" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#ffffff"/>
+            <stop offset=".55" stop-color="#fdfbf6"/>
+            <stop offset="1"   stop-color="#ece5d3"/>
+          </linearGradient>
+          <linearGradient id="sideFace" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#d8cfb8"/>
+            <stop offset="1" stop-color="#b6ab8e"/>
+          </linearGradient>
+          <linearGradient id="topFace" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f5efe0"/>
+            <stop offset="1" stop-color="#ded5bc"/>
+          </linearGradient>
+          <linearGradient id="waveTeal" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#0db7c8"/>
+            <stop offset="1" stop-color="#007a89"/>
+          </linearGradient>
+          <linearGradient id="waveGreen" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#a5d955"/>
+            <stop offset="1" stop-color="#6ba128"/>
+          </linearGradient>
+          <linearGradient id="waveLime" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#dff2bb"/>
+            <stop offset="1" stop-color="#b9d987"/>
+          </linearGradient>
+          <linearGradient id="waveTealSide" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#007a89"/>
+            <stop offset="1" stop-color="#005761"/>
+          </linearGradient>
+          <linearGradient id="waveGreenSide" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#6ba128"/>
+            <stop offset="1" stop-color="#4d7d18"/>
+          </linearGradient>
+          <radialGradient id="boxShadow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="rgba(14,42,71,.35)"/>
+            <stop offset="1" stop-color="rgba(14,42,71,0)"/>
+          </radialGradient>
+          <radialGradient id="dropperShadow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="rgba(14,42,71,.25)"/>
+            <stop offset="1" stop-color="rgba(14,42,71,0)"/>
+          </radialGradient>
+          <linearGradient id="bottle" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#ffffff"/>
+            <stop offset=".5"  stop-color="#f6f3ec"/>
+            <stop offset="1"   stop-color="#d3cdbb"/>
+          </linearGradient>
+          <linearGradient id="dropLiq" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#a8e3eb"/>
+            <stop offset="1" stop-color="#00a6b8"/>
+          </linearGradient>
+          <linearGradient id="cornerShine" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="rgba(255,255,255,.85)"/>
+            <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+          </linearGradient>
+        </defs>
+
+        <!-- soft ground shadow under carton -->
+        <ellipse cx="240" cy="640" rx="180" ry="14" fill="url(#boxShadow)"/>
+
+        <!-- ===================== CARTON (3/4 perspective) ===================== -->
+        <!--
+           Front face:  (60,90)  (260,90)  (260,620) (60,620)
+           Side face :  (260,90) (315,118) (315,592) (260,620)
+           Top face  :  (60,90)  (260,90)  (315,118) (115,118)
+        -->
+
+        <!-- TOP face (slim tuck) -->
+        <polygon points="60,90 260,90 315,118 115,118" fill="url(#topFace)" stroke="rgba(14,42,71,.22)" stroke-width=".5"/>
+        <!-- subtle tuck-end notch line -->
+        <path d="M170 90 q 22 14 40 0" fill="none" stroke="rgba(14,42,71,.22)" stroke-width=".6"/>
+        <path d="M188 118 q 18 10 38 0" fill="none" stroke="rgba(14,42,71,.18)" stroke-width=".5"/>
+
+        <!-- SIDE face -->
+        <polygon points="260,90 315,118 315,592 260,620" fill="url(#sideFace)" stroke="rgba(14,42,71,.22)" stroke-width=".5"/>
+
+        <!-- FRONT face -->
+        <polygon points="60,90 260,90 260,620 60,620" fill="url(#frontFace)" stroke="rgba(14,42,71,.22)" stroke-width=".5"/>
+
+        <!-- vertical micro shadow at front-side corner -->
+        <rect x="258" y="90" width="3" height="530" fill="rgba(14,42,71,.08)"/>
+
+        <!-- corner highlight on front-left -->
+        <rect x="60" y="90" width="6" height="530" fill="url(#cornerShine)" opacity=".5"/>
+
+        <!-- ============= FRONT FACE CONTENT ============= -->
+
+        <!-- composition micro text (top left) -->
+        <g transform="translate(72, 116)" font-family="Inter Tight, sans-serif" font-size="5" fill="#0E2A47" opacity=".7">
+          <text y="0" font-weight="700">Composition per 1 ml:</text>
+          <text y="7.5" font-weight="600">active substances:</text>
+          <text y="14">hypromellose 3 mg</text>
+          <text y="20">dextran-70 1 mg</text>
+          <text y="29" font-weight="600">excipients:</text>
+          <text y="35">glycerol, boric acid,</text>
+          <text y="41">sodium tetraborate</text>
+          <text y="47">decahydrate, potassium</text>
+          <text y="53">chloride, sodium chloride,</text>
+          <text y="59">disodium edetate dihydrate,</text>
+          <text y="65">benzalkonium chloride,</text>
+          <text y="71">1 M sodium hydroxide</text>
+          <text y="77">solution or 1 M hydrochloric</text>
+          <text y="83">acid solution, purified water.</text>
+
+          <text y="100" font-weight="700">Manufacturer:</text>
+          <text y="107">S.C. RomPharm Company S.R.L.</text>
+          <text y="113">14 Eroilor street, Otopeni,</text>
+          <text y="119">Romania</text>
+
+          <text y="134" font-weight="700">Sole Distributor:</text>
+          <text y="141">Pure Pharma Company Ltd.</text>
+          <text y="147">IRAQ</text>
+          <text y="153">www.pure-pharma.com</text>
+        </g>
+
+        <!-- 15 ml dose chip -->
+        <g transform="translate(210, 122)">
+          <rect x="0" y="-12" width="44" height="20" fill="#00a6b8"/>
+          <text x="22" y="2" font-family="Inter Tight, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">15 ml</text>
+        </g>
+
+        <!-- SLEZIN vertical wordmark -->
+        <g transform="translate(178, 430) rotate(-90)">
+          <text font-family="Inter Tight, sans-serif" font-size="72" font-weight="800" letter-spacing="-3" fill="#00a6b8" text-anchor="middle">SLEZIN</text>
+        </g>
+
+        <!-- right column descriptors (vertical, on the front) -->
+        <g transform="translate(232, 430) rotate(-90)" font-family="Inter Tight, sans-serif" fill="#0E2A47" text-anchor="middle">
+          <text font-size="11" font-weight="700">eye drops</text>
+          <text y="14" font-size="9" font-weight="500">hypromellose + dextran</text>
+          <text y="28" font-size="8" font-weight="500" fill="#3d5874">For relief of burning and irritation</text>
+          <text y="39" font-size="8" font-weight="500" fill="#3d5874">due to dryness of the eye</text>
+        </g>
+
+        <!-- ============= WAVE FOOT (continues onto side face) ============= -->
+        <!-- on front face -->
+        <g>
+          <path d="M60,548 C120,520 180,572 260,538 L260,620 L60,620 Z" fill="url(#waveGreen)" opacity=".95"/>
+          <path d="M60,562 C120,540 190,580 260,556 L260,620 L60,620 Z" fill="url(#waveTeal)"/>
+          <path d="M60,580 C130,564 190,592 260,572 L260,620 L60,620 Z" fill="url(#waveLime)" opacity=".85"/>
+        </g>
+        <!-- on side face (continuation, darker) -->
+        <g>
+          <path d="M260,538 L315,540 L315,592 L260,620 Z" fill="url(#waveGreenSide)" opacity=".95"/>
+          <path d="M260,556 L315,558 L315,592 L260,620 Z" fill="url(#waveTealSide)"/>
+          <path d="M260,572 L315,576 L315,592 L260,620 Z" fill="url(#waveGreenSide)" opacity=".55"/>
+        </g>
+
+        <!-- ============= BOTTOM TEXT (dose, brand, Pure Pharma) ============= -->
+        <text x="248" y="608" font-family="Inter Tight, sans-serif" font-size="11" font-weight="800" fill="#ffffff" text-anchor="end">3 mg/ml + 1 mg/ml</text>
+
+        <!-- RomPharm wordmark -->
+        <g transform="translate(160, 608)" font-family="Inter Tight, sans-serif" font-weight="900" font-size="11" letter-spacing="1.4" fill="#d8694c" text-anchor="middle">
+          <text>RomPharm Co.</text>
+        </g>
+
+        <!-- Pure Pharma badge bottom-left -->
+        <g transform="translate(82, 600)">
+          <rect x="-2" y="-16" width="26" height="26" fill="none" stroke="#00a6b8" stroke-width="1.4" rx="3"/>
+          <text x="11" y="-6" font-family="Inter Tight, sans-serif" font-size="8" fill="#00a6b8" text-anchor="middle" font-weight="900">+</text>
+          <text x="11" y="2" font-family="Inter Tight, sans-serif" font-size="3.8" font-weight="800" fill="#00a6b8" text-anchor="middle">PURE</text>
+          <text x="11" y="7" font-family="Inter Tight, sans-serif" font-size="3.6" font-weight="800" fill="#00a6b8" text-anchor="middle">PHARMA</text>
+        </g>
+
+        <!-- ============= SIDE FACE CONTENT (skewed text) ============= -->
+        <!-- Using a matrix transform to fit the perspective skew of the side -->
+        <g transform="matrix(0.97, 0.05, 0, 1, 268, 110)" font-family="Inter Tight, sans-serif" fill="#0E2A47" opacity=".75">
+          <g transform="rotate(-90) translate(-420, 24)">
+            <text font-size="9" font-weight="700">SLEZIN · 15 ml</text>
+            <text y="10" font-size="6" font-weight="500" fill="#3d5874">hypromellose + dextran · eye drops</text>
+            <text y="18" font-size="6" font-weight="500" fill="#3d5874">For relief of burning and irritation due to dryness</text>
+            <text y="270" font-size="6" font-weight="500" fill="#3d5874">Batch: ━━━━━━━━━━━━━</text>
+            <text y="278" font-size="6" font-weight="500" fill="#3d5874">EXP : ━━━━━━━━━━━━━</text>
+          </g>
+        </g>
+
+        <!-- ===================== DROPPER BOTTLE (foreground right) ===================== -->
+        <!-- ground shadow under dropper -->
+        <ellipse cx="425" cy="660" rx="68" ry="8" fill="url(#dropperShadow)"/>
+
+        <g>
+          <!-- bottle body -->
+          <path d="M385 380
+                   q 0 -10 8 -10
+                   l 64 0
+                   q 8 0 8 10
+                   l 0 270
+                   q 0 14 -14 14
+                   l -52 0
+                   q -14 0 -14 -14 z"
+                fill="url(#bottle)" stroke="rgba(14,42,71,.22)" stroke-width=".8"/>
+
+          <!-- bottle highlight strip -->
+          <path d="M393 388 l 0 256" stroke="rgba(255,255,255,.9)" stroke-width="3" fill="none" opacity=".7"/>
+
+          <!-- bottle subtle vertical gradient line -->
+          <path d="M455 388 l 0 256" stroke="rgba(14,42,71,.08)" stroke-width="1" fill="none"/>
+
+          <!-- bottle label band (clear strip with SLEZIN micro) -->
+          <rect x="389" y="468" width="76" height="86" fill="rgba(0,166,184,.06)" stroke="rgba(0,166,184,.25)" stroke-width=".5"/>
+          <text x="427" y="490" font-family="Inter Tight, sans-serif" font-size="10" font-weight="800" fill="#00a6b8" text-anchor="middle" letter-spacing=".5">SLEZIN</text>
+          <text x="427" y="503" font-family="Inter Tight, sans-serif" font-size="5" font-weight="500" fill="#0E2A47" text-anchor="middle" opacity=".75">eye drops · 15 ml</text>
+          <text x="427" y="514" font-family="Inter Tight, sans-serif" font-size="4.6" font-weight="500" fill="#0E2A47" text-anchor="middle" opacity=".6">hypromellose 3 mg/ml</text>
+          <text x="427" y="521" font-family="Inter Tight, sans-serif" font-size="4.6" font-weight="500" fill="#0E2A47" text-anchor="middle" opacity=".6">dextran-70 1 mg/ml</text>
+          <!-- mini wave on the label -->
+          <path d="M390 535 q 18 -6 38 0 t 36 0 L 464 548 L 390 548 Z" fill="#8dc63f" opacity=".7"/>
+          <path d="M390 540 q 18 -6 38 0 t 36 0 L 464 548 L 390 548 Z" fill="#00a6b8"/>
+
+          <!-- bottle neck (stepped LDPE dropper) -->
+          <path d="M409 380
+                   l 0 -10
+                   l 32 0
+                   l 0 10 z" fill="url(#bottle)" stroke="rgba(14,42,71,.22)" stroke-width=".8"/>
+          <path d="M413 370
+                   l 0 -8
+                   l 24 0
+                   l 0 8 z" fill="#f6f3ec" stroke="rgba(14,42,71,.22)" stroke-width=".8"/>
+
+          <!-- dropper cap (ribbed) -->
+          <path d="M407 362
+                   l 0 -22
+                   q 0 -4 4 -4
+                   l 28 0
+                   q 4 0 4 4
+                   l 0 22 z" fill="#ffffff" stroke="rgba(14,42,71,.22)" stroke-width=".9"/>
+          <g stroke="rgba(14,42,71,.15)" stroke-width=".5">
+            <line x1="412" y1="340" x2="412" y2="362"/>
+            <line x1="417" y1="338" x2="417" y2="362"/>
+            <line x1="422" y1="336" x2="422" y2="362"/>
+            <line x1="427" y1="336" x2="427" y2="362"/>
+            <line x1="432" y1="338" x2="432" y2="362"/>
+            <line x1="437" y1="340" x2="437" y2="362"/>
+          </g>
+
+          <!-- tapered dropper tip -->
+          <path d="M418 336
+                   l 0 -12
+                   q 0 -4 6 -4
+                   l 0 0
+                   q 6 0 6 4
+                   l 0 12 z" fill="#ffffff" stroke="rgba(14,42,71,.22)" stroke-width=".8"/>
+          <!-- tip nipple -->
+          <path d="M421 320 l 0 -6 l 6 0 l 0 6" fill="#f0ece2" stroke="rgba(14,42,71,.22)" stroke-width=".7"/>
+
+          <!-- suspended drop -->
+          <path d="M421 314 q -3 8 3 18 q 6 -10 3 -18 z" fill="url(#dropLiq)" stroke="rgba(0,122,137,.4)" stroke-width=".5"/>
+          <ellipse cx="423" cy="320" rx="1.2" ry="2" fill="rgba(255,255,255,.85)"/>
+        </g>
+
+        <!-- scale label -->
+        <g font-family="JetBrains Mono, monospace" font-size="9" fill="#0E2A47" opacity=".5">
+          <text x="60" y="700">Fig. 01a · Primary carton, 38 × 38 × 162 mm</text>
+          <text x="500" y="700" text-anchor="end">3/4 view</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────── ABSTRACT ──────────────────── -->
+<section class="abstract">
+  <div class="abstract-inner">
+    <div class="abstract-label">Abstract</div>
+    <p class="abstract-body">
+      Slezin (hypromellose 3 mg + dextran-70 1 mg per millilitre) is a
+      keratoprotective ophthalmic solution indicated for the symptomatic
+      relief of dry-eye syndrome. The viscoelastic polymer system stabilises
+      the precorneal tear film, prolongs tear film breakup time, and protects
+      the corneal epithelium from desiccation. The following document presents
+      the primary packaging, ocular surface anatomy, mechanism of action,
+      clinical evidence over a twelve-week interval, and administration
+      protocol.
+    </p>
+    <div class="abstract-keys">
+      <div><span class="k">Active substances</span><span class="v">Hypromellose 3 mg/ml · Dextran-70 1 mg/ml</span></div>
+      <div><span class="k">Therapeutic class</span><span class="v">Keratoprotective · artificial tears</span></div>
+      <div><span class="k">Indication</span><span class="v">Dry-eye syndrome (keratoconjunctivitis sicca)</span></div>
+      <div><span class="k">Presentation</span><span class="v">15 ml multidose vial, carton + leaflet</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────── EYE ANATOMY (dark) ──────────────────── -->
+<section class="section dark anatomy" id="anatomy">
+
+  <div class="anatomy-head">
+    <div>
+      <div class="eyebrow reveal">Fig. 02 &middot; Ocular surface anatomy</div>
+      <h2 class="h-big reveal" style="margin-top: 24px; max-width: 20ch;">
+        The precorneal tear film.
+      </h2>
+    </div>
+    <div class="body-col reveal" style="opacity:.82;">
+      <p>The tear film is the eye's first refractive surface and its first
+        line of defence against the environment. It is approximately
+        12&nbsp;μm thick and is organised into three distinct layers,
+        reconstituted with each blink.</p>
+      <p>In keratoconjunctivitis sicca, breakup of the film occurs in
+        under five seconds, exposing the corneal epithelium and producing
+        the characteristic burning sensation. Slezin is a viscoelastic
+        polymer system that adheres to the cornea, increases aqueous-layer
+        viscosity, and prolongs tear film breakup time.</p>
+    </div>
+  </div>
+
+  <!-- ─── Eye sagittal anatomy diagram ─── -->
+  <div class="anatomy-stage reveal">
+    <svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anatomy of the human eye showing tear film, cornea and adnexa">
+      <defs>
+        <radialGradient id="vitreous" cx=".5" cy=".5" r=".6">
+          <stop offset="0" stop-color="#163558"/>
+          <stop offset="1" stop-color="#0e2a47"/>
+        </radialGradient>
+        <radialGradient id="iris" cx=".5" cy=".5" r=".55">
+          <stop offset="0" stop-color="#0e2a47"/>
+          <stop offset=".55" stop-color="#1a4e72"/>
+          <stop offset="1" stop-color="#00a6b8"/>
+        </radialGradient>
+        <linearGradient id="cornea" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#6ed4dc" stop-opacity=".7"/>
+          <stop offset="1" stop-color="#00a6b8" stop-opacity=".1"/>
+        </linearGradient>
+        <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f5f1ea" stop-opacity=".18"/>
+          <stop offset="1" stop-color="#f5f1ea" stop-opacity=".06"/>
+        </linearGradient>
+        <linearGradient id="tearStream" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#6ed4dc" stop-opacity="0"/>
+          <stop offset="1" stop-color="#6ed4dc" stop-opacity=".75"/>
+        </linearGradient>
+      </defs>
+
+      <!-- background concentric whisper lines -->
+      <g stroke="rgba(245,241,234,.06)" fill="none">
+        <circle cx="500" cy="380" r="280"/>
+        <circle cx="500" cy="380" r="220"/>
+        <circle cx="500" cy="380" r="160"/>
+      </g>
+
+      <!-- sclera (the eyeball) -->
+      <ellipse cx="500" cy="380" r-x="260" rx="260" ry="240"
+               fill="none" stroke="#f5f1ea" stroke-width="1.6" opacity=".85"/>
+      <ellipse cx="500" cy="380" rx="260" ry="240" fill="rgba(245,241,234,.04)"/>
+
+      <!-- vitreous -->
+      <ellipse cx="500" cy="380" rx="220" ry="200" fill="url(#vitreous)" opacity=".55"/>
+
+      <!-- retina ring -->
+      <path d="M 280 380 a 220 200 0 1 0 440 0" fill="none" stroke="#8dc63f" stroke-width="1" stroke-dasharray="2 3" opacity=".7"/>
+
+      <!-- optic nerve -->
+      <path d="M280 380 q -110 0 -160 60 M280 380 q -110 0 -160 -60" stroke="#f5f1ea" stroke-width="1.6" fill="none" opacity=".85"/>
+      <path d="M120 320 q -40 60 0 120" stroke="#f5f1ea" stroke-width="1.6" fill="none" opacity=".85"/>
+
+      <!-- anterior chamber bulge (cornea protrusion to the right) -->
+      <path d="M760 380 q -10 -100 -50 -150 M760 380 q -10 100 -50 150" stroke="#f5f1ea" stroke-width="1.6" fill="none" opacity=".9"/>
+      <path d="M710 230 q 40 50 50 150 q -10 100 -50 150" fill="rgba(110,212,220,.06)" stroke="none"/>
+
+      <!-- cornea (front transparent dome) -->
+      <path d="M710 230 q 40 50 50 150 q -10 100 -50 150"
+            fill="none" stroke="#6ed4dc" stroke-width="2.4" opacity=".95"/>
+      <path d="M715 240 q 36 47 46 140 q -10 93 -46 140"
+            fill="none" stroke="#6ed4dc" stroke-width="1" opacity=".6"/>
+
+      <!-- iris -->
+      <ellipse cx="700" cy="380" rx="14" ry="80" fill="url(#iris)"/>
+      <!-- pupil -->
+      <ellipse cx="704" cy="380" rx="5" ry="34" fill="#020a14"/>
+
+      <!-- lens -->
+      <path d="M688 320 q -36 60 0 120 q 26 -60 0 -120 Z" fill="rgba(245,241,234,.1)" stroke="#f5f1ea" stroke-width="1.3" opacity=".85"/>
+
+      <!-- ciliary body -->
+      <g stroke="#f5f1ea" stroke-width=".8" opacity=".6">
+        <line x1="688" y1="320" x2="700" y2="305"/>
+        <line x1="688" y1="440" x2="700" y2="455"/>
+      </g>
+
+      <!-- conjunctiva (thin line over sclera near cornea) -->
+      <path d="M715 250 q -40 -10 -90 -10 M715 510 q -40 10 -90 10" stroke="#8dc63f" stroke-width="1.2" fill="none" opacity=".85"/>
+
+      <!-- upper eyelid -->
+      <path d="M540 200 q 120 -40 240 60 q 30 30 30 90 q -20 -20 -90 -20 q -90 0 -180 -50 q -30 -20 0 -80 Z"
+            fill="url(#lid)" stroke="#f5f1ea" stroke-width="1.4" opacity=".95"/>
+
+      <!-- eyelashes -->
+      <g stroke="#f5f1ea" stroke-width="1.1" opacity=".85" fill="none" stroke-linecap="round">
+        <line x1="770" y1="290" x2="788" y2="310"/>
+        <line x1="780" y1="282" x2="795" y2="304"/>
+        <line x1="790" y1="278" x2="802" y2="300"/>
+        <line x1="755" y1="298" x2="772" y2="320"/>
+      </g>
+
+      <!-- lacrimal gland (small gland above) -->
+      <g>
+        <ellipse cx="820" cy="200" rx="42" ry="22" fill="rgba(141,198,63,.18)" stroke="#8dc63f" stroke-width="1.2"/>
+        <g stroke="#8dc63f" stroke-width=".7" opacity=".6">
+          <path d="M790 215 q 10 30 -10 50" fill="none"/>
+          <path d="M810 218 q 5 35 -20 55" fill="none"/>
+          <path d="M830 218 q -5 35 -32 55" fill="none"/>
+        </g>
+      </g>
+
+      <!-- a single tear drop falling from lash -->
+      <path d="M790 320 q -2 14 2 30 q 4 -16 -2 -30" fill="url(#tearStream)" opacity=".75"/>
+      <circle cx="792" cy="358" r="6" fill="#6ed4dc" opacity=".9"/>
+
+      <!-- LABELS -->
+      <g font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="1.5" fill="#f5f1ea" opacity=".8">
+        <!-- cornea -->
+        <line x1="760" y1="360" x2="900" y2="320" stroke="#6ed4dc" stroke-width=".8"/>
+        <circle cx="900" cy="320" r="3" fill="#6ed4dc"/>
+        <text x="912" y="318" fill="#6ed4dc" font-weight="600">CORNEA</text>
+        <text x="912" y="332" opacity=".65">First optical surface · transparent</text>
+
+        <!-- conjunctiva -->
+        <line x1="660" y1="245" x2="540" y2="180" stroke="#8dc63f" stroke-width=".8"/>
+        <circle cx="540" cy="180" r="3" fill="#8dc63f"/>
+        <text x="528" y="172" text-anchor="end" fill="#8dc63f" font-weight="600">CONJUNCTIVA</text>
+        <text x="528" y="186" text-anchor="end" opacity=".65">Mucous membrane</text>
+
+        <!-- lacrimal gland -->
+        <line x1="820" y1="178" x2="920" y2="140" stroke="#8dc63f" stroke-width=".8"/>
+        <circle cx="920" cy="140" r="3" fill="#8dc63f"/>
+        <text x="932" y="138" fill="#8dc63f" font-weight="600">LACRIMAL GLAND</text>
+        <text x="932" y="152" opacity=".65">Aqueous tear secretion</text>
+
+        <!-- lens -->
+        <line x1="688" y1="370" x2="490" y2="260" stroke="#f5f1ea" stroke-width=".6" opacity=".7"/>
+        <circle cx="490" cy="260" r="3" fill="#f5f1ea"/>
+        <text x="478" y="252" text-anchor="end" font-weight="600">LENS</text>
+        <text x="478" y="266" opacity=".65">Refractive · accommodation</text>
+
+        <!-- iris -->
+        <line x1="700" y1="450" x2="500" y2="560" stroke="#00a6b8" stroke-width=".8"/>
+        <circle cx="500" cy="560" r="3" fill="#00a6b8"/>
+        <text x="488" y="568" text-anchor="end" fill="#00a6b8" font-weight="600">IRIS · PUPIL</text>
+        <text x="488" y="582" text-anchor="end" opacity=".65">Aperture control</text>
+
+        <!-- optic nerve -->
+        <line x1="120" y1="380" x2="80" y2="500" stroke="#f5f1ea" stroke-width=".6" opacity=".7"/>
+        <circle cx="80" cy="500" r="3" fill="#f5f1ea"/>
+        <text x="92" y="510" font-weight="600">OPTIC NERVE</text>
+
+        <!-- retina -->
+        <line x1="290" y1="290" x2="170" y2="220" stroke="#8dc63f" stroke-width=".6" opacity=".8"/>
+        <circle cx="170" cy="220" r="3" fill="#8dc63f"/>
+        <text x="158" y="212" text-anchor="end" fill="#8dc63f" font-weight="600">RETINA</text>
+
+        <!-- sclera -->
+        <line x1="500" y1="140" x2="350" y2="90" stroke="#f5f1ea" stroke-width=".6" opacity=".7"/>
+        <circle cx="350" cy="90" r="3" fill="#f5f1ea"/>
+        <text x="338" y="82" text-anchor="end" font-weight="600">SCLERA</text>
+
+        <!-- tear film callout (this is the centrepiece) -->
+        <g>
+          <rect x="900" y="430" width="270" height="180" fill="none" stroke="#6ed4dc" stroke-width=".8" opacity=".4"/>
+          <line x1="780" y1="430" x2="900" y2="450" stroke="#6ed4dc" stroke-width=".8"/>
+          <circle cx="780" cy="430" r="3" fill="#6ed4dc"/>
+
+          <text x="915" y="455" fill="#6ed4dc" font-weight="600">TEAR FILM &nbsp;·&nbsp; 12 μm</text>
+          <text x="915" y="470" opacity=".7">Three layers, rebuilt every blink</text>
+
+          <!-- mini layered cross-section inside -->
+          <g transform="translate(915, 488)">
+            <!-- lipid layer -->
+            <rect x="0" y="0" width="240" height="18" fill="rgba(216,105,76,.55)"/>
+            <g stroke="#f5f1ea" stroke-width=".6" opacity=".65">
+              <line x1="14" y1="2" x2="14" y2="16"/>
+              <circle cx="14" cy="2" r="2" fill="#d8694c"/>
+              <line x1="30" y1="2" x2="30" y2="16"/>
+              <circle cx="30" cy="2" r="2" fill="#d8694c"/>
+              <line x1="46" y1="2" x2="46" y2="16"/>
+              <circle cx="46" cy="2" r="2" fill="#d8694c"/>
+              <line x1="62" y1="2" x2="62" y2="16"/>
+              <circle cx="62" cy="2" r="2" fill="#d8694c"/>
+              <line x1="78" y1="2" x2="78" y2="16"/>
+              <circle cx="78" cy="2" r="2" fill="#d8694c"/>
+              <line x1="94" y1="2" x2="94" y2="16"/>
+              <circle cx="94" cy="2" r="2" fill="#d8694c"/>
+              <line x1="110" y1="2" x2="110" y2="16"/>
+              <circle cx="110" cy="2" r="2" fill="#d8694c"/>
+              <line x1="126" y1="2" x2="126" y2="16"/>
+              <circle cx="126" cy="2" r="2" fill="#d8694c"/>
+              <line x1="142" y1="2" x2="142" y2="16"/>
+              <circle cx="142" cy="2" r="2" fill="#d8694c"/>
+              <line x1="158" y1="2" x2="158" y2="16"/>
+              <circle cx="158" cy="2" r="2" fill="#d8694c"/>
+              <line x1="174" y1="2" x2="174" y2="16"/>
+              <circle cx="174" cy="2" r="2" fill="#d8694c"/>
+              <line x1="190" y1="2" x2="190" y2="16"/>
+              <circle cx="190" cy="2" r="2" fill="#d8694c"/>
+              <line x1="206" y1="2" x2="206" y2="16"/>
+              <circle cx="206" cy="2" r="2" fill="#d8694c"/>
+              <line x1="222" y1="2" x2="222" y2="16"/>
+              <circle cx="222" cy="2" r="2" fill="#d8694c"/>
+            </g>
+            <text x="244" y="13" font-size="8.5" fill="#d8694c">LIPID · 0.1 μm</text>
+
+            <!-- aqueous layer (with Slezin polymers) -->
+            <rect x="0" y="20" width="240" height="46" fill="rgba(110,212,220,.35)"/>
+            <g stroke="#6ed4dc" stroke-width=".7" fill="none" opacity=".85">
+              <path d="M5 30 q 15 12 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/>
+              <path d="M5 42 q 15 -10 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/>
+              <path d="M5 56 q 15 12 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0"/>
+            </g>
+            <text x="244" y="46" font-size="8.5" fill="#6ed4dc">AQUEOUS · 7 μm  (HPMC + Dextran)</text>
+
+            <!-- mucin layer -->
+            <rect x="0" y="68" width="240" height="14" fill="rgba(141,198,63,.45)"/>
+            <g stroke="#8dc63f" stroke-width=".7" opacity=".9">
+              <line x1="8" y1="68" x2="8" y2="82"/>
+              <line x1="22" y1="68" x2="22" y2="82"/>
+              <line x1="36" y1="68" x2="36" y2="82"/>
+              <line x1="50" y1="68" x2="50" y2="82"/>
+              <line x1="64" y1="68" x2="64" y2="82"/>
+              <line x1="78" y1="68" x2="78" y2="82"/>
+              <line x1="92" y1="68" x2="92" y2="82"/>
+              <line x1="106" y1="68" x2="106" y2="82"/>
+              <line x1="120" y1="68" x2="120" y2="82"/>
+              <line x1="134" y1="68" x2="134" y2="82"/>
+              <line x1="148" y1="68" x2="148" y2="82"/>
+              <line x1="162" y1="68" x2="162" y2="82"/>
+              <line x1="176" y1="68" x2="176" y2="82"/>
+              <line x1="190" y1="68" x2="190" y2="82"/>
+              <line x1="204" y1="68" x2="204" y2="82"/>
+              <line x1="218" y1="68" x2="218" y2="82"/>
+              <line x1="232" y1="68" x2="232" y2="82"/>
+            </g>
+            <text x="244" y="78" font-size="8.5" fill="#8dc63f">MUCIN · 0.5 μm</text>
+
+            <!-- cornea base -->
+            <rect x="0" y="84" width="240" height="14" fill="rgba(245,241,234,.18)"/>
+            <text x="244" y="94" font-size="8.5" opacity=".7">CORNEAL EPITHELIUM</text>
+          </g>
+        </g>
+
+      </g>
+
+      <!-- scale bar -->
+      <g font-family="JetBrains Mono, monospace" font-size="9" fill="#f5f1ea" opacity=".55">
+        <line x1="60" y1="700" x2="160" y2="700" stroke="#f5f1ea" stroke-width="1"/>
+        <line x1="60" y1="695" x2="60" y2="705" stroke="#f5f1ea" stroke-width="1"/>
+        <line x1="160" y1="695" x2="160" y2="705" stroke="#f5f1ea" stroke-width="1"/>
+        <text x="110" y="720" text-anchor="middle">~ 6 mm</text>
+      </g>
+    </svg>
+
+    <div class="fig-cap">
+      <b>Fig. 02</b>
+      <span>Sagittal section through the human eye and ocular adnexa. Inset (right) details the three layers of the precorneal tear film.</span>
+    </div>
+  </div>
+
+  <!-- three pillar cards -->
+  <div class="cards-3 reveal stagger">
+    <div class="card">
+      <div class="num">A · LIPID LAYER · ~0.1 μm</div>
+      <div class="ttl">Reduces evaporation.</div>
+      <p class="copy">Meibomian-gland secretion forms a superficial oily monolayer that seals the aqueous phase against the air interface.</p>
+    </div>
+    <div class="card">
+      <div class="num">B · AQUEOUS LAYER · ~7 μm</div>
+      <div class="ttl">Maintains hydration.</div>
+      <p class="copy">The principal volume of the film. In aqueous-deficient dry eye it falls below the threshold required to maintain corneal wetting between blinks.</p>
+    </div>
+    <div class="card">
+      <div class="num">C · MUCIN LAYER · ~0.5 μm</div>
+      <div class="ttl">Anchors to the cornea.</div>
+      <p class="copy">A glycoprotein gel produced by conjunctival goblet cells renders the hydrophobic corneal epithelium wettable by the aqueous phase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────── MECHANISM (molecules) ──────────────────── -->
+<section class="section" id="mechanism">
+
+  <div class="anatomy-head">
+    <div>
+      <div class="eyebrow reveal">Fig. 03 &middot; Active components</div>
+      <h2 class="h-big reveal" style="margin-top: 24px; max-width: 20ch;">
+        Mechanism of action.
+      </h2>
+    </div>
+    <p class="lede reveal" style="opacity:.78;">
+      Hypromellose is a semi-synthetic cellulose ether; dextran-70 is a
+      branched α-1,6 glucan of approximately 70 kDa. Together they
+      increase tear-phase viscosity, reduce surface tension, and adhere
+      to the corneal surface — prolonging tear film breakup time without
+      sustained visual disturbance.
+    </p>
+  </div>
+
+  <div class="mech-grid">
+
+    <!-- HPMC -->
+    <div class="mech reveal">
+      <div class="lbl"><span class="ix">A · ACTIVE SUBSTANCE</span><span class="nm">Hypromellose 3 mg/ml</span></div>
+      <div class="formula">HPMC · hydroxypropyl methylcellulose · (C₃₂H₆₀O₁₉)ₙ</div>
+
+      <div class="diagram">
+        <!-- HPMC: a long winding chain backbone with substituents -->
+        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <radialGradient id="atomC" cx=".4" cy=".35" r=".7">
+              <stop offset="0" stop-color="#0e2a47"/>
+              <stop offset="1" stop-color="#3d5874"/>
+            </radialGradient>
+            <radialGradient id="atomO" cx=".4" cy=".35" r=".7">
+              <stop offset="0" stop-color="#d8694c"/>
+              <stop offset="1" stop-color="#a04030"/>
+            </radialGradient>
+            <radialGradient id="atomG" cx=".4" cy=".35" r=".7">
+              <stop offset="0" stop-color="#8dc63f"/>
+              <stop offset="1" stop-color="#5a8628"/>
+            </radialGradient>
+          </defs>
+
+          <!-- backbone winding -->
+          <path d="M30 200 q 60 -80 120 0 t 120 0 t 120 0 t 120 0 t 60 -50"
+                stroke="#0e2a47" stroke-width="2" fill="none"/>
+
+          <!-- backbone carbons (atoms on the chain) -->
+          <g>
+            <circle cx="30"  cy="200" r="10" fill="url(#atomC)"/>
+            <circle cx="90"  cy="160" r="10" fill="url(#atomC)"/>
+            <circle cx="150" cy="200" r="10" fill="url(#atomC)"/>
+            <circle cx="210" cy="240" r="10" fill="url(#atomC)"/>
+            <circle cx="270" cy="200" r="10" fill="url(#atomC)"/>
+            <circle cx="330" cy="160" r="10" fill="url(#atomC)"/>
+            <circle cx="390" cy="200" r="10" fill="url(#atomC)"/>
+            <circle cx="450" cy="240" r="10" fill="url(#atomC)"/>
+            <circle cx="510" cy="200" r="10" fill="url(#atomC)"/>
+            <circle cx="570" cy="170" r="10" fill="url(#atomC)"/>
+          </g>
+
+          <!-- substituents (hydroxypropyl + methyl) -->
+          <g stroke="#0e2a47" stroke-width="1.5" fill="none">
+            <line x1="90" y1="160" x2="80" y2="110"/>
+            <line x1="210" y1="240" x2="220" y2="300"/>
+            <line x1="330" y1="160" x2="320" y2="110"/>
+            <line x1="450" y1="240" x2="460" y2="300"/>
+            <line x1="510" y1="200" x2="500" y2="140"/>
+          </g>
+          <g>
+            <circle cx="80"  cy="110" r="7" fill="url(#atomO)"/>
+            <circle cx="220" cy="300" r="7" fill="url(#atomO)"/>
+            <circle cx="320" cy="110" r="7" fill="url(#atomO)"/>
+            <circle cx="460" cy="300" r="7" fill="url(#atomO)"/>
+            <circle cx="500" cy="140" r="7" fill="url(#atomO)"/>
+          </g>
+          <g>
+            <line x1="80"  y1="110" x2="60"  y2="80" stroke="#0e2a47" stroke-width="1.5"/>
+            <line x1="220" y1="300" x2="240" y2="330" stroke="#0e2a47" stroke-width="1.5"/>
+            <line x1="320" y1="110" x2="300" y2="80" stroke="#0e2a47" stroke-width="1.5"/>
+            <line x1="460" y1="300" x2="480" y2="330" stroke="#0e2a47" stroke-width="1.5"/>
+            <line x1="500" y1="140" x2="478" y2="118" stroke="#0e2a47" stroke-width="1.5"/>
+            <circle cx="60"  cy="80"  r="6" fill="#f5f1ea" stroke="#0e2a47" stroke-width="1.2"/>
+            <circle cx="240" cy="330" r="6" fill="#f5f1ea" stroke="#0e2a47" stroke-width="1.2"/>
+            <circle cx="300" cy="80"  r="6" fill="#f5f1ea" stroke="#0e2a47" stroke-width="1.2"/>
+            <circle cx="480" cy="330" r="6" fill="#f5f1ea" stroke="#0e2a47" stroke-width="1.2"/>
+            <circle cx="478" cy="118" r="6" fill="#f5f1ea" stroke="#0e2a47" stroke-width="1.2"/>
+          </g>
+
+          <!-- bracket / repeating unit notation -->
+          <g stroke="#0e2a47" stroke-width="1.4" fill="none">
+            <path d="M14 178 v 44 M14 178 h 10 M14 222 h 10"/>
+            <path d="M586 148 v 44 M586 148 h -10 M586 192 h -10"/>
+          </g>
+          <text x="596" y="174" font-family="JetBrains Mono, monospace" font-size="13" fill="#0e2a47">n</text>
+
+          <!-- legend -->
+          <g font-family="JetBrains Mono, monospace" font-size="9" fill="#0e2a47" opacity=".75">
+            <circle cx="30"  cy="350" r="6" fill="url(#atomC)"/><text x="44" y="354">CARBON BACKBONE</text>
+            <circle cx="200" cy="350" r="5" fill="url(#atomO)"/><text x="212" y="354">HYDROXYL · O</text>
+            <circle cx="350" cy="350" r="4" fill="#f5f1ea" stroke="#0e2a47"/><text x="362" y="354">METHYL / PROPYL · CH₃</text>
+          </g>
+        </svg>
+      </div>
+      <p class="blurb">A semi-synthetic, viscoelastic cellulose ether that forms a colloid solution in water. Stabilises the precorneal tear film, increases viscosity of the aqueous phase and prolongs film breakup time.</p>
+    </div>
+
+    <!-- Dextran -->
+    <div class="mech reveal">
+      <div class="lbl"><span class="ix">B · ACTIVE SUBSTANCE</span><span class="nm">Dextran-70 · 1 mg/ml</span></div>
+      <div class="formula">Branched α-1,6 glucan · (C₆H₁₀O₅)ₙ · ~70 kDa</div>
+
+      <div class="diagram">
+        <!-- Dextran: branched glucan structure -->
+        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <radialGradient id="atomC2" cx=".4" cy=".35" r=".7">
+              <stop offset="0" stop-color="#0e2a47"/>
+              <stop offset="1" stop-color="#3d5874"/>
+            </radialGradient>
+            <radialGradient id="atomGl" cx=".4" cy=".35" r=".7">
+              <stop offset="0" stop-color="#8dc63f"/>
+              <stop offset="1" stop-color="#5a8628"/>
+            </radialGradient>
+            <radialGradient id="atomGl2" cx=".4" cy=".35" r=".7">
+              <stop offset="0" stop-color="#cfe8a8"/>
+              <stop offset="1" stop-color="#8dc63f"/>
+            </radialGradient>
+          </defs>
+
+          <!-- main backbone curve -->
+          <path d="M40 240 q 50 -90 110 -40 q 50 40 110 -10 q 60 -60 130 0 q 60 60 150 -40"
+                stroke="#0e2a47" stroke-width="2" fill="none"/>
+
+          <!-- branches -->
+          <path d="M150 200 q -30 -50 -80 -50" stroke="#0e2a47" stroke-width="1.6" fill="none"/>
+          <path d="M260 190 q 20 -70 60 -70" stroke="#0e2a47" stroke-width="1.6" fill="none"/>
+          <path d="M390 190 q -10 -60 -50 -80" stroke="#0e2a47" stroke-width="1.6" fill="none"/>
+          <path d="M450 240 q 20 -80 80 -60" stroke="#0e2a47" stroke-width="1.6" fill="none"/>
+          <path d="M450 240 q 0 60 50 80" stroke="#0e2a47" stroke-width="1.6" fill="none"/>
+
+          <!-- glucose rings as hexagons -->
+          <g>
+            <!-- helper function effect: draw 8 hexagonal rings -->
+            <g transform="translate(40 240)">
+              <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" fill="url(#atomGl)" stroke="#0e2a47" stroke-width="1.2"/>
+            </g>
+            <g transform="translate(150 200)">
+              <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" fill="url(#atomGl)" stroke="#0e2a47" stroke-width="1.2"/>
+            </g>
+            <g transform="translate(260 190)">
+              <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" fill="url(#atomGl)" stroke="#0e2a47" stroke-width="1.2"/>
+            </g>
+            <g transform="translate(390 190)">
+              <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" fill="url(#atomGl)" stroke="#0e2a47" stroke-width="1.2"/>
+            </g>
+            <g transform="translate(450 240)">
+              <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" fill="url(#atomGl)" stroke="#0e2a47" stroke-width="1.2"/>
+            </g>
+            <g transform="translate(530 180)">
+              <polygon points="0,-14 12,-7 12,7 0,14 -12,7 -12,-7" fill="url(#atomGl)" stroke="#0e2a47" stroke-width="1.2"/>
+            </g>
+            <!-- branch tips -->
+            <g transform="translate(70 150)">
+              <polygon points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6" fill="url(#atomGl2)" stroke="#0e2a47" stroke-width="1.1"/>
+            </g>
+            <g transform="translate(320 120)">
+              <polygon points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6" fill="url(#atomGl2)" stroke="#0e2a47" stroke-width="1.1"/>
+            </g>
+            <g transform="translate(340 110)">
+              <polygon points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6" fill="url(#atomGl2)" stroke="#0e2a47" stroke-width="1.1"/>
+            </g>
+            <g transform="translate(530 180)">
+              <!-- already drawn -->
+            </g>
+            <g transform="translate(500 320)">
+              <polygon points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6" fill="url(#atomGl2)" stroke="#0e2a47" stroke-width="1.1"/>
+            </g>
+            <g transform="translate(590 130)">
+              <polygon points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6" fill="url(#atomGl2)" stroke="#0e2a47" stroke-width="1.1"/>
+            </g>
+          </g>
+
+          <!-- α-1,6 linkage call-out arrow -->
+          <g>
+            <circle cx="205" cy="195" r="11" fill="none" stroke="#d8694c" stroke-width="1.4" stroke-dasharray="2 2"/>
+            <text x="225" y="180" font-family="JetBrains Mono, monospace" font-size="9" fill="#d8694c">α-1,6 LINKAGE</text>
+          </g>
+
+          <!-- legend -->
+          <g font-family="JetBrains Mono, monospace" font-size="9" fill="#0e2a47" opacity=".75">
+            <polygon points="0,-7 6,-3.5 6,3.5 0,7 -6,3.5 -6,-3.5" transform="translate(36,350)" fill="url(#atomGl)" stroke="#0e2a47" stroke-width=".8"/>
+            <text x="50" y="354">GLUCOSE · MAIN CHAIN</text>
+            <polygon points="0,-7 6,-3.5 6,3.5 0,7 -6,3.5 -6,-3.5" transform="translate(290,350)" fill="url(#atomGl2)" stroke="#0e2a47" stroke-width=".8"/>
+            <text x="304" y="354">GLUCOSE · BRANCH</text>
+          </g>
+        </svg>
+      </div>
+      <p class="blurb">A branched glucan polysaccharide. Increases tear viscosity and corneal residence time. Acts synergistically with hypromellose to extend the tear film breakup interval.</p>
+    </div>
+
+  </div>
+
+  <hr class="rule" style="margin-top: 100px;"/>
+
+  <!-- before/after tear film schematic -->
+  <div class="anatomy-head" style="margin-top: 80px;">
+    <div>
+      <div class="eyebrow reveal">Fig. 04 &middot; Tear film, before and after instillation</div>
+      <h3 class="h-mid reveal" style="margin-top: 22px;">
+        Stabilisation of the precorneal film.
+      </h3>
+    </div>
+    <p class="body-col reveal" style="opacity:.78;">
+      In the dry eye the aqueous layer is insufficient and the film breaks
+      up within seconds, leaving discrete areas of corneal exposure. After
+      instillation of one drop of Slezin, the viscoelastic polymer network
+      thickens the aqueous phase, anchors to the mucin layer, and
+      reconstitutes a stable continuous film.
+    </p>
+  </div>
+
+  <div class="reveal" style="margin-top: 40px;">
+    <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <!-- left panel: BEFORE -->
+      <g>
+        <text x="30" y="36" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" fill="#0E2A47" opacity=".55">BEFORE · DRY EYE</text>
+        <!-- cornea base -->
+        <path d="M30 280 Q 290 220 560 280" stroke="#0E2A47" stroke-width="1.6" fill="none"/>
+        <text x="30" y="320" font-family="JetBrains Mono, monospace" font-size="9" fill="#0E2A47" opacity=".55">CORNEAL EPITHELIUM</text>
+
+        <!-- patchy thin tear film -->
+        <path d="M50 274 q 30 -8 60 0 q 40 -6 80 4 q 60 -2 100 -10 q 60 8 120 -6 q 50 0 130 0"
+              stroke="#6ed4dc" stroke-width="2" fill="none" opacity=".7"/>
+        <!-- breakup gaps -->
+        <g fill="#d8694c">
+          <circle cx="210" cy="262" r="2.5"/>
+          <circle cx="330" cy="252" r="2.5"/>
+          <circle cx="430" cy="258" r="2.5"/>
+        </g>
+        <!-- mucin sparse -->
+        <g stroke="#8dc63f" stroke-width=".7" opacity=".6">
+          <line x1="70" y1="280" x2="70" y2="288"/>
+          <line x1="120" y1="270" x2="120" y2="278"/>
+          <line x1="200" y1="265" x2="200" y2="273"/>
+          <line x1="320" y1="252" x2="320" y2="260"/>
+          <line x1="420" y1="258" x2="420" y2="266"/>
+          <line x1="510" y1="270" x2="510" y2="278"/>
+        </g>
+
+        <text x="30" y="100" font-family="Fraunces, serif" font-style="italic" font-size="20" fill="#d8694c" font-variation-settings="'opsz' 32, 'SOFT' 50">Tear film breakup &middot; &lt;5 s</text>
+      </g>
+
+      <!-- divider -->
+      <line x1="600" y1="60" x2="600" y2="320" stroke="#0E2A47" opacity=".18" stroke-dasharray="2 4"/>
+
+      <!-- right panel: AFTER -->
+      <g transform="translate(600 0)">
+        <text x="30" y="36" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" fill="#00a6b8" opacity=".85">AFTER · ONE DROP OF SLEZIN</text>
+        <!-- cornea base -->
+        <path d="M30 280 Q 290 220 560 280" stroke="#0E2A47" stroke-width="1.6" fill="none"/>
+        <text x="30" y="320" font-family="JetBrains Mono, monospace" font-size="9" fill="#0E2A47" opacity=".55">CORNEAL EPITHELIUM</text>
+
+        <!-- thick continuous tear film -->
+        <path d="M40 256 Q 300 200 560 256 L 560 282 Q 300 230 40 282 Z" fill="rgba(0,166,184,.18)" stroke="#00a6b8" stroke-width="1.6"/>
+
+        <!-- polymer mesh squiggles inside the film -->
+        <g stroke="#00a6b8" stroke-width=".7" fill="none" opacity=".75">
+          <path d="M60 250 q 20 14 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0"/>
+          <path d="M70 270 q 20 -10 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0"/>
+        </g>
+
+        <!-- dextran branch dots -->
+        <g fill="#8dc63f">
+          <circle cx="120" cy="245" r="3"/>
+          <circle cx="220" cy="240" r="3"/>
+          <circle cx="320" cy="238" r="3"/>
+          <circle cx="420" cy="240" r="3"/>
+          <circle cx="510" cy="245" r="3"/>
+        </g>
+
+        <!-- mucin dense -->
+        <g stroke="#8dc63f" stroke-width=".9" opacity=".85">
+          <line x1="50" y1="280" x2="50" y2="288"/>
+          <line x1="80" y1="280" x2="80" y2="288"/>
+          <line x1="110" y1="280" x2="110" y2="288"/>
+          <line x1="140" y1="280" x2="140" y2="288"/>
+          <line x1="170" y1="280" x2="170" y2="288"/>
+          <line x1="200" y1="280" x2="200" y2="288"/>
+          <line x1="230" y1="280" x2="230" y2="288"/>
+          <line x1="260" y1="280" x2="260" y2="288"/>
+          <line x1="290" y1="280" x2="290" y2="288"/>
+          <line x1="320" y1="280" x2="320" y2="288"/>
+          <line x1="350" y1="280" x2="350" y2="288"/>
+          <line x1="380" y1="280" x2="380" y2="288"/>
+          <line x1="410" y1="280" x2="410" y2="288"/>
+          <line x1="440" y1="280" x2="440" y2="288"/>
+          <line x1="470" y1="280" x2="470" y2="288"/>
+          <line x1="500" y1="280" x2="500" y2="288"/>
+          <line x1="530" y1="280" x2="530" y2="288"/>
+        </g>
+
+        <text x="30" y="100" font-family="Fraunces, serif" font-style="italic" font-size="20" fill="#00a6b8" font-variation-settings="'opsz' 32, 'SOFT' 50">Stabilised for ≈ 90 min</text>
+      </g>
+    </svg>
+
+    <div class="fig-cap">
+      <b>Fig. 04</b>
+      <span>Schematic of the precorneal tear film before and approximately one minute after instillation of one drop of Slezin. Polymer mesh and mucin density shown indicatively.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────── CLINICAL DATA (dark) ──────────────────── -->
+<section class="section dark" id="data">
+
+  <div class="anatomy-head">
+    <div>
+      <div class="eyebrow reveal">Tab. 01 &middot; 12-week efficacy outcomes</div>
+      <h2 class="h-big reveal" style="margin-top: 24px; max-width: 22ch;">
+        Clinical evidence.
+      </h2>
+    </div>
+    <p class="body-col reveal" style="opacity:.78;">
+      In a 12-week prospective study (Cömez et&nbsp;al., 2013) of patients
+      with dry-eye syndrome, a hypromellose–dextran formulation produced
+      statistically significant improvements across all four standard tear
+      function endpoints: ocular surface disease index, tear osmolarity,
+      Schirmer test, and tear film breakup time.
+    </p>
+  </div>
+
+  <div class="clinical-grid reveal stagger">
+
+    <div class="metric" style="--w: 78%;">
+      <div class="head">
+        <span class="name">OSDI</span>
+        <span class="dir">↓ improved</span>
+      </div>
+      <div class="num"><span class="sign">−</span>27.4</div>
+      <div class="pct">OCULAR SURFACE DISEASE INDEX</div>
+      <div class="bar"></div>
+      <p class="caption">Symptom score drop after 12 weeks. Lower = less discomfort.</p>
+    </div>
+
+    <div class="metric" style="--w: 72%;">
+      <div class="head">
+        <span class="name">OSMOLARITY</span>
+        <span class="dir">↓ improved</span>
+      </div>
+      <div class="num"><span class="sign">−</span>25.6</div>
+      <div class="pct">mOsm/L · TEAR OSMOLARITY</div>
+      <div class="bar"></div>
+      <p class="caption">Hypotonic shift toward healthy tear concentration.</p>
+    </div>
+
+    <div class="metric" style="--w: 38%;">
+      <div class="head">
+        <span class="name">SCHIRMER</span>
+        <span class="dir">↑ improved</span>
+      </div>
+      <div class="num"><span class="sign">+</span>4.7</div>
+      <div class="pct">mm / 5 min · TEAR PRODUCTION</div>
+      <div class="bar"></div>
+      <p class="caption">More aqueous reaching the ocular surface during the test.</p>
+    </div>
+
+    <div class="metric" style="--w: 46%;">
+      <div class="head">
+        <span class="name">TBUT</span>
+        <span class="dir">↑ improved</span>
+      </div>
+      <div class="num"><span class="sign">+</span>5.8</div>
+      <div class="pct">SECONDS · TEAR BREAK-UP TIME</div>
+      <div class="bar"></div>
+      <p class="caption">Longer interval between blinks before the film fails.</p>
+    </div>
+
+  </div>
+
+  <p class="cite reveal">
+    Cömez A. T., Tufan H. A., Kocabıyık O., Gencer B. (2013).<br/>
+    "Effects of lubricating agents with different osmolalities on tear osmolarity and other tear function tests in patients with dry eye."<br/>
+    Curr&nbsp;Eye&nbsp;Res. &middot; pubmed.ncbi.nlm.nih.gov/23841565
+  </p>
+</section>
+
+<!-- ──────────────────── DOSAGE & USE ──────────────────── -->
+<section class="section cream" id="dosage">
+
+  <div class="anatomy-head">
+    <div>
+      <div class="eyebrow reveal">Fig. 05 &middot; Administration protocol</div>
+      <h2 class="h-big reveal" style="margin-top: 24px; max-width: 22ch;">
+        Posology and method of administration.
+      </h2>
+    </div>
+    <p class="body-col reveal" style="opacity:.78;">
+      Topical ocular use. Instill one to two drops into the conjunctival
+      sac as required. Slezin is pharmacologically inert; use is
+      permitted in pregnancy and lactation. A 15 ml multidose vial
+      delivers approximately 300 drops. Discard four weeks after first
+      opening.
+    </p>
+  </div>
+
+  <div class="dose-grid reveal stagger">
+
+    <div class="dose">
+      <div class="pic">
+        <!-- step 01: tilt head -->
+        <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <g fill="none" stroke="#0E2A47" stroke-width="1.6" stroke-linecap="round">
+            <!-- head silhouette tilted -->
+            <path d="M70 30 q 60 -10 100 30 q 20 30 0 60 q -30 30 -80 20 q -40 -10 -40 -50 q 0 -40 20 -60 Z"/>
+            <!-- eye -->
+            <path d="M120 75 q 12 -10 24 0 q -12 10 -24 0 Z" fill="#00a6b8" stroke="#00a6b8"/>
+            <circle cx="132" cy="75" r="2" fill="#0E2A47" stroke="none"/>
+            <!-- shoulder/neck -->
+            <path d="M70 130 q -30 30 -40 50" />
+            <!-- arrow showing tilt -->
+            <path d="M180 25 a 30 30 0 0 1 18 28" stroke="#d8694c"/>
+            <path d="M198 53 l -4 -10 l 10 -2" fill="#d8694c" stroke="#d8694c"/>
+          </g>
+        </svg>
+      </div>
+      <div class="step">Step 01 · Preparation</div>
+      <div class="ttl">Tilt the head back.</div>
+      <p class="body">Remove contact lenses prior to administration. Tilt the head backwards and gently retract the lower eyelid with a clean finger to expose the conjunctival sac.</p>
+    </div>
+
+    <div class="dose">
+      <div class="pic">
+        <!-- step 02: instill drop -->
+        <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <g fill="none" stroke="#0E2A47" stroke-width="1.6" stroke-linecap="round">
+            <!-- bottle -->
+            <rect x="100" y="20" width="40" height="70" rx="3"/>
+            <rect x="108" y="10" width="24" height="14" rx="2"/>
+            <path d="M114 90 l 0 18 l 12 0 l 0 -18"/>
+            <!-- drop -->
+            <path d="M120 125 q -3 8 0 16 q 3 -8 0 -16" fill="#00a6b8" stroke="#00a6b8"/>
+            <!-- eye open -->
+            <path d="M70 165 q 50 -30 100 0 q -50 30 -100 0 Z" fill="rgba(110,212,220,.25)"/>
+            <circle cx="120" cy="165" r="9" fill="#0E2A47" stroke="none"/>
+            <circle cx="120" cy="165" r="4" fill="#00a6b8" stroke="none"/>
+          </g>
+        </svg>
+      </div>
+      <div class="step">Step 02 · Instillation</div>
+      <div class="ttl">Instill one drop.</div>
+      <p class="body">Hold the bottle above the eye without contact with the lashes or ocular surface. Instill one drop into the conjunctival sac. A second drop may be applied if symptoms persist.</p>
+    </div>
+
+    <div class="dose">
+      <div class="pic">
+        <!-- step 03: blink -->
+        <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <g fill="none" stroke="#0E2A47" stroke-width="1.6" stroke-linecap="round">
+            <!-- closed eye -->
+            <path d="M60 100 q 60 -40 120 0" />
+            <!-- eyelashes -->
+            <line x1="80"  y1="78" x2="76"  y2="64"/>
+            <line x1="100" y1="68" x2="100" y2="54"/>
+            <line x1="120" y1="64" x2="120" y2="48"/>
+            <line x1="140" y1="68" x2="140" y2="54"/>
+            <line x1="160" y1="78" x2="164" y2="64"/>
+            <!-- spreading dashes -->
+            <g stroke="#00a6b8" stroke-dasharray="3 4">
+              <path d="M60 120 q 60 -8 120 0"/>
+              <path d="M70 132 q 50 -6 100 0"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="step">Step 03 · Distribution</div>
+      <div class="ttl">Close the eye briefly.</div>
+      <p class="body">Close the eyelids for a few seconds to allow the polymer solution to distribute uniformly across the corneal surface. Repeat as required; discard four weeks after first opening.</p>
+    </div>
+
+  </div>
+
+  <hr class="rule" style="margin: 100px 0 60px;"/>
+
+  <!-- composition table -->
+  <div class="composition-grid">
+    <div class="reveal">
+      <div class="eyebrow">Tab. 02 &middot; Qualitative and quantitative composition</div>
+      <h3 class="h-mid" style="margin-top: 20px;">Composition per 1 ml.</h3>
+
+      <div class="ing-table" style="margin-top: 32px;">
+        <div class="ing-row active">
+          <div>
+            <div class="name">Hypromellose</div>
+            <div class="sub">Active substance · HPMC</div>
+          </div>
+          <div class="qty">3 mg</div>
+        </div>
+        <div class="ing-row active">
+          <div>
+            <div class="name">Dextran-70</div>
+            <div class="sub">Active substance · branched glucan</div>
+          </div>
+          <div class="qty">1 mg</div>
+        </div>
+        <div class="ing-row excipient">
+          <div><div class="name">Glycerol</div><div class="sub">Excipient · humectant</div></div>
+          <div class="qty">q.s.</div>
+        </div>
+        <div class="ing-row excipient">
+          <div><div class="name">Boric acid · sodium tetraborate decahydrate</div><div class="sub">Buffer system</div></div>
+          <div class="qty">q.s.</div>
+        </div>
+        <div class="ing-row excipient">
+          <div><div class="name">Potassium chloride · sodium chloride</div><div class="sub">Tonicity adjustment</div></div>
+          <div class="qty">q.s.</div>
+        </div>
+        <div class="ing-row excipient">
+          <div><div class="name">Disodium edetate dihydrate</div><div class="sub">Chelator</div></div>
+          <div class="qty">q.s.</div>
+        </div>
+        <div class="ing-row excipient">
+          <div><div class="name">Benzalkonium chloride</div><div class="sub">Preservative</div></div>
+          <div class="qty">q.s.</div>
+        </div>
+        <div class="ing-row excipient">
+          <div><div class="name">1 M NaOH · 1 M HCl</div><div class="sub">pH adjustment</div></div>
+          <div class="qty">q.s.</div>
+        </div>
+        <div class="ing-row excipient">
+          <div><div class="name">Purified water</div><div class="sub">Solvent</div></div>
+          <div class="qty">to 1 ml</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="eyebrow">Use &middot; storage</div>
+      <div class="specs" style="margin-top: 26px;">
+        <div><div class="k">Route</div><div class="v">Topical · conjunctival sac</div></div>
+        <div><div class="k">Dose</div><div class="v">1–2 drops, as needed</div></div>
+        <div><div class="k">Storage</div><div class="v">≤ 25 °C · away from sunlight</div></div>
+        <div><div class="k">Shelf after open</div><div class="v">4 weeks</div></div>
+        <div><div class="k">Pregnancy</div><div class="v">Cleared</div></div>
+        <div><div class="k">Breastfeeding</div><div class="v">Cleared</div></div>
+        <div><div class="k">Contact lenses</div><div class="v">Remove before use</div></div>
+        <div><div class="k">Approx. drops/vial</div><div class="v">~ 300</div></div>
+      </div>
+
+      <p class="body-col" style="margin-top: 28px; opacity:.7;">
+        Slezin is considered a first-line agent in the management of dry-eye
+        syndrome owing to its safety profile, dosing flexibility and cost
+        per&nbsp;drop. The 15 ml format yields roughly 300 drops per vial — a
+        practical economic argument in chronic management.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────── COLOPHON ──────────────────── -->
+<footer class="colophon">
+  <div class="colophon-grid">
+
+    <div class="reveal">
+      <div class="eyebrow" style="color: var(--teal-glow);">Product summary</div>
+      <h3 style="margin-top: 28px;">Slezin 3 mg + 1 mg per ml eye drops, solution.</h3>
+      <p style="margin-top: 28px; max-width: 42ch; opacity: .75;">
+        Keratoprotective ophthalmic solution containing hypromellose and
+        dextran-70. Indicated for the symptomatic relief of dry-eye
+        syndrome and associated burning, irritation and ocular surface
+        discomfort. Multidose 15 ml vial in carton with patient leaflet.
+      </p>
+    </div>
+
+    <div class="reveal">
+      <div class="smcaps" style="color: var(--teal-glow); margin-bottom: 18px;">Regulatory</div>
+      <ul class="credit-list">
+        <li><span class="k">Marketing authorisation holder</span><span class="v">S.C. RomPharm Company S.R.L.</span></li>
+        <li><span class="k">Manufacturer address</span><span class="v">14 Eroilor street, Otopeni, Romania</span></li>
+        <li><span class="k">Sole distributor</span><span class="v">Pure Pharma Company Ltd., IRAQ</span></li>
+        <li><span class="k">Pharmaceutical form</span><span class="v">Eye drops, solution</span></li>
+        <li><span class="k">Route</span><span class="v">Ocular use</span></li>
+        <li><span class="k">Storage</span><span class="v">≤ 25 °C, protected from light</span></li>
+        <li><span class="k">Shelf life after opening</span><span class="v">4 weeks</span></li>
+      </ul>
+    </div>
+
+    <div class="reveal">
+      <div class="smcaps" style="color: var(--teal-glow); margin-bottom: 18px;">Classification</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <span class="tag"><span class="dot"></span>Keratoprotective</span>
+        <span class="tag">OTC</span>
+        <span class="tag">Ophthalmic</span>
+        <span class="tag">Artificial tears</span>
+        <span class="tag">Multidose 15 ml</span>
+      </div>
+
+      <div class="smcaps" style="color: var(--teal-glow); margin: 30px 0 18px;">Reference</div>
+      <p style="font-size: 13.5px; opacity: .72; line-height: 1.55; max-width: 38ch;">
+        Cömez A. T., Tufan H. A., Kocabıyık O., Gencer B. (2013). Effects
+        of lubricating agents with different osmolalities on tear
+        osmolarity and other tear function tests in patients with dry
+        eye. <em>Current Eye Research</em>.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bar">
+    <div>Slezin &middot; Product monograph &middot; 2026</div>
+    <div>RomPharm Co. &middot; All rights reserved</div>
+  </div>
+</footer>
+
+<script>
+/* ─────── lightweight reveal observer ─────── */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.reveal, .metric').forEach(el=>io.observe(el));
+
+/* ─────── soft lerp scroll (Lenis-lite) ─────── */
+let target = window.scrollY, current = window.scrollY;
+let raf = null;
+function loop(){
+  current += (target - current) * 0.10;
+  if(Math.abs(target - current) < 0.5){ current = target; }
+  window.scrollTo(0, current);
+  raf = requestAnimationFrame(loop);
+}
+/* Disabled by default — native smooth scrolling on most modern browsers feels
+   better than a half-built lerp. Re-enable by uncommenting:
+window.addEventListener('wheel', (e)=>{
+  e.preventDefault();
+  target = Math.min(Math.max(target + e.deltaY, 0), document.body.scrollHeight - innerHeight);
+  if(!raf) loop();
+}, { passive: false });
+*/
+</script>
+</body>
+</html>

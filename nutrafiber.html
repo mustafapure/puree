@@ -1,0 +1,2238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#F4ECDD" />
+<title>NutraFiber - Healthy Pectin Gummy | Clinically informed prebiotic fiber for the 2026 wellness consumer</title>
+<meta name="description" content="NutraFiber Healthy Pectin Gummy. A vegan, halal, GMP-manufactured soluble fiber gummy formulated for the modern digestive-health consumer, the GLP-1 companion category and clinically informed gut-microbiome support." />
+
+<!-- Fonts: expressive serif display + neutral body, per 2026 wellness aesthetic -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- GSAP for high-performance motion (formal, eased, GPU-friendly) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js" defer></script>
+
+<style>
+/* =========================================================
+   NutraFiber - 2026 biophilic wellness palette
+   "Cloud Dancer" off-white foundation + earthy accents
+   Designed for AA contrast, prefers-reduced-motion safe.
+   ========================================================= */
+:root{
+  /* White-led palette, warmed with coral/peach accents from the bottle */
+  --cloud:        #FFFFFF;   /* pure white background */
+  --cream:        #FFF8F2;   /* whisper cream for cards */
+  --sand:         #FBE5D2;   /* soft peach accent */
+  --blush:        #FDEFE6;   /* very light blush wash */
+  --beige:        #F5C9AC;   /* warm peach beige */
+  --caramel:      #C9956E;   /* rose-gold */
+  --terracotta:   #D9613A;   /* coral terracotta */
+  --rust:         #A64027;   /* coral rust */
+  --burnt:        #5C2418;   /* deep wine-brown */
+  --sage:         #8E9C7E;   /* dusty muted sage */
+  --olive:        #586848;
+  --ink:          #3A1F1F;   /* warm wine-aubergine - primary text */
+  --ink-soft:     #6B4A40;   /* warm taupe */
+  --hairline:     rgba(58,31,31,.13);
+  --gold:         #E0B370;   /* champagne gold */
+  --pulp:         #ED8657;   /* coral peach gummy */
+  --berry:        #C44C5A;   /* warm rose */
+  --rose:         #E69985;   /* soft rose accent */
+  --shadow-lg:    0 30px 80px -30px rgba(92,36,24,.32), 0 8px 24px -12px rgba(92,36,24,.16);
+  --shadow-md:    0 12px 32px -12px rgba(92,36,24,.18);
+  --radius:       20px;
+  --radius-sm:    12px;
+  --radius-pill:  999px;
+  --ease-out:     cubic-bezier(.16,.84,.32,1);
+  --ease-soft:    cubic-bezier(.45,.05,.25,1);
+  --max:          1240px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0}
+body{
+  background:var(--cloud);
+  color:var(--ink);
+  font-family:"Manrope","Helvetica Neue",system-ui,-apple-system,sans-serif;
+  font-size:15.5px;
+  line-height:1.62;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  /* subtle haptic paper grain - 2026 "haptic materiality" */
+  background-image:
+    radial-gradient(1200px 800px at 80% -10%, rgba(237,134,87,.18), transparent 60%),
+    radial-gradient(900px 700px at -10% 30%, rgba(230,153,133,.16), transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, rgba(224,179,112,.14), transparent 60%);
+}
+/* Decorative coral-tone scatter dots - echo the bottle's color */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='1200' viewBox='0 0 1600 1200'><circle cx='120' cy='220' r='4' fill='%23ED8657' opacity='.5'/><circle cx='1480' cy='180' r='3' fill='%23E69985' opacity='.55'/><circle cx='200' cy='820' r='5' fill='%23E0B370' opacity='.5'/><circle cx='1380' cy='760' r='4' fill='%23ED8657' opacity='.5'/><circle cx='80' cy='480' r='2.5' fill='%23A64027' opacity='.45'/><circle cx='1500' cy='980' r='3' fill='%23E69985' opacity='.5'/><circle cx='760' cy='60' r='3' fill='%23ED8657' opacity='.45'/><circle cx='820' cy='1140' r='4' fill='%23E0B370' opacity='.5'/></svg>");
+  background-size:cover;background-position:center;
+  opacity:.85;
+}
+/* Floating coral arc accent - subtle product-color ribbon, top right */
+body::after{
+  content:"";
+  position:fixed;top:-20%;right:-10%;
+  width:46vw;height:80vh;
+  pointer-events:none;z-index:1;
+  background:
+    radial-gradient(closest-side at 60% 40%, rgba(237,134,87,.18), transparent 70%);
+  filter:blur(20px);
+}
+
+/* ---------- Skip link / a11y helpers ---------- */
+.skip{
+  position:absolute;left:-9999px;top:auto;
+  background:var(--ink);color:var(--cloud);
+  padding:.75rem 1rem;border-radius:8px;
+  font-weight:600;text-decoration:none;
+  z-index:1000;
+}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{
+  outline:3px solid var(--terracotta);
+  outline-offset:3px;
+  border-radius:6px;
+}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);position:relative;z-index:2}
+section{position:relative;z-index:2}
+
+/* ---------- Typography ---------- */
+.display,h1,h2,h3{
+  font-family:"Instrument Serif","Playfair Display",Georgia,serif;
+  font-weight:400;
+  letter-spacing:-.015em;
+  line-height:1.05;
+  color:var(--ink);
+}
+h1{font-size:clamp(2.2rem,5.6vw,4.6rem);font-weight:400;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,3.6vw,2.8rem);font-weight:400;margin:0 0 .8rem;letter-spacing:-.018em}
+h3{font-size:clamp(1.1rem,1.7vw,1.35rem);font-weight:500;margin:0 0 .4rem;font-family:"Manrope",sans-serif;letter-spacing:-.005em}
+.eyebrow{
+  font-family:"Manrope",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:.7rem;
+  font-weight:600;
+  color:var(--rust);
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-bottom:1rem;
+}
+.eyebrow::before{
+  content:"";width:24px;height:1.5px;background:var(--rust);
+  display:inline-block;
+}
+p{color:var(--ink-soft);margin:0 0 .9rem;max-width:62ch;font-size:.95rem}
+.lead{font-size:1.05rem;color:var(--ink);max-width:60ch;line-height:1.55}
+em.kw{font-style:italic;color:var(--rust);font-family:"Instrument Serif",serif;font-weight:400}
+
+/* Shiny gradient headline - sweeping animated gradient text */
+.shine{
+  background:linear-gradient(110deg,
+    var(--rust) 0%,
+    var(--terracotta) 18%,
+    var(--gold) 38%,
+    var(--pulp) 55%,
+    var(--gold) 72%,
+    var(--terracotta) 88%,
+    var(--rust) 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  animation:shineSweep 7s linear infinite;
+}
+@keyframes shineSweep{to{background-position:-220% 0}}
+.shine-rose{
+  background:linear-gradient(110deg,
+    var(--berry) 0%,
+    var(--rose) 22%,
+    var(--gold) 45%,
+    var(--rose) 68%,
+    var(--berry) 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:shineSweep 8s linear infinite;
+}
+
+/* ---------- Nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1.25rem,4vw,3rem);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  background:rgba(244,236,221,.72);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease-out), background .3s var(--ease-out);
+}
+.nav.scrolled{border-bottom-color:var(--hairline);background:rgba(244,236,221,.92)}
+.brand{
+  display:flex;align-items:center;gap:.75rem;
+  font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;color:var(--ink);
+  text-decoration:none;letter-spacing:-.01em;
+}
+.brand-mark{
+  width:36px;height:36px;border-radius:50%;
+  background:
+    radial-gradient(circle at 28% 28%, #FFE0C2, var(--pulp) 35%, var(--terracotta) 70%, var(--rust) 100%);
+  display:grid;place-items:center;color:#fff;
+  font-family:"Instrument Serif",serif;font-style:italic;font-weight:500;font-size:1.15rem;
+  box-shadow:
+    inset 0 -5px 10px rgba(92,36,24,.3),
+    inset 0 3px 8px rgba(255,255,255,.4),
+    0 6px 16px rgba(217,97,58,.4);
+}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{
+  color:var(--ink-soft);text-decoration:none;font-size:.92rem;font-weight:500;
+  position:relative;padding:.4rem 0;
+  transition:color .25s var(--ease-out);
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;
+  background:var(--terracotta);transition:width .35s var(--ease-out);
+}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{width:100%}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:linear-gradient(135deg, var(--terracotta) 0%, var(--pulp) 50%, var(--gold) 100%);
+  background-size:200% 100%;
+  background-position:0% 0%;
+  color:#fff;
+  padding:.85rem 1.5rem;border-radius:var(--radius-pill);
+  text-decoration:none;font-weight:600;font-size:.88rem;
+  border:none;cursor:pointer;
+  position:relative;overflow:hidden;
+  transition:transform .25s var(--ease-out), background-position .5s var(--ease-out), box-shadow .25s var(--ease-out);
+  box-shadow:
+    0 8px 22px -6px rgba(217,97,58,.55),
+    inset 0 1px 0 rgba(255,255,255,.35);
+  letter-spacing:.005em;
+}
+.cta-btn:hover,.cta-btn:focus-visible{
+  background-position:100% 0%;
+  transform:translateY(-2px);
+  box-shadow:
+    0 14px 32px -8px rgba(217,97,58,.65),
+    inset 0 1px 0 rgba(255,255,255,.45);
+}
+.cta-btn .arr{transition:transform .3s var(--ease-out);display:inline-block}
+.cta-btn:hover .arr{transform:translateX(4px)}
+.cta-btn.ghost{
+  background:#fff;
+  color:var(--rust);
+  border:1.5px solid var(--terracotta);
+  box-shadow:0 4px 14px -4px rgba(217,97,58,.25);
+}
+.cta-btn.ghost:hover{
+  background:linear-gradient(135deg, var(--blush), var(--sand));
+  color:var(--rust);
+  border-color:var(--rust);
+  box-shadow:0 10px 24px -8px rgba(217,97,58,.4);
+}
+@media (max-width:780px){.nav-links{display:none}.nav-links.cta-only{display:flex}}
+
+/* ====================================================
+   HERO - kinetic typography, floating gummies, bottle
+   ==================================================== */
+.hero{
+  min-height:90vh;
+  padding:7rem 0 2.5rem;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;gap:2.4rem;
+  position:relative;overflow:hidden;
+}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;padding:6rem 0 2rem;text-align:left}
+}
+/* Particle canvas - fills full hero, behind everything */
+.gummy-canvas{
+  position:absolute;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+.hero-copy{position:relative;z-index:3}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word > span{display:inline-block;will-change:transform}
+.hero h1 .accent{
+  font-style:italic;font-weight:400;
+  background:linear-gradient(100deg,var(--rust) 0%,var(--terracotta) 35%,var(--pulp) 65%,var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{margin:1.6rem 0 2.2rem}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:1.25rem 2rem;
+  margin-top:2.6rem;padding-top:1.6rem;
+  border-top:1px solid var(--hairline);
+}
+.hero-meta .stat .num{
+  display:block;
+  font-family:"Fraunces",serif;font-size:2rem;font-weight:500;color:var(--ink);
+  line-height:1;letter-spacing:-.02em;
+}
+.hero-meta .stat .lbl{
+  font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;
+  letter-spacing:.14em;margin-top:.4rem;display:block;
+}
+
+/* Hero visual stage - clean, 3D photo-led */
+.hero-stage{
+  position:relative;aspect-ratio:1/1.05;width:100%;
+  display:grid;place-items:center;
+  perspective:1400px;
+}
+.bottle-glow{
+  position:absolute;inset:0;margin:auto;
+  width:78%;aspect-ratio:1;border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(237,134,87,.45) 0%, rgba(230,153,133,.28) 35%, transparent 70%);
+  filter:blur(36px);
+  z-index:0;
+  animation:glowPulse 8s ease-in-out infinite;
+}
+@keyframes glowPulse{
+  0%,100%{transform:scale(1);opacity:.9}
+  50%{transform:scale(1.08);opacity:1}
+}
+
+/* Bottle - true 3D, transparent PNG */
+.bottle-wrap{
+  position:relative;z-index:2;
+  width:82%;max-width:540px;
+  transform-style:preserve-3d;
+  animation:bottleFloat 7s ease-in-out infinite;
+  filter:
+    drop-shadow(0 60px 70px rgba(166,64,39,.45))
+    drop-shadow(0 24px 36px rgba(92,36,24,.3))
+    drop-shadow(0 4px 8px rgba(58,31,31,.25));
+  transition:transform .6s var(--ease-out);
+}
+.bottle-wrap:hover{transform:rotateY(-12deg) rotateX(4deg) scale(1.02)}
+.bottle-wrap img{
+  display:block;width:100%;height:auto;
+  user-select:none;-webkit-user-drag:none;
+  position:relative;z-index:2;
+}
+/* Vertical glass sheen - left highlight on the curved jar */
+.bottle-wrap::before{
+  content:"";position:absolute;
+  top:16%;bottom:10%;left:22%;width:10%;
+  background:linear-gradient(180deg,
+    transparent 0%,
+    rgba(255,255,255,.55) 30%,
+    rgba(255,255,255,.2) 55%,
+    rgba(255,255,255,.5) 75%,
+    transparent 100%);
+  border-radius:50%;
+  filter:blur(5px);
+  pointer-events:none;z-index:3;
+  opacity:.55;
+  mix-blend-mode:overlay;
+  animation:bottleSheen 6s ease-in-out infinite;
+}
+/* Ground shadow removed - bottle floats clean */
+@keyframes bottleSheen{
+  0%,100%{transform:translateX(-6%) rotate(-2deg);opacity:.45}
+  50%{transform:translateX(6%) rotate(2deg);opacity:.7}
+}
+@keyframes bottleFloat{
+  0%,100%{transform:translateY(0) rotateY(-3deg)}
+  50%{transform:translateY(-14px) rotateY(3deg)}
+}
+
+/* Marquee badge ribbon under hero */
+.trust-strip{
+  margin-top:5rem;
+  padding:1.4rem 0;
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
+  display:flex;align-items:center;gap:3rem;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.marquee{
+  display:flex;gap:3rem;align-items:center;white-space:nowrap;
+  animation:marq 36s linear infinite;
+  font-family:"Fraunces",serif;font-size:1.1rem;color:var(--ink-soft);
+}
+.marquee span{display:inline-flex;align-items:center;gap:.7rem}
+.marquee .dot{width:6px;height:6px;border-radius:50%;background:var(--terracotta);display:inline-block}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ====================================================
+   GENERIC SECTION SHELL
+   ==================================================== */
+.section{padding:clamp(2rem,4vw,3.6rem) 0;position:relative}
+.section.alt{
+  background:linear-gradient(180deg, var(--blush), var(--cream));
+}
+.section.compact{padding:clamp(1.5rem,3vw,2.6rem) 0}
+.section-head{display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;margin-bottom:2rem;align-items:end}
+.section-head.tight{margin-bottom:1.2rem}
+@media (max-width:780px){.section-head{grid-template-columns:1fr;gap:1.5rem}}
+
+/* Reveal animation primitive (used by JS + reduced-motion fallback) */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease-out), transform .9s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+
+/* ====================================================
+   THE FIBER GAP - giant kinetic stat
+   ==================================================== */
+.gap-canvas{
+  position:relative;text-align:center;padding:4rem 0;
+}
+.gap-stat{
+  font-family:"Fraunces",serif;
+  font-size:clamp(7rem,22vw,18rem);
+  font-weight:300;line-height:.9;letter-spacing:-.04em;
+  background:linear-gradient(180deg,var(--rust),var(--terracotta) 60%, var(--pulp));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;position:relative;
+}
+.gap-stat sup{font-size:.4em;vertical-align:top;margin-left:.1em;color:var(--terracotta);font-weight:400;-webkit-text-fill-color:var(--terracotta)}
+.gap-sub{
+  max-width:62ch;margin:1.4rem auto 0;
+  font-size:1.1rem;color:var(--ink);
+}
+.gap-mini{
+  display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;
+  margin-top:3rem;
+}
+.gap-mini .m{
+  font-family:"Fraunces",serif;font-size:1.4rem;color:var(--ink-soft);
+  display:flex;align-items:baseline;gap:.7rem;
+}
+.gap-mini b{font-size:2.2rem;color:var(--rust);font-weight:500}
+
+/* ====================================================
+   MARKET / CARDS
+   ==================================================== */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.card{
+  background:var(--cream);
+  border:1px solid var(--hairline);
+  border-radius:var(--radius);
+  padding:2rem 1.8rem;
+  position:relative;overflow:hidden;
+  transition:transform .5s var(--ease-out), box-shadow .5s var(--ease-out), border-color .5s var(--ease-out);
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:rgba(194,90,44,.4)}
+.card .num{
+  font-family:"Fraunces",serif;font-size:2.6rem;font-weight:400;color:var(--rust);
+  display:block;margin-bottom:.4rem;line-height:1;letter-spacing:-.02em;
+}
+.card .num small{font-size:.5em;color:var(--ink-soft);font-weight:500}
+.card h3{margin:.2rem 0 .6rem;font-size:1.15rem;font-weight:600;font-family:"Inter",sans-serif;letter-spacing:0;color:var(--ink)}
+.card p{font-size:.95rem;margin:0}
+.card .ribbon{
+  position:absolute;top:1.2rem;right:1.2rem;
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sage);font-weight:600;
+}
+
+/* ====================================================
+   GLP-1 SECTION
+   ==================================================== */
+.glp{
+  background:
+    radial-gradient(700px 400px at 80% 0%, rgba(230,153,133,.28), transparent 70%),
+    radial-gradient(500px 300px at 10% 100%, rgba(224,179,112,.22), transparent 70%),
+    linear-gradient(180deg, var(--cloud), var(--blush));
+  border-radius:32px;
+  padding:clamp(3rem,6vw,5rem);
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+  border:1px solid var(--hairline);
+  position:relative;overflow:hidden;
+}
+@media(max-width:880px){.glp{grid-template-columns:1fr}}
+.glp .badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(110,127,91,.15);color:var(--olive);
+  padding:.45rem .9rem;border-radius:var(--radius-pill);
+  font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:1.2rem;
+}
+.glp .big{
+  font-family:"Fraunces",serif;font-size:clamp(3rem,6vw,5rem);
+  line-height:1;letter-spacing:-.03em;color:var(--ink);font-weight:400;
+  margin:.4rem 0 1.4rem;
+}
+.glp .big em{color:var(--terracotta);font-style:italic}
+.glp-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+.glp-stats .gs{
+  background:rgba(255,255,255,.65);
+  border:1px solid var(--hairline);
+  border-radius:var(--radius-sm);padding:1.2rem;
+}
+.glp-stats .gs b{
+  display:block;font-family:"Fraunces",serif;font-size:1.9rem;color:var(--rust);
+  line-height:1;margin-bottom:.4rem;font-weight:500;
+}
+.glp-stats .gs span{font-size:.85rem;color:var(--ink-soft)}
+.glp-illus{
+  position:relative;aspect-ratio:1;
+  display:grid;place-items:center;
+}
+
+/* ====================================================
+   PRODUCT SHOWCASE
+   ==================================================== */
+.product{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+@media(max-width:880px){.product{grid-template-columns:1fr}}
+.prod-visual{
+  position:relative;aspect-ratio:.85/1;
+  display:grid;place-items:center;
+  background:
+    radial-gradient(circle at 50% 60%, rgba(237,134,87,.32), transparent 60%),
+    radial-gradient(circle at 30% 30%, rgba(230,153,133,.25), transparent 60%);
+  border-radius:32px;
+  overflow:hidden;
+  perspective:1200px;
+}
+.prod-visual::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.35), transparent 50%);
+  z-index:1;
+}
+.prod-visual img{
+  position:relative;z-index:2;
+  width:78%;max-width:500px;
+  /* true PNG transparency - no blend needed */
+  filter:drop-shadow(0 40px 55px rgba(166,64,39,.4)) drop-shadow(0 14px 22px rgba(92,36,24,.22));
+  transform:rotateY(-6deg) rotateX(2deg);
+  transition:transform .8s var(--ease-out);
+  animation:prodFloat 6s ease-in-out infinite;
+}
+.prod-visual:hover img{transform:rotateY(8deg) rotateX(-2deg)}
+@keyframes prodFloat{
+  0%,100%{transform:rotateY(-6deg) rotateX(2deg) translateY(0)}
+  50%{transform:rotateY(6deg) rotateX(-2deg) translateY(-10px)}
+}
+.prod-features{display:grid;gap:1rem;margin-top:2rem}
+.feat{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding:1rem;border-radius:var(--radius-sm);
+  transition:background .3s var(--ease-out);
+}
+.feat:hover{background:rgba(255,255,255,.6)}
+.feat .icon{
+  flex-shrink:0;width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg, var(--pulp), var(--terracotta));
+  display:grid;place-items:center;color:var(--cream);
+  box-shadow:0 4px 12px rgba(194,90,44,.35);
+}
+.feat .icon svg{width:20px;height:20px}
+.feat h4{margin:0 0 .2rem;font-size:1rem;font-weight:600;color:var(--ink);font-family:"Inter",sans-serif}
+.feat p{margin:0;font-size:.9rem}
+
+/* ====================================================
+   SCIENCE: soluble vs insoluble (interactive split)
+   ==================================================== */
+.split{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;
+  margin-top:3rem;
+}
+@media(max-width:780px){.split{grid-template-columns:1fr}}
+.split-card{
+  background:var(--cream);border:1px solid var(--hairline);
+  border-radius:var(--radius);padding:2rem;
+  position:relative;overflow:hidden;
+  transition:transform .5s var(--ease-out), border-color .5s var(--ease-out);
+}
+.split-card.feature{
+  background:linear-gradient(160deg, var(--terracotta), var(--rust));
+  color:var(--cream);border-color:transparent;
+}
+.split-card.feature h3,.split-card.feature p,.split-card.feature li,.split-card.feature .pill{color:var(--cream)}
+.split-card.feature .pill{background:rgba(255,255,255,.18);border-color:transparent}
+.split-card:hover{transform:translateY(-4px)}
+.pill{
+  display:inline-block;padding:.3rem .7rem;border-radius:var(--radius-pill);
+  background:var(--sand);border:1px solid var(--hairline);
+  font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  color:var(--ink-soft);margin-bottom:1rem;
+}
+.split-card ul{padding:0;margin:1rem 0 0;list-style:none}
+.split-card li{
+  padding:.55rem 0;border-bottom:1px solid var(--hairline);
+  display:flex;gap:.8rem;align-items:flex-start;font-size:.95rem;
+}
+.split-card.feature li{border-bottom-color:rgba(255,255,255,.18)}
+.split-card li:last-child{border-bottom:none}
+.split-card li::before{
+  content:"";flex-shrink:0;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--pulp);margin-top:.2rem;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+  background-size:14px;background-position:center;background-repeat:no-repeat;
+}
+.split-card:not(.feature) li::before{background-color:var(--ink-soft);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><line x1='6' y1='12' x2='18' y2='12'/></svg>")}
+
+/* ====================================================
+   CLINICAL EVIDENCE GRID
+   ==================================================== */
+.evidence{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2rem}
+.ev{
+  padding:2rem 1.6rem;border-radius:var(--radius);
+  background:var(--cream);border:1px solid var(--hairline);
+  position:relative;overflow:hidden;
+  transition:transform .4s var(--ease-out);
+}
+.ev:hover{transform:translateY(-4px)}
+.ev .ev-ico{
+  width:46px;height:46px;border-radius:14px;
+  display:grid;place-items:center;margin-bottom:1.2rem;
+  background:linear-gradient(135deg,var(--sage),var(--olive));color:var(--cream);
+}
+.ev:nth-child(2) .ev-ico{background:linear-gradient(135deg,var(--pulp),var(--terracotta))}
+.ev:nth-child(3) .ev-ico{background:linear-gradient(135deg,var(--gold),var(--caramel))}
+.ev:nth-child(4) .ev-ico{background:linear-gradient(135deg,var(--berry),var(--rust))}
+.ev h3{font-size:1.1rem;font-family:"Inter",sans-serif;font-weight:600;letter-spacing:0;margin:0 0 .5rem}
+.ev p{font-size:.92rem;margin:0}
+.ev cite{display:block;margin-top:1rem;font-size:.78rem;font-style:normal;color:var(--ink-soft);letter-spacing:.04em}
+
+/* ====================================================
+   COMPARISON TABLE
+   ==================================================== */
+.cmp{
+  margin-top:2rem;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--hairline);background:var(--cream);
+  box-shadow:var(--shadow-md);
+}
+.cmp table{width:100%;border-collapse:collapse;font-size:.95rem}
+.cmp th,.cmp td{padding:1.1rem 1.2rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--hairline)}
+.cmp th{
+  background:linear-gradient(135deg, var(--rust) 0%, var(--terracotta) 50%, var(--pulp) 100%);
+  color:#fff;
+  font-family:"Instrument Serif",serif;font-weight:400;font-size:1rem;letter-spacing:.01em;
+}
+.cmp tbody tr:last-child td{border-bottom:none}
+.cmp tbody tr:hover{background:rgba(244,236,221,.6)}
+.cmp .hi{background:linear-gradient(180deg, rgba(240,132,58,.16), rgba(240,132,58,.04));}
+.cmp .hi td{color:var(--ink);font-weight:500}
+.cmp .hi td:first-child{color:var(--rust);font-weight:600}
+.cmp td .tag{
+  display:inline-block;padding:.18rem .55rem;border-radius:6px;font-size:.7rem;
+  text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-right:.4rem;
+}
+.tag.good{background:rgba(110,127,91,.18);color:var(--olive)}
+.tag.warn{background:rgba(217,164,65,.22);color:var(--caramel)}
+.tag.bad{background:rgba(199,50,42,.16);color:var(--berry)}
+@media(max-width:780px){
+  .cmp{overflow-x:auto}
+  .cmp table{min-width:680px}
+}
+
+/* ====================================================
+   PERSONAS
+   ==================================================== */
+.personas{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1.4rem;margin:0}
+.persona{
+  padding:1.8rem;border-radius:var(--radius);
+  background:linear-gradient(160deg, var(--cream) 0%, var(--blush) 65%, var(--sand) 100%);
+  border:1px solid var(--hairline);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:1rem;
+  transition:transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
+}
+.persona:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.persona-head{
+  display:flex;gap:1rem;align-items:flex-start;
+  padding-bottom:1rem;border-bottom:1px solid var(--hairline);
+}
+.persona .av{
+  flex-shrink:0;
+  width:54px;height:54px;border-radius:50%;
+  background:linear-gradient(135deg, var(--pulp), var(--terracotta));
+  display:grid;place-items:center;color:var(--cream);
+  font-family:"Instrument Serif",serif;font-style:italic;font-size:1.7rem;font-weight:400;
+  box-shadow:0 6px 14px rgba(217,97,58,.4);
+}
+.persona-head .pill{margin:0 0 .35rem;padding:.22rem .55rem;font-size:.65rem;letter-spacing:.1em}
+.persona h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:1.45rem;margin:0;letter-spacing:-.01em;color:var(--ink)}
+.persona-tag{font-size:.78rem;color:var(--rust);margin:.3rem 0 0;font-style:italic;font-family:"Instrument Serif",serif}
+.persona-bio{font-size:.88rem;line-height:1.55;color:var(--ink-soft);margin:0}
+
+.persona-data{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:.45rem;
+  background:rgba(255,255,255,.55);
+  padding:.9rem 1rem;border-radius:var(--radius-sm);
+  border:1px solid var(--hairline);
+}
+.persona-data li{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  font-size:.78rem;padding-bottom:.4rem;border-bottom:1px dashed var(--hairline);
+}
+.persona-data li:last-child{border-bottom:none;padding-bottom:0}
+.persona-data li span{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:.66rem;flex-shrink:0;width:42%}
+.persona-data li b{color:var(--ink);font-weight:600;text-align:right;font-size:.82rem;line-height:1.35;flex:1}
+
+.persona-quote{
+  margin:0;padding:.9rem 1rem .9rem 1.2rem;
+  border-left:3px solid var(--terracotta);
+  font-family:"Instrument Serif",serif;font-style:italic;
+  font-size:1rem;line-height:1.45;color:var(--ink);
+  background:linear-gradient(90deg, rgba(237,134,87,.1), transparent);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Aggregate insight strip below personas */
+.persona-summary{
+  margin-top:2rem;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  padding:1.6rem;border-radius:var(--radius);
+  background:linear-gradient(135deg, var(--rust), var(--burnt));
+  color:var(--cream);
+  position:relative;overflow:hidden;
+}
+.persona-summary::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 0%, rgba(237,134,87,.4), transparent 60%);
+  pointer-events:none;
+}
+.persona-summary .ps-stat{position:relative;z-index:1}
+.persona-summary .ps-stat b{
+  display:block;
+  font-family:"Instrument Serif",serif;font-size:2.2rem;font-weight:400;
+  background:linear-gradient(110deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:shineSweep 6s linear infinite;
+  line-height:1;margin-bottom:.4rem;
+}
+.persona-summary .ps-stat span{font-size:.82rem;color:rgba(251,246,235,.85);line-height:1.4;display:block}
+
+/* ====================================================
+   CTA / Footer
+   ==================================================== */
+.cta-band{
+  margin:5rem auto;padding:clamp(3rem,6vw,5rem);
+  border-radius:32px;
+  background:
+    radial-gradient(800px 400px at 80% 0%, rgba(240,132,58,.4), transparent 60%),
+    linear-gradient(135deg, var(--rust), var(--burnt));
+  color:var(--cream);position:relative;overflow:hidden;
+}
+.cta-band::after{
+  content:"";position:absolute;inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  pointer-events:none;
+}
+.cta-band > *{position:relative;z-index:1}
+.cta-band h2{color:var(--cream);max-width:18ch}
+.cta-band p{color:rgba(251,246,235,.85);max-width:54ch;margin-bottom:2rem}
+.cta-band .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+.cta-band .cta-btn{background:var(--cream);color:var(--rust)}
+.cta-band .cta-btn:hover{background:#fff;color:var(--burnt)}
+.cta-band .cta-btn.ghost{background:transparent;color:var(--cream);border-color:rgba(251,246,235,.5)}
+.cta-band .cta-btn.ghost:hover{background:var(--cream);color:var(--rust)}
+
+footer{
+  padding:3rem 0 4rem;border-top:1px solid var(--hairline);
+  margin-top:3rem;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;
+}
+@media(max-width:780px){footer{grid-template-columns:1fr;gap:2rem}}
+footer h4{font-family:"Inter",sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;color:var(--ink-soft);font-weight:600;margin:0 0 1rem}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:.5rem}
+footer a{color:var(--ink);text-decoration:none;font-size:.92rem}
+footer a:hover{color:var(--rust)}
+.disclaimer{
+  margin-top:2rem;padding:1.4rem;border-radius:var(--radius-sm);
+  background:var(--sand);border:1px solid var(--hairline);
+  font-size:.82rem;color:var(--ink-soft);line-height:1.55;
+}
+.disclaimer strong{color:var(--ink);font-weight:600}
+
+/* ====================================================
+   Reduced-motion fallback
+   ==================================================== */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+  .reveal{opacity:1;transform:none}
+  .bottle-wrap,.gummy,.stage-orb,.stage-ring,.marquee{animation:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================== INTRO MOTION GRAPHICS =========================== -->
+<div id="nf-intro" role="dialog" aria-label="NutraFiber introduction" aria-modal="true">
+  <button id="nf-intro-skip" type="button" aria-label="Skip introduction">Skip <span aria-hidden="true">&rarr;</span></button>
+
+  <!-- progress bar -->
+  <div class="nf-intro-progress" aria-hidden="true"><span></span></div>
+
+  <!-- ambient backdrop -->
+  <div class="nf-intro-bg" aria-hidden="true">
+    <div class="nf-intro-glow nf-intro-glow-a"></div>
+    <div class="nf-intro-glow nf-intro-glow-b"></div>
+    <div class="nf-intro-glow nf-intro-glow-c"></div>
+    <div class="nf-intro-grain"></div>
+  </div>
+
+  <!-- stage -->
+  <div class="nf-intro-stage" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="nfGummy" cx="50%" cy="42%" r="60%">
+          <stop offset="0%" stop-color="#FFD7B8"/>
+          <stop offset="55%" stop-color="#ED8657"/>
+          <stop offset="100%" stop-color="#A64027"/>
+        </radialGradient>
+        <radialGradient id="nfGummyHi" cx="38%" cy="32%" r="22%">
+          <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".95"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="nfFlow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ED8657" stop-opacity="0"/>
+          <stop offset="35%" stop-color="#ED8657"/>
+          <stop offset="65%" stop-color="#E0B370"/>
+          <stop offset="100%" stop-color="#E0B370" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="nfMicro" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8E9C7E" stop-opacity=".9"/>
+          <stop offset="60%" stop-color="#8E9C7E" stop-opacity=".25"/>
+          <stop offset="100%" stop-color="#8E9C7E" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="nfSoft" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2.4"/>
+        </filter>
+        <filter id="nfGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10"/>
+        </filter>
+        <!-- the gut / intestine path (also used by fiber stream) -->
+        <path id="nfGutPath" d="M 220 410
+                                C 320 330, 430 330, 470 420
+                                C 510 510, 410 560, 470 630
+                                C 530 700, 720 700, 780 620
+                                C 840 540, 740 480, 800 410
+                                C 860 340, 980 360, 980 430" />
+      </defs>
+
+      <!-- Scene 1: the gummy -->
+      <g class="nf-scene nf-scene-gummy">
+        <circle cx="600" cy="400" r="160" fill="url(#nfGummy)"/>
+        <circle cx="600" cy="400" r="160" fill="url(#nfGummyHi)"/>
+        <circle cx="600" cy="400" r="160" fill="none" stroke="#FFE5D0" stroke-opacity=".35" stroke-width="1.2"/>
+        <!-- dissolve sparkles -->
+        <g class="nf-sparks">
+          <circle cx="540" cy="320" r="3" fill="#FFE5D0"/>
+          <circle cx="670" cy="345" r="2.4" fill="#FFE5D0"/>
+          <circle cx="700" cy="420" r="2.8" fill="#FFD7B8"/>
+          <circle cx="510" cy="470" r="2" fill="#FFD7B8"/>
+          <circle cx="620" cy="500" r="3" fill="#FFE5D0"/>
+        </g>
+      </g>
+
+      <!-- Scene 2: fiber strands forming the gut path -->
+      <g class="nf-scene nf-scene-fiber">
+        <use href="#nfGutPath" fill="none" stroke="rgba(237,134,87,.18)" stroke-width="36" stroke-linecap="round"/>
+        <use href="#nfGutPath" class="nf-gut-trace" fill="none" stroke="url(#nfFlow)" stroke-width="6" stroke-linecap="round"/>
+        <use href="#nfGutPath" class="nf-gut-trace nf-gut-trace-2" fill="none" stroke="#FFE5D0" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+        <!-- flow particles riding the path -->
+        <g class="nf-flow-dots">
+          <circle r="5" fill="#ED8657"><animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto"><mpath href="#nfGutPath"/></animateMotion></circle>
+          <circle r="3.5" fill="#E0B370"><animateMotion dur="2.4s" begin="-0.6s" repeatCount="indefinite" rotate="auto"><mpath href="#nfGutPath"/></animateMotion></circle>
+          <circle r="4" fill="#FFE5D0"><animateMotion dur="2.4s" begin="-1.2s" repeatCount="indefinite" rotate="auto"><mpath href="#nfGutPath"/></animateMotion></circle>
+          <circle r="3" fill="#ED8657"><animateMotion dur="2.4s" begin="-1.8s" repeatCount="indefinite" rotate="auto"><mpath href="#nfGutPath"/></animateMotion></circle>
+        </g>
+      </g>
+
+      <!-- Scene 3: microbiome bloom + checkmark -->
+      <g class="nf-scene nf-scene-bloom">
+        <circle cx="600" cy="420" r="240" fill="url(#nfMicro)" filter="url(#nfGlow)"/>
+        <g class="nf-microbes">
+          <circle cx="470" cy="340" r="6" fill="#8E9C7E"/>
+          <circle cx="730" cy="350" r="5" fill="#E0B370"/>
+          <circle cx="510" cy="500" r="7" fill="#ED8657"/>
+          <circle cx="700" cy="510" r="5.5" fill="#8E9C7E"/>
+          <circle cx="600" cy="300" r="4" fill="#E0B370"/>
+          <circle cx="600" cy="540" r="6" fill="#ED8657"/>
+          <circle cx="420" cy="430" r="4.5" fill="#E0B370"/>
+          <circle cx="780" cy="430" r="5" fill="#8E9C7E"/>
+        </g>
+        <!-- effectiveness ring -->
+        <circle class="nf-ring" cx="600" cy="420" r="170" fill="none"
+                stroke="#E0B370" stroke-width="2.5"
+                stroke-dasharray="1068" stroke-dashoffset="1068"
+                transform="rotate(-90 600 420)"/>
+        <!-- checkmark -->
+        <path class="nf-check" d="M 520 425 L 585 490 L 695 360"
+              fill="none" stroke="#FFE5D0" stroke-width="8"
+              stroke-linecap="round" stroke-linejoin="round"
+              stroke-dasharray="260" stroke-dashoffset="260"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- typographic narration -->
+  <div class="nf-intro-words">
+    <div class="nf-line nf-line-1"><span>Pectin.</span></div>
+    <div class="nf-line nf-line-2"><span>Soluble fiber, dissolving on contact.</span></div>
+    <div class="nf-line nf-line-3"><span>Flowing through the gut&hellip;</span></div>
+    <div class="nf-line nf-line-4"><span>Feeding the microbiome.</span></div>
+  </div>
+
+  <!-- brand reveal -->
+  <div class="nf-intro-brand">
+    <div class="nf-brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="36" fill="none" stroke="#ED8657" stroke-width="1.5" opacity=".55"/>
+        <text x="40" y="52" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="38" fill="#FFE5D0">N</text>
+      </svg>
+    </div>
+    <h1 class="nf-brand-name">NutraFiber<sup>&reg;</sup></h1>
+    <p class="nf-brand-tag"><em>Fiber that flows.</em></p>
+  </div>
+</div>
+
+<style>
+/* =========================== INTRO STYLES =========================== */
+#nf-intro{
+  position:fixed; inset:0; z-index:9999;
+  background:radial-gradient(140% 100% at 50% 40%, #1a0d09 0%, #0a0504 70%, #050201 100%);
+  color:#FFE5D0;
+  overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  font-family:"Manrope","Helvetica Neue",system-ui,sans-serif;
+  animation: nfIntroOut .9s cubic-bezier(.7,0,.3,1) 6.6s forwards;
+}
+@keyframes nfIntroOut{
+  to{ opacity:0; visibility:hidden; pointer-events:none; transform:scale(1.04); filter:blur(8px); }
+}
+#nf-intro.nf-skip{ animation: nfIntroOut .45s ease forwards; }
+
+#nf-intro-skip{
+  position:absolute; top:24px; right:28px; z-index:5;
+  background:rgba(255,229,208,.08);
+  border:1px solid rgba(255,229,208,.22);
+  color:#FFE5D0;
+  font:500 12px/1 "Manrope",sans-serif;
+  letter-spacing:.14em; text-transform:uppercase;
+  padding:10px 18px; border-radius:999px;
+  cursor:pointer; backdrop-filter:blur(8px);
+  transition:background .25s ease, border-color .25s ease, transform .25s ease;
+  opacity:0; animation:nfFadeIn .6s ease .6s forwards;
+}
+#nf-intro-skip:hover{ background:rgba(237,134,87,.22); border-color:rgba(237,134,87,.55); transform:translateX(2px); }
+#nf-intro-skip .arr{ display:inline-block; margin-left:6px; transition:transform .25s ease; }
+#nf-intro-skip:hover .arr{ transform:translateX(3px); }
+
+.nf-intro-progress{
+  position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:rgba(255,229,208,.08); z-index:5;
+}
+.nf-intro-progress > span{
+  display:block; height:100%; width:0;
+  background:linear-gradient(90deg,#ED8657,#E0B370,#FFE5D0);
+  animation:nfProgress 6.5s linear forwards;
+}
+@keyframes nfProgress{ to{ width:100%; } }
+
+/* ambient backdrop */
+.nf-intro-bg{ position:absolute; inset:0; z-index:0; }
+.nf-intro-glow{
+  position:absolute; border-radius:50%; filter:blur(80px); opacity:.45; mix-blend-mode:screen;
+}
+.nf-intro-glow-a{ width:60vmax; height:60vmax; top:-15vmax; left:-15vmax; background:#ED8657; animation:nfDrift 18s ease-in-out infinite alternate;}
+.nf-intro-glow-b{ width:50vmax; height:50vmax; bottom:-15vmax; right:-10vmax; background:#A64027; animation:nfDrift 22s ease-in-out -6s infinite alternate;}
+.nf-intro-glow-c{ width:40vmax; height:40vmax; top:30%; left:55%; background:#E0B370; opacity:.28; animation:nfDrift 16s ease-in-out -3s infinite alternate;}
+@keyframes nfDrift{
+  0%{ transform:translate(0,0) scale(1);}
+  100%{ transform:translate(6vmax,-4vmax) scale(1.15);}
+}
+.nf-intro-grain{
+  position:absolute; inset:0; opacity:.18; mix-blend-mode:overlay; pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .82  0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* stage */
+.nf-intro-stage{
+  position:absolute; inset:0; z-index:1;
+  display:flex; align-items:center; justify-content:center;
+}
+.nf-intro-stage svg{ width:min(92vw, 1100px); height:auto; max-height:78vh; }
+
+.nf-scene{ opacity:0; transform-origin:600px 420px; }
+.nf-scene-gummy{ animation: nfGummyIn .9s cubic-bezier(.2,.9,.3,1) .1s forwards, nfGummyOut .8s ease 1.6s forwards; transform-box:fill-box; }
+@keyframes nfGummyIn{
+  0%  { opacity:0; transform:scale(.55) translateY(40px); filter:blur(14px); }
+  60% { opacity:1; transform:scale(1.06) translateY(0);   filter:blur(0); }
+  100%{ opacity:1; transform:scale(1) translateY(0);      filter:blur(0); }
+}
+@keyframes nfGummyOut{
+  0%  { opacity:1; transform:scale(1); filter:blur(0); }
+  100%{ opacity:0; transform:scale(1.6); filter:blur(22px); }
+}
+.nf-sparks circle{ opacity:0; animation:nfSpark 1.4s ease 1.2s forwards; }
+.nf-sparks circle:nth-child(2){ animation-delay:1.3s }
+.nf-sparks circle:nth-child(3){ animation-delay:1.4s }
+.nf-sparks circle:nth-child(4){ animation-delay:1.5s }
+.nf-sparks circle:nth-child(5){ animation-delay:1.6s }
+@keyframes nfSpark{
+  0%  { opacity:0; transform:translateY(0) scale(.5); }
+  40% { opacity:1; }
+  100%{ opacity:0; transform:translateY(-60px) scale(.2); }
+}
+
+/* fiber scene */
+.nf-scene-fiber{ animation: nfFade 0.8s ease 2.2s forwards, nfFadeOut 0.7s ease 4.1s forwards; }
+@keyframes nfFade{ to{ opacity:1; } }
+@keyframes nfFadeOut{ to{ opacity:0; } }
+.nf-gut-trace{
+  stroke-dasharray:1400; stroke-dashoffset:1400;
+  animation: nfDraw 1.8s cubic-bezier(.65,.05,.36,1) 2.3s forwards;
+}
+.nf-gut-trace-2{
+  stroke-dasharray:1400; stroke-dashoffset:1400;
+  animation: nfDraw 1.9s cubic-bezier(.65,.05,.36,1) 2.5s forwards;
+}
+@keyframes nfDraw{ to{ stroke-dashoffset:0; } }
+.nf-flow-dots circle{ opacity:0; animation:nfFade .4s ease 2.9s forwards; }
+
+/* bloom scene */
+.nf-scene-bloom{ animation: nfFade 0.8s ease 4.3s forwards; }
+.nf-microbes circle{
+  transform-origin:600px 420px;
+  animation: nfPop .9s cubic-bezier(.2,.9,.3,1) 4.5s backwards;
+}
+.nf-microbes circle:nth-child(1){ animation-delay:4.50s }
+.nf-microbes circle:nth-child(2){ animation-delay:4.58s }
+.nf-microbes circle:nth-child(3){ animation-delay:4.66s }
+.nf-microbes circle:nth-child(4){ animation-delay:4.74s }
+.nf-microbes circle:nth-child(5){ animation-delay:4.82s }
+.nf-microbes circle:nth-child(6){ animation-delay:4.90s }
+.nf-microbes circle:nth-child(7){ animation-delay:4.98s }
+.nf-microbes circle:nth-child(8){ animation-delay:5.06s }
+@keyframes nfPop{
+  0%  { opacity:0; transform:scale(.2); }
+  60% { opacity:1; transform:scale(1.2); }
+  100%{ opacity:1; transform:scale(1); }
+}
+.nf-ring{ animation: nfRing 1.4s cubic-bezier(.65,.05,.36,1) 5.0s forwards; }
+@keyframes nfRing{ to{ stroke-dashoffset:0; } }
+.nf-check{ animation: nfRing 0.7s cubic-bezier(.65,.05,.36,1) 5.7s forwards; }
+
+/* narration */
+.nf-intro-words{
+  position:absolute; left:0; right:0; bottom:18%; z-index:3;
+  text-align:center; padding:0 6vw; pointer-events:none;
+}
+.nf-line{
+  position:absolute; left:0; right:0; padding:0 6vw;
+  font-family:"Instrument Serif", Georgia, serif;
+  font-size:clamp(22px, 3vw, 38px);
+  font-weight:400; letter-spacing:.01em; color:#FFE5D0;
+  opacity:0;
+}
+.nf-line span{ display:inline-block; opacity:0; transform:translateY(20px); }
+.nf-line-1 span{ animation: nfLineIn .7s cubic-bezier(.2,.9,.3,1) .8s forwards, nfLineOut .5s ease 1.9s forwards; }
+.nf-line-2 span{ animation: nfLineIn .7s cubic-bezier(.2,.9,.3,1) 2.2s forwards, nfLineOut .5s ease 3.9s forwards; }
+.nf-line-3 span{ animation: nfLineIn .7s cubic-bezier(.2,.9,.3,1) 3.2s forwards, nfLineOut .5s ease 4.3s forwards; font-style:italic; color:#E0B370; }
+.nf-line-4 span{ animation: nfLineIn .7s cubic-bezier(.2,.9,.3,1) 4.6s forwards, nfLineOut .5s ease 6.2s forwards; }
+.nf-line-1, .nf-line-2, .nf-line-3, .nf-line-4{ opacity:1; }
+@keyframes nfLineIn{ to{ opacity:1; transform:translateY(0); } }
+@keyframes nfLineOut{ to{ opacity:0; transform:translateY(-12px); } }
+
+/* brand reveal */
+.nf-intro-brand{
+  position:absolute; inset:0; z-index:4;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  pointer-events:none; opacity:0;
+  animation: nfBrandIn 1.1s cubic-bezier(.2,.9,.3,1) 5.6s forwards;
+}
+@keyframes nfBrandIn{
+  0%  { opacity:0; transform:translateY(20px) scale(.96); filter:blur(8px); }
+  100%{ opacity:1; transform:translateY(0)    scale(1);   filter:blur(0); }
+}
+.nf-brand-mark{ width:64px; height:64px; margin-bottom:18px; }
+.nf-brand-name{
+  font-family:"Instrument Serif", Georgia, serif;
+  font-weight:400; font-size:clamp(48px, 7vw, 96px);
+  letter-spacing:.005em; color:#FFE5D0; margin:0;
+  text-shadow:0 2px 40px rgba(237,134,87,.35);
+}
+.nf-brand-name sup{ font-size:.28em; vertical-align:super; color:#E0B370; margin-left:6px; }
+.nf-brand-tag{
+  font-family:"Instrument Serif", Georgia, serif;
+  font-size:clamp(16px, 1.6vw, 22px);
+  color:#E0B370; margin:8px 0 0; letter-spacing:.04em;
+}
+
+@keyframes nfFadeIn{ to{ opacity:1; } }
+
+/* lock body scroll while intro is on */
+body.nf-intro-on{ overflow:hidden; }
+
+/* reduced motion: short, gentle */
+@media (prefers-reduced-motion: reduce){
+  #nf-intro{ animation: nfIntroOut .5s ease 1.8s forwards; }
+  .nf-intro-progress > span{ animation-duration:1.8s; }
+  .nf-scene, .nf-scene *, .nf-intro-glow, .nf-line span, .nf-intro-brand{
+    animation-duration:.4s !important; animation-delay:0s !important;
+  }
+  .nf-intro-brand{ opacity:1; animation:none; }
+  .nf-scene-gummy, .nf-scene-fiber, .nf-scene-bloom{ opacity:0; }
+}
+
+/* mobile tightening */
+@media (max-width: 640px){
+  .nf-intro-words{ bottom:22%; }
+  .nf-intro-stage svg{ max-height:60vh; }
+  #nf-intro-skip{ top:16px; right:16px; padding:8px 14px; }
+}
+</style>
+
+<script>
+(function(){
+  var intro = document.getElementById('nf-intro');
+  if(!intro) return;
+  // Show once per session
+  try {
+    if (sessionStorage.getItem('nfIntroSeen') === '1'){
+      intro.parentNode.removeChild(intro);
+      return;
+    }
+    sessionStorage.setItem('nfIntroSeen','1');
+  } catch(e){}
+
+  document.body.classList.add('nf-intro-on');
+
+  var skip = document.getElementById('nf-intro-skip');
+  function dismiss(){
+    intro.classList.add('nf-skip');
+    setTimeout(function(){
+      if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+      document.body.classList.remove('nf-intro-on');
+    }, 500);
+  }
+  skip.addEventListener('click', dismiss);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' || e.key === 'Enter') dismiss();
+  }, { once:true });
+
+  // Auto-remove after the full sequence (matches CSS 6.6s + 0.9s fade)
+  setTimeout(function(){
+    if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+    document.body.classList.remove('nf-intro-on');
+  }, 7700);
+})();
+</script>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- =========================== NAV =========================== -->
+<header class="nav" role="banner">
+  <a href="#" class="brand" aria-label="NutraFiber home">
+    <span class="brand-mark" aria-hidden="true">N</span>
+    <span>NutraFiber</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#science">Science</a>
+    <a href="#product">Product</a>
+    <a href="#evidence">Evidence</a>
+    <a href="#compare">Compare</a>
+    <a href="#consumer">Consumer</a>
+  </nav>
+  <nav class="nav-links cta-only" aria-label="Actions">
+    <a class="cta-btn" href="#contact">Request a sample <span class="arr" aria-hidden="true">&rarr;</span></a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- =========================== HERO =========================== -->
+<section class="hero wrap" aria-label="NutraFiber Healthy Pectin Gummy hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Clinically informed prebiotic fiber - 2026</span>
+    <h1 class="display">
+      <span class="word"><span>Re-routing</span></span>
+      <span class="word"><span>the modern</span></span><br>
+      <span class="word"><span class="shine">gut, gently.</span></span>
+    </h1>
+    <p class="lead">
+      <strong>NutraFiber Healthy Pectin Gummy</strong> is a vegan, halal and GMP-manufactured soluble-fiber gummy designed for the consumer who has graduated from gritty psyllium and gas-inducing inulin. Pectin is a slow-fermenting prebiotic that feeds the microbiome instead of irritating it.
+    </p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a class="cta-btn" href="#science">Explore the science <span class="arr" aria-hidden="true">&rarr;</span></a>
+      <a class="cta-btn ghost" href="#contact">B2B partnership</a>
+    </div>
+
+    <div class="hero-meta" role="list">
+      <div class="stat" role="listitem"><span class="num" data-count="60">60</span><span class="lbl">Pectin gummies / bottle</span></div>
+      <div class="stat" role="listitem"><span class="num">240<small style="font-size:1rem;font-weight:400;color:var(--ink-soft)">g</small></span><span class="lbl">Net weight</span></div>
+      <div class="stat" role="listitem"><span class="num">3</span><span class="lbl">Tier-1 certifications</span></div>
+    </div>
+  </div>
+
+  <canvas class="gummy-canvas" id="gummyCanvas" aria-hidden="true"></canvas>
+  <div class="hero-stage" aria-hidden="false">
+    <div class="bottle-glow" aria-hidden="true"></div>
+    <div class="bottle-wrap">
+      <img src="nutrafiber-bottle.png" alt="NutraFiber Healthy Pectin Gummy bottle. Clear plastic jar filled with red and orange gummy bears, white cap with NutraFiber logo, and an orange and yellow label showing GMP, Halal and Vegan certifications. 60 gummies, net weight 240 grams.">
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST MARQUEE ===================== -->
+<div class="wrap">
+  <div class="trust-strip" aria-label="Brand attributes">
+    <div class="marquee">
+      <span><span class="dot"></span> GMP Manufactured</span>
+      <span><span class="dot"></span> 100% Vegan Pectin</span>
+      <span><span class="dot"></span> Halal Certified</span>
+      <span><span class="dot"></span> Non-GMO Pledge</span>
+      <span><span class="dot"></span> Gluten Free</span>
+      <span><span class="dot"></span> Gelatin Free</span>
+      <span><span class="dot"></span> Low FODMAP Friendly Format</span>
+      <!-- duplicate for seamless loop -->
+      <span aria-hidden="true"><span class="dot"></span> GMP Manufactured</span>
+      <span aria-hidden="true"><span class="dot"></span> 100% Vegan Pectin</span>
+      <span aria-hidden="true"><span class="dot"></span> Halal Certified</span>
+      <span aria-hidden="true"><span class="dot"></span> Non-GMO Pledge</span>
+      <span aria-hidden="true"><span class="dot"></span> Gluten Free</span>
+      <span aria-hidden="true"><span class="dot"></span> Gelatin Free</span>
+      <span aria-hidden="true"><span class="dot"></span> Low FODMAP Friendly Format</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== THE FIBER GAP HOOK ===================== -->
+<section class="section" aria-labelledby="gap-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">The hook - public health context</span>
+        <h2 id="gap-h">The fiber gap is the largest unaddressed nutrient deficit in modern retail.</h2>
+      </div>
+      <p>
+        A 2025 Frontiers in Nutrition analysis confirmed the deficit reported across a decade of NHANES data: the overwhelming majority of adults consume well below the daily fiber intake recommended by every major nutrition body. The result is not just constipation - it is metabolic, immunological and microbiome under-performance.
+      </p>
+    </div>
+
+    <div class="gap-canvas reveal" role="figure" aria-label="97 percent of adult men and 90 percent of adult women fail to meet daily fiber recommendations">
+      <div class="gap-stat" aria-hidden="true"><span class="counter" data-to="97">0</span><sup>%</sup></div>
+      <p class="gap-sub">of adult men and <em class="kw">90% of adult women</em> fail to meet the recommended daily fiber intake of <strong>30-38 g (men)</strong> and <strong>21-28 g (women)</strong>. The deficit correlates directly with rising obesity, type 2 diabetes, cardiovascular disease and colorectal cancer.</p>
+
+      <div class="gap-mini">
+        <div class="m"><b>$10.43B</b> 2025 fiber-supplement market</div>
+        <div class="m"><b>$18.01B</b> 2034 forecast</div>
+        <div class="m"><b>8.21%</b> CAGR through 2034</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GLP-1 SECTION ===================== -->
+<section class="section" aria-labelledby="glp-h">
+  <div class="wrap">
+    <div class="glp reveal">
+      <div>
+        <span class="badge">The GLP-1 disruption</span>
+        <h2 id="glp-h" class="big">A new consumer is walking into your <span class="shine">pharmacy</span>.</h2>
+        <p>
+          Semaglutide and tirzepatide users consume roughly <strong>20% fewer calories per day</strong>, slow gastric emptying dramatically and frequently report severe constipation, bloating and B-complex deficits. They are <strong>68% more likely to use dietary supplements</strong> and <strong>49% more likely to actively seek high-fiber, whole-grain products</strong> than non-users.
+        </p>
+        <p>
+          A pectin-based, slow-fermenting gummy is one of the most tolerable formats for a GI tract that is already operating at half-speed. NutraFiber positions naturally as a <em class="kw">companion product</em> in the fastest-growing adjacent category in modern retail nutrition.
+        </p>
+
+        <div class="glp-stats">
+          <div class="gs"><b>+124%</b><span>5-year CAGR for nutrition products with GLP-1 claims (Innova)</span></div>
+          <div class="gs"><b>83%</b><span>of that growth originates in North America</span></div>
+          <div class="gs"><b>1.6&times;</b><span>more likely to use wearable health technology</span></div>
+          <div class="gs"><b>$150B</b><span>projected GLP-1 pharmaceutical market by 2030</span></div>
+        </div>
+      </div>
+
+      <div class="glp-illus" aria-hidden="true">
+        <!-- Animated metabolic loop SVG -->
+        <svg viewBox="0 0 400 400" style="width:100%;max-width:420px">
+          <defs>
+            <linearGradient id="gradLoop" x1="0" x2="1">
+              <stop offset="0" stop-color="#6E7F5B"/>
+              <stop offset=".5" stop-color="#C25A2C"/>
+              <stop offset="1" stop-color="#F0843A"/>
+            </linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="4"/></filter>
+          </defs>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(91,36,16,.15)" stroke-width="1" stroke-dasharray="3 6"/>
+          <circle cx="200" cy="200" r="120" fill="none" stroke="url(#gradLoop)" stroke-width="2.5" stroke-linecap="round"
+                  stroke-dasharray="540 760" transform="rotate(-90 200 200)">
+            <animateTransform attributeName="transform" type="rotate" from="-90 200 200" to="270 200 200" dur="14s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Center labels -->
+          <text x="200" y="190" text-anchor="middle" font-family="Fraunces,serif" font-size="38" fill="#5B2410" font-weight="500">GLP-1</text>
+          <text x="200" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#8E3A1A" letter-spacing="3">COMPANION LOOP</text>
+          <!-- Orbiting dots -->
+          <g>
+            <circle r="8" fill="#C25A2C" filter="url(#glow)">
+              <animateMotion dur="14s" repeatCount="indefinite"
+                path="M 320 200 a 120 120 0 1 1 -240 0 a 120 120 0 1 1 240 0"/>
+            </circle>
+          </g>
+          <g>
+            <circle r="6" fill="#6E7F5B" filter="url(#glow)">
+              <animateMotion dur="20s" repeatCount="indefinite"
+                path="M 80 200 a 120 120 0 1 0 240 0 a 120 120 0 1 0 -240 0"/>
+            </circle>
+          </g>
+          <!-- node tags -->
+          <g font-family="Inter,sans-serif" font-size="10" fill="#5C4A38" letter-spacing="2">
+            <text x="200" y="40" text-anchor="middle">SATIETY</text>
+            <text x="370" y="205" text-anchor="end">SLOWED EMPTYING</text>
+            <text x="200" y="380" text-anchor="middle">NUTRIENT GAPS</text>
+            <text x="30"  y="205">FIBER COMPANION</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCT SHOWCASE ===================== -->
+<section class="section alt" id="product" aria-labelledby="prod-h">
+  <div class="wrap product">
+    <div class="prod-visual reveal">
+      <img src="nutrafiber-bottle.png" alt="NutraFiber bottle, second view, label visible" onerror="this.style.display='none'">
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">The product</span>
+      <h2 id="prod-h">Healthy Pectin Gummy. <br><span class="shine">Engineered for tolerability.</span></h2>
+      <p class="lead">
+        Pectin is a soluble, fermentable fiber drawn from the cell walls of fruit. It hydrates into a gentle gel, slows glucose absorption and is fermented gradually by colonic bacteria into short-chain fatty acids - the same metabolites that fuel the cells lining the gut wall.
+      </p>
+
+      <div class="prod-features">
+        <div class="feat">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg></div>
+          <div>
+            <h4>Slow, balanced fermentation</h4>
+            <p>Produces SCFAs gradually, drastically reducing the bloating and flatulence common with rapidly fermenting inulin formulations.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div>
+            <h4>Gelatin-free, 100% vegan</h4>
+            <p>Plant-pectin matrix. No bovine or porcine gelatin. Halal-certified manufacturing pipeline expands the addressable market by hundreds of millions of consumers.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6l9-4z"/></svg></div>
+          <div>
+            <h4>GMP-manufactured</h4>
+            <p>Produced under Good Manufacturing Practice with batch-level traceability, third-party microbiological screening and stability data.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+          <div>
+            <h4>Sensory superiority</h4>
+            <p>Naturally fruit-flavoured chewable format - a categorical advantage over gritty psyllium powders that drive consumer abandonment.</p>
+          </div>
+        </div>
+      </div>
+
+      <a class="cta-btn" href="#evidence" style="margin-top:1.5rem">See the clinical evidence <span class="arr" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SCIENCE - FIBER DICHOTOMY ===================== -->
+<section class="section" id="science" aria-labelledby="sci-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Biochemical differentiation</span>
+        <h2 id="sci-h">Not all fibers do the same job.</h2>
+      </div>
+      <p>The procurement-grade question is no longer <em class="kw">"is it fiber"</em> - it is <em class="kw">"how does it ferment, what does it feed and how does it feel."</em> Two physiologically distinct categories drive everything that follows.</p>
+    </div>
+
+    <div class="split">
+      <div class="split-card reveal">
+        <span class="pill">Insoluble &middot; Mechanical bulking</span>
+        <h3>Wheat bran &middot; crude psyllium &middot; flaxseed</h3>
+        <p>Do not dissolve in water. Act as physical bulking agents that hasten transit and relieve basic constipation - but frequently irritate the gut mucosa, drive water and mucus secretion, and produce a gritty sensory profile that consumers abandon.</p>
+        <ul>
+          <li>Mechanical irritation can drive cramping</li>
+          <li>Limited microbiome benefit - poor fermentability</li>
+          <li>High formulation friction in beverages and gummies</li>
+          <li>Often associated with shelf-fragmenting return rates</li>
+        </ul>
+      </div>
+
+      <div class="split-card feature reveal">
+        <span class="pill">Soluble &middot; Prebiotic - the NutraFiber category</span>
+        <h3>Pectin &middot; PHGG &middot; partially hydrolyzed soluble fibers</h3>
+        <p>Dissolve in water and form a gel. Highly fermentable by the host microbiome. Produce short-chain fatty acids (butyrate, propionate, acetate) that fuel colonocytes, regulate blood-glucose excursions and lower systemic inflammation.</p>
+        <ul>
+          <li>Slow, controlled fermentation - gentle on the gut</li>
+          <li>Selectively feeds beneficial flora (prebiotic action)</li>
+          <li>Compatible with gummy and chewable formats</li>
+          <li>Supports the gut-brain and gut-skin axes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLINICAL EVIDENCE - COMPACT STRIP ===================== -->
+<section class="section compact alt" id="evidence" aria-labelledby="ev-h">
+  <div class="wrap">
+    <div class="ev-head reveal">
+      <span class="eyebrow">Category-level scientific literature</span>
+      <h2 id="ev-h" style="font-size:clamp(1.4rem,2.6vw,2rem);margin:0">What the soluble-fiber literature shows &mdash; <span class="shine">at a glance.</span></h2>
+    </div>
+    <div class="ev-strip" role="list">
+      <div class="ev-chip reveal" role="listitem">
+        <span class="ev-tag">Microbiome</span>
+        <p><b>+ <em class="kw">Akkermansia muciniphila</em></b>, &minus; <em class="kw">Sutterella</em>, at low daily doses of partially hydrolyzed soluble fiber.</p>
+        <cite>U. of Minnesota, 2024</cite>
+      </div>
+      <div class="ev-chip reveal" role="listitem">
+        <span class="ev-tag">Skin</span>
+        <p>Improved skin viscoelasticity, hydration and reduced trans-epidermal water loss with prebiotic PHGG intervention.</p>
+        <cite>J. Clin. Biochem. Nutr., 2024</cite>
+      </div>
+      <div class="ev-chip reveal" role="listitem">
+        <span class="ev-tag">Metabolic</span>
+        <p>Attenuates NAFLD via gut-liver axis, improves glucose intolerance, reduces salivary cortisol in elderly subjects.</p>
+        <cite>Peer-reviewed reviews</cite>
+      </div>
+      <div class="ev-chip reveal" role="listitem">
+        <span class="ev-tag">Immune</span>
+        <p>Reduces cold-like and influenza symptom severity; SCFA-driven inflammasome activation against pathogens.</p>
+        <cite>Gut-immune axis literature</cite>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.ev-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1.5rem;margin-bottom:1.2rem}
+.ev-head .eyebrow{margin-bottom:0}
+.ev-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;
+}
+@media(max-width:880px){.ev-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.ev-strip{grid-template-columns:1fr}}
+.ev-chip{
+  background:#fff;border:1px solid var(--hairline);
+  border-radius:var(--radius-sm);padding:1rem 1.1rem;
+  position:relative;overflow:hidden;
+  transition:transform .35s var(--ease-out), border-color .35s var(--ease-out);
+}
+.ev-chip:hover{transform:translateY(-3px);border-color:rgba(217,97,58,.45)}
+.ev-chip::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg, var(--terracotta), var(--gold));
+}
+.ev-tag{
+  display:inline-block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--rust);margin-bottom:.4rem;
+}
+.ev-chip p{font-size:.82rem;line-height:1.5;margin:0 0 .55rem;color:var(--ink)}
+.ev-chip cite{font-style:normal;font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em}
+</style>
+
+<!-- ===================== COMPARISON TABLE ===================== -->
+<section class="section" id="compare" aria-labelledby="cmp-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">The competitive landscape</span>
+        <h2 id="cmp-h">Where NutraFiber sits on the shelf.</h2>
+      </div>
+      <p>For a procurement team, the strategic question is which fiber chemistry justifies premium pricing while protecting against return rates and brand-abandonment risk.</p>
+    </div>
+
+    <div class="cmp reveal">
+      <table>
+        <caption class="sr">Comparison of dietary-fiber ingredients on mechanism, sensory and commercial dimensions</caption>
+        <thead>
+          <tr>
+            <th scope="col">Ingredient</th>
+            <th scope="col">Mechanism</th>
+            <th scope="col">Sensory &amp; tolerability</th>
+            <th scope="col">Commercial implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Psyllium husk</strong></td>
+            <td><span class="tag warn">Bulking</span> Insoluble / soluble bulking agent</td>
+            <td>Effective for laxation; gritty mouthfeel; choking risk if poorly hydrated</td>
+            <td>Low cost, legacy recognition. High sensory friction.</td>
+          </tr>
+          <tr>
+            <td><strong>Inulin (chicory root)</strong></td>
+            <td><span class="tag bad">Rapid ferment</span> Fast-fermenting soluble prebiotic</td>
+            <td>Excellent gummy compatibility but high gas / bloating risk in sensitive consumers</td>
+            <td>Brand-abandonment risk in IBS / FODMAP-sensitive demographics.</td>
+          </tr>
+          <tr class="hi">
+            <td><strong>NutraFiber pectin</strong></td>
+            <td><span class="tag good">Slow ferment</span> Soluble, gelling, prebiotic</td>
+            <td>Naturally palatable chewable format; gentle GI profile; vegan / halal / gelatin-free</td>
+            <td>Premium positioning; broad halal / vegan reach; lower return-rate risk.</td>
+          </tr>
+          <tr>
+            <td><strong>PHGG (Sunfiber-class)</strong></td>
+            <td><span class="tag good">Slow ferment</span> Soluble, low-viscosity prebiotic</td>
+            <td>Tasteless, invisible in liquids; clinically Low-FODMAP certified</td>
+            <td>Apex of soluble prebiotic chemistry; powder-format leader.</td>
+          </tr>
+          <tr>
+            <td><strong>OTC chemical laxatives</strong></td>
+            <td><span class="tag bad">Symptomatic</span> Osmotic / stimulant action</td>
+            <td>Risk of dependence, dehydration, electrolyte imbalance</td>
+            <td>Treats symptoms, not microbiome. Declining category share.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PREGNANCY + B-COMPLEX RELEVANCE ===================== -->
+<section class="section" id="pregnancy" aria-labelledby="preg-h" style="padding-bottom:1.2rem">
+  <div class="wrap">
+    <div class="section-head reveal tight">
+      <div>
+        <span class="eyebrow">Special-population literature</span>
+        <h2 id="preg-h">Pregnancy &amp; the <span class="shine">B-complex</span> conversation.</h2>
+      </div>
+      <p>Two of the most clinically scrutinized contexts for soluble fiber in 2026: pregnancy-related constipation and the rising B-complex deficit observed in modern dietary patterns. This section summarizes the peer-reviewed category literature - it is not a treatment recommendation. Pregnant individuals must consult their obstetric provider before starting any supplement.</p>
+    </div>
+
+    <div class="preg-grid">
+
+      <!-- LEFT: Pregnancy and pectin -->
+      <article class="preg-card reveal">
+        <div class="preg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c-2 0-4 1.5-4 4v3c0 1 .5 2 1 3 1 1 1 3 0 5-1 1.5-1 3 1 3h4c2 0 2-1.5 1-3-1-2-1-4 0-5 .5-1 1-2 1-3V7c0-2.5-2-4-4-4z"/>
+            <circle cx="12" cy="8" r="1.2"/>
+          </svg>
+        </div>
+        <span class="preg-tag">Soluble fiber in pregnancy</span>
+        <h3>The most common gastrointestinal complaint of pregnancy.</h3>
+        <p>Pregnancy-related constipation affects an estimated <b>16-39% of women</b> across the three trimesters, driven by elevated progesterone (slowing intestinal motility), mechanical compression of the colon by the gravid uterus, and the high iron load of standard prenatal regimens.</p>
+
+        <ul class="preg-bullets" role="list">
+          <li><b>ACOG &amp; Cochrane:</b> dietary fiber is the consistently recommended first-line intervention before stimulant laxatives.</li>
+          <li><b>Soluble fiber (pectin):</b> hydrates into a gentle gel, improves stool consistency without the cramping associated with insoluble bran, and is fermented gradually so it does not exacerbate first-trimester nausea.</li>
+          <li><b>Prebiotic action:</b> short-chain fatty acid production from soluble-fiber fermentation supports the maternal microbiome - linked in <em class="kw">Frontiers in Cellular and Infection Microbiology</em> reviews to favorable gestational outcomes.</li>
+          <li><b>Glycemic effect:</b> meta-analyses report soluble fiber attenuates post-prandial glucose excursions, with relevance for gestational-diabetes risk reduction.</li>
+        </ul>
+
+        <div class="preg-stat-row">
+          <div><b>~28g</b><span>daily fiber recommended in pregnancy (Institute of Medicine)</span></div>
+          <div><b>&lt;15g</b><span>median actual intake reported in modern obstetric cohorts</span></div>
+        </div>
+      </article>
+
+      <!-- RIGHT: B-complex -->
+      <article class="preg-card reveal">
+        <div class="preg-icon b" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3h6v3l2 2v10c0 2-1 3-3 3H8c-2 0-3-1-3-3V8l2-2V3z"/>
+            <path d="M9 11h6M9 14h6M9 17h4"/>
+          </svg>
+        </div>
+        <span class="preg-tag">B-complex - the silent gap</span>
+        <h3>Why every soluble-fiber consumer eventually asks about B-complex.</h3>
+        <p>B-complex vitamins (B1, B2, B3, B5, B6, B7, B9 and B12) are required for energy metabolism, erythropoiesis, neural-tube development and methylation. Three modern trends are creating compounding deficits in exactly the populations buying soluble fiber.</p>
+
+        <ul class="preg-bullets" role="list">
+          <li><b>Pregnancy:</b> the <em class="kw">USPSTF</em> recommends 400-800 mcg daily folate (B9) <strong>before conception and throughout the first trimester</strong> to reduce neural-tube defects.</li>
+          <li><b>GLP-1 users:</b> Innova Market Insights and clinical reviews describe a marked increase in B12 and B-complex deficiency among long-term semaglutide / tirzepatide users due to reduced intake and altered absorption.</li>
+          <li><b>Plant-based diets:</b> B12 is functionally absent from plant foods - vegan consumers (a primary NutraFiber buyer) are categorically B12-dependent on supplementation or fortification.</li>
+          <li><b>Microbiome dependence:</b> several B vitamins (notably B7, B9 partial) are produced by colonic flora; a healthy soluble-fiber-fed microbiome modestly contributes to endogenous B-vitamin pools.</li>
+        </ul>
+
+        <div class="preg-stat-row">
+          <div><b>1 in 3</b><span>reproductive-age women report sub-optimal B6 / B12 status (NHANES)</span></div>
+          <div><b>+25%</b><span>5-year growth in prenatal B-complex SKU counts (Innova)</span></div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Companion-product strategic note -->
+    <aside class="preg-note reveal" role="note">
+      <div>
+        <span class="preg-tag" style="color:var(--cream)">Companion-product strategy</span>
+        <h3 style="color:var(--cream)">A pectin gummy paired with a B-complex SKU is the logical 2026 retail bundle.</h3>
+        <p>NutraFiber Healthy Pectin Gummy addresses the soluble-fiber side of this equation directly. A B-complex companion SKU (or a co-located prenatal B-complex on the same planogram) closes the second half of the gap - and turns a single-jar purchase into a monthly two-bottle basket. The two products share the same buyer profile, the same channel and the same pharmacist-led recommendation flow.</p>
+      </div>
+    </aside>
+
+    <!-- Pregnancy disclaimer -->
+    <div class="preg-disclaimer reveal" role="note">
+      <strong>Important:</strong> The information above summarizes published category-level scientific literature on soluble fiber and B-complex vitamins in special populations. It is not a medical recommendation. Pregnancy is a medically supervised state - any change to a pregnant individual's nutrition or supplementation must be reviewed and approved by their obstetric provider. NutraFiber is a dietary supplement and has not been evaluated by the FDA for the diagnosis, treatment, cure or prevention of any condition.
+    </div>
+  </div>
+</section>
+
+<style>
+.preg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+@media(max-width:880px){.preg-grid{grid-template-columns:1fr}}
+.preg-card{
+  background:#fff;border:1px solid var(--hairline);
+  border-radius:var(--radius);padding:1.8rem;
+  position:relative;overflow:hidden;
+  transition:transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
+}
+.preg-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.preg-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--terracotta), var(--pulp), var(--gold));
+}
+.preg-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(135deg, var(--pulp), var(--terracotta));
+  color:var(--cream);display:grid;place-items:center;
+  margin-bottom:1rem;
+  box-shadow:0 8px 18px rgba(217,97,58,.35);
+}
+.preg-icon.b{background:linear-gradient(135deg, var(--gold), var(--caramel))}
+.preg-tag{
+  display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--rust);margin-bottom:.5rem;
+}
+.preg-card h3{
+  font-family:"Instrument Serif",serif;font-weight:400;font-size:1.45rem;line-height:1.15;
+  margin:0 0 .8rem;color:var(--ink);letter-spacing:-.01em;
+}
+.preg-card p{font-size:.9rem;line-height:1.55;color:var(--ink-soft);margin:0 0 .9rem}
+.preg-bullets{list-style:none;padding:0;margin:0 0 1.1rem;display:flex;flex-direction:column;gap:.6rem}
+.preg-bullets li{
+  font-size:.85rem;line-height:1.5;color:var(--ink);
+  padding-left:1.4rem;position:relative;
+}
+.preg-bullets li::before{
+  content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;
+  background:var(--terracotta);
+  box-shadow:0 0 0 3px rgba(217,97,58,.18);
+}
+.preg-bullets b{color:var(--rust);font-weight:600}
+.preg-stat-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:.8rem;
+  padding-top:1rem;border-top:1px solid var(--hairline);
+}
+.preg-stat-row > div b{
+  display:block;font-family:"Instrument Serif",serif;font-size:1.6rem;font-weight:400;
+  color:var(--rust);line-height:1;margin-bottom:.3rem;letter-spacing:-.01em;
+}
+.preg-stat-row > div span{font-size:.74rem;color:var(--ink-soft);line-height:1.4;display:block}
+
+.preg-note{
+  margin-top:1.4rem;padding:1.6rem 2rem;border-radius:var(--radius);
+  background:linear-gradient(135deg, var(--rust), var(--burnt));
+  color:var(--cream);position:relative;overflow:hidden;
+}
+.preg-note::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 90% 10%, rgba(237,134,87,.4), transparent 60%);
+  pointer-events:none;
+}
+.preg-note > div{position:relative;z-index:1}
+.preg-note h3{font-size:1.4rem;margin:.2rem 0 .6rem;font-family:"Instrument Serif",serif;font-weight:400}
+.preg-note p{font-size:.9rem;color:rgba(251,246,235,.9);margin:0;max-width:none}
+
+.preg-disclaimer{
+  margin-top:1.2rem;padding:1rem 1.2rem;border-radius:var(--radius-sm);
+  background:var(--blush);border:1px solid var(--hairline);
+  font-size:.78rem;color:var(--ink-soft);line-height:1.55;
+}
+.preg-disclaimer strong{color:var(--rust);font-weight:700}
+</style>
+
+<!-- Target Consumers / personas section deleted on user request -->
+
+<!-- ===================== PRODUCT PORTRAIT (photo-led interlude) ===================== -->
+<section aria-labelledby="portrait-h" style="padding:0 0 2rem">
+  <div class="wrap" style="padding-top:0">
+    <div class="portrait reveal" style="margin-top:0">
+      <div class="portrait-bg" aria-hidden="true">
+        <span class="halo"></span>
+        <span class="halo halo-2"></span>
+      </div>
+      <div class="portrait-copy">
+        <span class="eyebrow" style="color:var(--rust)">The product, in full</span>
+        <h2>A jar that <span class="shine">earns its place</span> on her counter.</h2>
+        <p>Soft on the gut. Sophisticated on the shelf. <em class="kw">60 pectin gummies, 240&thinsp;g net</em> of vegan, halal, GMP-manufactured fiber - in a format she will reach for every morning without thinking twice.</p>
+        <div class="portrait-tags" role="list">
+          <span role="listitem">Vegan pectin</span>
+          <span role="listitem">Halal certified</span>
+          <span role="listitem">GMP manufactured</span>
+          <span role="listitem">Gelatin-free</span>
+          <span role="listitem">Gluten-free</span>
+        </div>
+      </div>
+      <div class="portrait-img" aria-hidden="true">
+
+        <!-- BEAR - back layer (head, ears, body) sits BEHIND the bottle -->
+        <svg class="bear bear-back" viewBox="0 0 480 540" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <radialGradient id="bearFur" cx=".4" cy=".3" r=".85">
+              <stop offset="0" stop-color="#F2C893"/>
+              <stop offset=".55" stop-color="#D9A36A"/>
+              <stop offset="1" stop-color="#9A6638"/>
+            </radialGradient>
+            <radialGradient id="bearTummy" cx=".5" cy=".45" r=".7">
+              <stop offset="0" stop-color="#FAE2BE"/>
+              <stop offset="1" stop-color="#E5C18C"/>
+            </radialGradient>
+            <radialGradient id="bearInnerEar" cx=".5" cy=".5" r=".7">
+              <stop offset="0" stop-color="#F2B89A"/>
+              <stop offset="1" stop-color="#C9806A"/>
+            </radialGradient>
+            <filter id="bearSoft"><feGaussianBlur stdDeviation=".4"/></filter>
+          </defs>
+
+          <!-- Body (large rounded blob behind bottle) -->
+          <ellipse cx="240" cy="370" rx="200" ry="160" fill="url(#bearFur)"/>
+          <!-- Tummy patch -->
+          <ellipse cx="240" cy="400" rx="135" ry="115" fill="url(#bearTummy)" opacity=".95"/>
+
+          <!-- Head -->
+          <circle cx="240" cy="160" r="115" fill="url(#bearFur)"/>
+
+          <!-- Ears -->
+          <circle cx="155" cy="80"  r="40" fill="url(#bearFur)"/>
+          <circle cx="325" cy="80"  r="40" fill="url(#bearFur)"/>
+          <circle cx="155" cy="80"  r="22" fill="url(#bearInnerEar)"/>
+          <circle cx="325" cy="80"  r="22" fill="url(#bearInnerEar)"/>
+
+          <!-- Snout -->
+          <ellipse cx="240" cy="200" rx="48" ry="38" fill="#FAE2BE"/>
+
+          <!-- Nose -->
+          <ellipse cx="240" cy="183" rx="13" ry="10" fill="#3A1F1F"/>
+
+          <!-- Mouth (a small smile under nose) -->
+          <path d="M 240 198 Q 240 212 225 212  M 240 198 Q 240 212 255 212" stroke="#3A1F1F" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+          <!-- Eyes (closed/happy curves) -->
+          <path d="M 188 138 Q 198 126 210 138" stroke="#3A1F1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M 270 138 Q 282 126 292 138" stroke="#3A1F1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+          <!-- Cheek blush -->
+          <ellipse cx="172" cy="195" rx="18" ry="11" fill="#E69985" opacity=".55" filter="url(#bearSoft)"/>
+          <ellipse cx="308" cy="195" rx="18" ry="11" fill="#E69985" opacity=".55" filter="url(#bearSoft)"/>
+
+          <!-- Tiny highlight on body -->
+          <ellipse cx="160" cy="290" rx="50" ry="30" fill="rgba(255,255,255,.18)"/>
+        </svg>
+
+        <!-- BOTTLE in the middle layer -->
+        <div class="portrait-stage">
+          <img src="nutrafiber-bottle.png" alt="">
+        </div>
+
+        <!-- BEAR - front arms layer that visually wraps around the bottle -->
+        <svg class="bear bear-front" viewBox="0 0 480 540" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <radialGradient id="bearFur2" cx=".4" cy=".3" r=".85">
+              <stop offset="0" stop-color="#F2C893"/>
+              <stop offset=".55" stop-color="#D9A36A"/>
+              <stop offset="1" stop-color="#9A6638"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Left arm wrapping around bottle -->
+          <path d="M 70 290
+                   Q 35 340 60 400
+                   Q 110 460 200 440
+                   Q 240 420 230 380
+                   Q 215 345 180 350
+                   Q 130 360 110 330
+                   Q 90 305 70 290 Z"
+                fill="url(#bearFur2)"/>
+          <!-- Left paw -->
+          <ellipse cx="205" cy="430" rx="42" ry="32" fill="#FAE2BE"/>
+          <!-- Tiny paw beans -->
+          <circle cx="195" cy="420" r="3" fill="#9A6638" opacity=".55"/>
+          <circle cx="215" cy="420" r="3" fill="#9A6638" opacity=".55"/>
+          <circle cx="205" cy="438" r="4" fill="#9A6638" opacity=".55"/>
+
+          <!-- Right arm wrapping around bottle (mirror) -->
+          <path d="M 410 290
+                   Q 445 340 420 400
+                   Q 370 460 280 440
+                   Q 240 420 250 380
+                   Q 265 345 300 350
+                   Q 350 360 370 330
+                   Q 390 305 410 290 Z"
+                fill="url(#bearFur2)"/>
+          <!-- Right paw -->
+          <ellipse cx="275" cy="430" rx="42" ry="32" fill="#FAE2BE"/>
+          <circle cx="265" cy="420" r="3" fill="#9A6638" opacity=".55"/>
+          <circle cx="285" cy="420" r="3" fill="#9A6638" opacity=".55"/>
+          <circle cx="275" cy="438" r="4" fill="#9A6638" opacity=".55"/>
+        </svg>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.portrait{
+  position:relative;
+  display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:center;
+  padding:clamp(1.6rem,3.4vw,2.6rem) clamp(1.8rem,3.6vw,3.2rem);
+  border-radius:32px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,222,200,.6), transparent 60%),
+    linear-gradient(135deg, var(--cream) 0%, var(--blush) 60%, var(--sand) 100%);
+  border:1px solid var(--hairline);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+@media(max-width:880px){.portrait{grid-template-columns:1fr;text-align:left}}
+.portrait-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.portrait .halo{
+  position:absolute;border-radius:50%;
+  width:520px;height:520px;right:-120px;top:-120px;
+  background:radial-gradient(circle, rgba(237,134,87,.45), transparent 65%);
+  filter:blur(20px);
+  animation:haloFloat 12s ease-in-out infinite;
+}
+.portrait .halo-2{
+  width:380px;height:380px;left:-80px;bottom:-100px;right:auto;top:auto;
+  background:radial-gradient(circle, rgba(230,153,133,.5), transparent 65%);
+  animation-delay:-4s;animation-duration:14s;
+}
+@keyframes haloFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-20px,15px) scale(1.08)}
+}
+.portrait-copy{position:relative;z-index:1}
+.portrait-copy h2{margin-bottom:1.2rem;max-width:14ch}
+.portrait-copy p{color:var(--ink);font-size:1.1rem;max-width:48ch}
+.portrait-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.portrait-tags span{
+  display:inline-block;padding:.5rem 1rem;border-radius:var(--radius-pill);
+  background:rgba(255,255,255,.7);border:1px solid var(--hairline);
+  font-size:.82rem;font-weight:600;color:var(--rust);
+  letter-spacing:.04em;
+  backdrop-filter:blur(6px);
+  transition:transform .3s var(--ease-out), background .3s var(--ease-out);
+}
+.portrait-tags span:hover{background:#fff;transform:translateY(-2px)}
+.portrait-img{
+  position:relative;z-index:1;
+  display:grid;place-items:center;
+  aspect-ratio:1/1;
+  perspective:1800px;
+  perspective-origin:50% 45%;
+}
+/* Bear that hugs the bottle - back layer (head + body + ears) */
+.bear{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:108%;height:108%;
+  pointer-events:none;
+}
+.bear-back{
+  z-index:1;
+  filter:drop-shadow(0 30px 40px rgba(154,102,56,.35));
+  animation:bearBreathe 5s ease-in-out infinite;
+}
+.bear-front{
+  z-index:3;
+  filter:drop-shadow(0 12px 18px rgba(154,102,56,.3));
+  animation:bearBreathe 5s ease-in-out infinite;
+}
+@keyframes bearBreathe{
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-50%,-51%) scale(1.012)}
+}
+
+.portrait-stage{
+  position:relative;z-index:2;
+  width:100%;height:100%;
+  display:grid;place-items:center;
+}
+.portrait-img img{
+  width:72%;max-width:420px;
+  filter:
+    drop-shadow(0 50px 60px rgba(166,64,39,.5))
+    drop-shadow(0 18px 28px rgba(92,36,24,.32));
+  backface-visibility:visible;
+}
+/* Ground shadow removed for clean floating look */
+@keyframes spin360{
+  0%{transform:rotateY(0deg)}
+  100%{transform:rotateY(360deg)}
+}
+.portrait{min-height:auto}
+.portrait-copy h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+@media (prefers-reduced-motion: reduce){
+  .portrait-stage,.portrait-img::after,.portrait .halo{animation:none!important}
+}
+</style>
+
+<!-- ===================== CTA / CONTACT ===================== -->
+<section class="wrap" id="contact" aria-labelledby="cta-h">
+  <div class="cta-band reveal">
+    <span class="eyebrow" style="color:rgba(251,246,235,.85)">Retail &amp; pharmacy partnerships</span>
+    <h2 id="cta-h">Bring NutraFiber to your category.</h2>
+    <p>Sample logistics, point-of-purchase mockups, certification dossiers and margin structures available on request. Decks transmitted 24 hours in advance of every retail review.</p>
+    <div class="cta-row">
+      <a class="cta-btn" href="mailto:partners@nutrafiber.example">Request a sample kit <span class="arr" aria-hidden="true">&rarr;</span></a>
+      <a class="cta-btn ghost" href="mailto:medical@nutrafiber.example">Speak with our medical advisor</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="wrap" role="contentinfo">
+  <div>
+    <a href="#" class="brand" style="margin-bottom:1rem">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>NutraFiber</span>
+    </a>
+    <p style="font-size:.92rem">A vegan, halal, GMP-manufactured prebiotic pectin gummy for the modern digestive-health consumer.</p>
+
+    <div class="disclaimer" role="note">
+      <strong>Important regulatory notice.</strong> NutraFiber Healthy Pectin Gummy is a dietary supplement. Statements on this page describing the broader scientific literature on dietary fiber, the gut microbiome and GLP-1 companion nutrition refer to category-level peer-reviewed research and have not been evaluated by the U.S. Food and Drug Administration or any equivalent regulatory authority. This product is not intended to diagnose, treat, cure or prevent any disease. Individuals taking prescription medications, including GLP-1 receptor agonists, should consult a qualified healthcare professional before adding a fiber supplement to their regimen.
+    </div>
+  </div>
+
+  <div>
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="#science">The science</a></li>
+      <li><a href="#evidence">Clinical evidence</a></li>
+      <li><a href="#compare">Comparison</a></li>
+      <li><a href="#consumer">Consumer personas</a></li>
+    </ul>
+  </div>
+
+  <div>
+    <h4>Partners</h4>
+    <ul>
+      <li><a href="#contact">Retail buyers</a></li>
+      <li><a href="#contact">Pharmacy networks</a></li>
+      <li><a href="#contact">Wellness clinics</a></li>
+      <li><a href="#contact">Medical advisor</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   MOTION - GSAP-driven, with safe fallback to native CSS.
+   ============================================================ */
+(function(){
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Sticky nav state
+  const nav = document.querySelector(".nav");
+  const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 12);
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  // Native IntersectionObserver reveal (fires regardless of GSAP)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+  }, {threshold:.12, rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // Counter animation for big stats
+  const counters = document.querySelectorAll(".counter");
+  const cIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      cIO.unobserve(e.target);
+      const el = e.target;
+      const to = parseInt(el.dataset.to,10) || 0;
+      if (reduceMotion){ el.textContent = to; return; }
+      const dur = 1800; const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1,(now-start)/dur);
+        const eased = 1 - Math.pow(1-t,3);
+        el.textContent = Math.round(to*eased);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.4});
+  counters.forEach(c => cIO.observe(c));
+
+  // GSAP enhancements (optional)
+  window.addEventListener("load", () => {
+    if (reduceMotion || !window.gsap) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero kinetic typography - words rise from a clip mask
+    gsap.set(".hero h1 .word > span", {yPercent:110});
+    gsap.to(".hero h1 .word > span", {
+      yPercent:0, duration:1.1, ease:"power3.out", stagger:.12, delay:.15
+    });
+
+    // Hero copy fade-up
+    gsap.from(".hero p.lead, .hero-copy > div:nth-of-type(1), .hero-meta", {
+      opacity:0, y:30, duration:.9, ease:"power2.out", stagger:.12, delay:.6
+    });
+
+    // Bottle entrance
+    gsap.from(".bottle-wrap", {opacity:0, y:60, scale:.92, duration:1.4, ease:"power3.out", delay:.4});
+    gsap.from(".bottle-glow", {opacity:0, scale:.6, duration:1.6, ease:"power2.out", delay:.2});
+
+    // Subtle parallax on hero stage
+    gsap.to(".bottle-wrap", {
+      yPercent:-10, ease:"none",
+      scrollTrigger:{trigger:".hero", start:"top top", end:"bottom top", scrub:true}
+    });
+
+    // Gap stat: scale + fade in
+    gsap.from(".gap-stat", {
+      opacity:0, scale:.85, y:30, duration:1.2, ease:"power3.out",
+      scrollTrigger:{trigger:".gap-canvas", start:"top 75%"}
+    });
+
+    // Cards stagger
+    gsap.utils.toArray(".cards .card").forEach((c,i)=>{
+      gsap.from(c, {
+        opacity:0, y:40, duration:.8, ease:"power2.out", delay:i*.08,
+        scrollTrigger:{trigger:c, start:"top 88%"}
+      });
+    });
+
+    // Personas stagger
+    gsap.utils.toArray(".personas .persona").forEach((c,i)=>{
+      gsap.from(c, {
+        opacity:0, y:40, duration:.8, ease:"power2.out", delay:i*.1,
+        scrollTrigger:{trigger:c, start:"top 90%"}
+      });
+    });
+
+    // Evidence cards
+    gsap.utils.toArray(".evidence .ev").forEach((c,i)=>{
+      gsap.from(c, {
+        opacity:0, y:30, duration:.7, ease:"power2.out", delay:i*.08,
+        scrollTrigger:{trigger:c, start:"top 90%"}
+      });
+    });
+  });
+})();
+
+/* ============================================================
+   GUMMY-PARTICLE HERO - hundreds of tiny gelatin gummies thrown
+   in, settling, then idling with gentle wobble. Canvas-based
+   for performance.
+   ============================================================ */
+(function(){
+  const canvas = document.getElementById("gummyCanvas");
+  if (!canvas) return;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const ctx = canvas.getContext("2d");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let W = 0, H = 0;
+  const palette = [
+    ["#FFCFA0","#C25A2C"], // peach -> rust
+    ["#FFB477","#A64027"], // orange -> coral rust
+    ["#F0843A","#8E3A1A"], // pulp -> deep
+    ["#E69985","#A64027"], // rose -> rust
+    ["#FFD9A8","#D9613A"], // light peach -> terracotta
+    ["#E0B370","#8E3A1A"]  // gold -> rust
+  ];
+
+  const COUNT = reduceMotion ? 0 : (window.innerWidth < 640 ? 180 : 380);
+  const particles = [];
+
+  function rand(a,b){return a + Math.random()*(b-a)}
+
+  function spawn(){
+    particles.length = 0;
+    for (let i=0; i<COUNT; i++){
+      const r = rand(2.2, 5.5);
+      const colorPair = palette[(Math.random()*palette.length)|0];
+      particles.push({
+        x: rand(0, W),
+        y: rand(-H*0.6, -10),       // start above viewport
+        r,
+        vx: rand(-.4, .4),
+        vy: rand(.4, 1.6),
+        rot: rand(0, Math.PI*2),
+        vrot: rand(-.04, .04),
+        col: colorPair,
+        wob: rand(0, Math.PI*2),
+        wobSpeed: rand(.008, .02),
+        wobAmp: rand(.3, 1.1),
+        seed: Math.random(),
+        // settled flag - once particle reaches its rest line
+        rest: false,
+        restY: 0
+      });
+    }
+  }
+
+  function resize(){
+    const rect = canvas.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    spawn();
+  }
+
+  // Draw a single tiny gummy bear silhouette (compact, performant)
+  function drawGummy(p){
+    const [light, dark] = p.col;
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    // body
+    const grad = ctx.createRadialGradient(-p.r*.4, -p.r*.4, p.r*.2, 0, 0, p.r*1.6);
+    grad.addColorStop(0, light);
+    grad.addColorStop(1, dark);
+    ctx.fillStyle = grad;
+    ctx.globalAlpha = .85;
+    // gummy body (bear-ish blob)
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.r*1.05, p.r*1.25, 0, 0, Math.PI*2);
+    ctx.fill();
+    // tiny ears
+    ctx.beginPath();
+    ctx.arc(-p.r*.7, -p.r*.95, p.r*.45, 0, Math.PI*2);
+    ctx.arc( p.r*.7, -p.r*.95, p.r*.45, 0, Math.PI*2);
+    ctx.fill();
+    // glossy highlight
+    ctx.globalAlpha = .35;
+    ctx.fillStyle = "rgba(255,255,255,.85)";
+    ctx.beginPath();
+    ctx.ellipse(-p.r*.35, -p.r*.45, p.r*.35, p.r*.18, -.4, 0, Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  let mouseX = -9999, mouseY = -9999;
+  canvas.parentElement && canvas.parentElement.addEventListener("mousemove", (e)=>{
+    const r = canvas.getBoundingClientRect();
+    mouseX = e.clientX - r.left;
+    mouseY = e.clientY - r.top;
+  }, {passive:true});
+  canvas.parentElement && canvas.parentElement.addEventListener("mouseleave", ()=>{
+    mouseX = -9999; mouseY = -9999;
+  }, {passive:true});
+
+  const GRAVITY = 0.045;
+  const FRICTION = 0.985;
+  const FLOOR_SOFT = 0.78;   // particles settle around 78% of hero height
+  let raf;
+
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    const floorY = H * FLOOR_SOFT;
+
+    for (let i=0; i<particles.length; i++){
+      const p = particles[i];
+
+      if (!p.rest){
+        // gravity-driven fall
+        p.vy += GRAVITY;
+        p.vx *= FRICTION;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vrot;
+
+        // soft floor with bounce, then settle
+        const target = floorY - p.seed * (H*0.32);
+        if (p.y >= target){
+          p.y = target;
+          if (Math.abs(p.vy) < .8){
+            p.rest = true;
+            p.restY = target;
+            p.vy = 0;
+            p.vrot *= .3;
+          } else {
+            p.vy *= -.45;
+            p.vx *= .8;
+          }
+        }
+        // wall bounce
+        if (p.x < p.r){p.x = p.r; p.vx *= -.6}
+        if (p.x > W - p.r){p.x = W - p.r; p.vx *= -.6}
+      } else {
+        // gentle idle wobble
+        p.wob += p.wobSpeed;
+        p.y = p.restY + Math.sin(p.wob) * p.wobAmp;
+        p.rot += 0.002 * Math.sin(p.wob*.7);
+      }
+
+      // mouse repulsion (subtle micro-interaction)
+      const dx = p.x - mouseX, dy = p.y - mouseY;
+      const d2 = dx*dx + dy*dy;
+      if (d2 < 7000){
+        const f = (1 - d2/7000) * 1.4;
+        const d = Math.sqrt(d2) || 1;
+        p.x += (dx/d) * f;
+        p.y += (dy/d) * f * .6;
+        if (p.rest && Math.random() < .02) p.rest = false, p.vy = -1.5;
+      }
+
+      drawGummy(p);
+    }
+    raf = requestAnimationFrame(tick);
+  }
+
+  // Init
+  if (!reduceMotion){
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+    resize();
+    tick();
+
+    // Pause when tab hidden
+    document.addEventListener("visibilitychange", ()=>{
+      if (document.hidden){ cancelAnimationFrame(raf); }
+      else { tick(); }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
