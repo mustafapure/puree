@@ -6,6 +6,7 @@ on:
       - claude/child-hero-marketing-video-e95a23
     paths:
       - marketing-video/stitch-list.txt
+      - .github/workflows/stitch-video.yml
 
 permissions:
   contents: write
@@ -15,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version | head -1
       - name: Download clips in order
         run: |
           mkdir -p /tmp/clips
