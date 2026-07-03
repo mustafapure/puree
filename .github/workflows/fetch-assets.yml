@@ -1,0 +1,34 @@
+name: Fetch render assets
+
+on:
+  push:
+    branches:
+      - claude/child-hero-marketing-video-e95a23
+    paths:
+      - marketing-video/fetch-list.txt
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download assets
+        run: |
+          mkdir -p marketing-video/renders
+          while IFS= read -r url; do
+            [ -z "$url" ] && continue
+            fname=$(basename "${url%%\?*}")
+            echo "Fetching $fname"
+            curl -sSL --fail --max-time 300 -o "marketing-video/renders/$fname" "$url"
+          done < marketing-video/fetch-list.txt
+          ls -la marketing-video/renders
+      - name: Commit and push
+        run: |
+          git config user.name "render-fetch-bot"
+          git config user.email "actions@github.com"
+          git add marketing-video/renders
+          git diff --cached --quiet || git commit -m "Fetch render assets"
+          git push
