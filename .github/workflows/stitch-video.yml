@@ -1,0 +1,58 @@
+name: Stitch marketing video
+
+on:
+  push:
+    branches:
+      - claude/child-hero-marketing-video-e95a23
+    paths:
+      - marketing-video/stitch-list.txt
+
+permissions:
+  contents: write
+
+jobs:
+  stitch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download clips in order
+        run: |
+          mkdir -p /tmp/clips
+          i=0
+          while IFS= read -r url; do
+            [ -z "$url" ] && continue
+            i=$((i+1))
+            echo "Fetching clip $i"
+            curl -sSL --fail --max-time 300 -o "/tmp/clips/raw$i.mp4" "$url"
+          done < marketing-video/stitch-list.txt
+          ls -la /tmp/clips
+      - name: Normalize and concat
+        run: |
+          set -x
+          cd /tmp/clips
+          n=$(ls raw*.mp4 | wc -l)
+          for f in $(seq 1 "$n"); do
+            ffmpeg -y -i "raw$f.mp4" -vf "scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" -an -c:v libx264 -preset medium -crf 18 "norm$f.mp4"
+            echo "file 'norm$f.mp4'" >> list.txt
+          done
+          ffmpeg -y -f concat -safe 0 -i list.txt -c copy joined.mp4
+      - name: Add text overlays
+        run: |
+          cd /tmp/clips
+          FONT=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+          ffmpeg -y -i joined.mp4 -vf "\
+          drawtext=fontfile=$FONT:text='Every city starts as a dream':fontcolor=white:fontsize=38:shadowcolor=black@0.5:shadowx=2:shadowy=2:x=(w-text_w)/2:y=h*0.78:enable='between(t,1.0,4.5)',\
+          drawtext=fontfile=$FONT:text='He is already drawing his':fontcolor=white:fontsize=38:shadowcolor=black@0.5:shadowx=2:shadowy=2:x=(w-text_w)/2:y=h*0.78:enable='between(t,10.5,14.0)',\
+          drawtext=fontfile=$FONT:text='Dream. Design. Build. Inspire.':fontcolor=white:fontsize=40:shadowcolor=black@0.6:shadowx=2:shadowy=2:x=(w-text_w)/2:y=h*0.80:enable='between(t,21.0,25.0)'" \
+          -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p final-25s.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1 final-25s.mp4
+      - name: Commit result
+        run: |
+          mkdir -p marketing-video/renders
+          cp /tmp/clips/final-25s.mp4 marketing-video/renders/final-25s.mp4
+          cp /tmp/clips/joined.mp4 marketing-video/renders/final-25s-clean.mp4
+          git config user.name "render-fetch-bot"
+          git config user.email "actions@github.com"
+          git add marketing-video/renders
+          git diff --cached --quiet || git commit -m "Stitch 25s marketing video master"
+          git push
