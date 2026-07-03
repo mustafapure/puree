@@ -1,12 +1,11 @@
 name: Fetch render assets
 
 on:
-  workflow_dispatch:
-    inputs:
-      urls:
-        description: "Space-separated list of asset URLs to download"
-        required: true
-        type: string
+  push:
+    branches:
+      - claude/child-hero-marketing-video-e95a23
+    paths:
+      - marketing-video/fetch-list.txt
 
 permissions:
   contents: write
@@ -16,16 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: claude/child-hero-marketing-video-e95a23
       - name: Download assets
         run: |
           mkdir -p marketing-video/renders
-          for url in ${{ inputs.urls }}; do
+          while IFS= read -r url; do
+            [ -z "$url" ] && continue
             fname=$(basename "${url%%\?*}")
             echo "Fetching $fname"
             curl -sSL --fail --max-time 300 -o "marketing-video/renders/$fname" "$url"
-          done
+          done < marketing-video/fetch-list.txt
           ls -la marketing-video/renders
       - name: Commit and push
         run: |
